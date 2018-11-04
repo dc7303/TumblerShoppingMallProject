@@ -34,7 +34,6 @@ public class HandlerMappingListener implements ServletContextListener {
         
         ServletContext application = e.getServletContext();
         String fileName = application.getInitParameter("fileName");     //web.xml에 context-param에 입력되어있음.
-        
         try {
             ResourceBundle rb = ResourceBundle.getBundle(fileName);
             Iterator<String> it = rb.keySet().iterator();

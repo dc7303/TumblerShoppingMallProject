@@ -3,10 +3,19 @@ package edu.shoppingMall.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import edu.shoppingMall.dao.UserInfoDAO;
+import edu.shoppingMall.dao.impl.UserInfoDAOImpl;
 import edu.shoppingMall.dto.UserInfoDTO;
 import edu.shoppingMall.service.UserInfoService;
 
 public class UserInfoServiceImpl implements UserInfoService {
+    private static UserInfoServiceImpl serviceImpl = new UserInfoServiceImpl();
+    private UserInfoDAO daoImple = UserInfoDAOImpl.getInstance();
+    
+    
+    public static UserInfoServiceImpl getInstance() {
+        return serviceImpl;
+    }
     
     /**
      * 유저 전체검색(Admin 영역)
@@ -40,8 +49,8 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public boolean signIn(String id, String pwd) throws SQLException {
-        // TODO Auto-generated method stub
-        return false;
+        boolean result = daoImple.signIn(id, pwd);
+        return result;
     }
 
     /**

@@ -10,9 +10,9 @@
     <%String contextPath = application.getAttribute("contextPath").toString(); %>
     <form action = "${contextPath }/frontUserInfo?command=userSignIn" method = "post">
         ID : <input type = "text"  name = "userId"/><br/>
-        PW : <input type = "password" name = "userId"><br/>
+        PW : <input type = "password" name = "userPwd"><br/>
         <input type = "submit" value = "SignIn"/></br>
     </form>
-    <a href = "/user/signIn.jsp"><strong>회원가입</strong></a>
+    <a href = "${contextPath }/user/signUp.jsp"><strong>회원가입</strong></a>
 </body>
 </html>

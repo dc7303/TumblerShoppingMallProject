@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.shoppingMall.controller.Controller;
+import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
 /**
  * 유저관리 Dispatcher Servlet입니다.
@@ -22,20 +23,24 @@ import edu.shoppingMall.controller.Controller;
 @WebServlet("/frontUserInfo")
 public class UserInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Map<String, Controller> map;
 	
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+	    ServletContext application = config.getServletContext();
+        
+	    map = (Map<String, Controller>)application.getAttribute("map");
 	}
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ServletContext application = request.getServletContext();
-		
-		Map<String, Controller> map = (Map<String, Controller>)application.getAttribute("map");
 	    String command = request.getParameter("command");
 	    
-	    = map.get(command);
-		request.getRequestDispatcher("").forward(request, response);
-	}
+	    ModelAndView modelAndView = map.get(command).service(request, response);
 
+	    if(modelAndView.isRedirect()) {
+	        response.sendRedirect(modelAndView.getPath());
+	    }else {
+	        request.getRequestDispatcher(modelAndView.getPath()).forward(request, response);
+	    }
+	}
 }
