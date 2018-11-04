@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <form action = "/frontUserInfo?command=userSignUp" method = "post">
+    <%String path = application.getContextPath(); %>
+    ${contextPath }/frontUserInfo?command=userSignIn
+    <form action = "../frontUserInfo?command=userSignUp" method = "post">
         ID : <input type = "text" name = "userId"></br>
         PW : <input type = "password" name = "userPwd"></br>
         NAME : <input type = "text" name = "userName"></br>

@@ -36,7 +36,7 @@ public class UserInfoServlet extends HttpServlet {
 	    String command = request.getParameter("command");
 	    
 	    ModelAndView modelAndView = map.get(command).service(request, response);
-
+	    
 	    if(modelAndView.isRedirect()) {
 	        response.sendRedirect(modelAndView.getPath());
 	    }else {

@@ -21,9 +21,9 @@ public class UserInfoServiceImpl implements UserInfoService {
      * 유저 전체검색(Admin 영역)
      */
     @Override
-    public List<UserInfoDTO> userSelectAllController() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+    public List<UserInfoDTO> userSelectAll() throws SQLException {
+        List<UserInfoDTO> list = daoImple.userSelectAll();
+        return list;
     }
     
     /**
@@ -40,8 +40,8 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public int signUp(UserInfoDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = daoImple.signUp(dto);
+        return result;
     }
 
     /**

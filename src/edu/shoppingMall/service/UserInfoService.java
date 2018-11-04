@@ -18,7 +18,7 @@ public interface UserInfoService {
     /**
      * 회원전체 조회(Admin 영역)
      */
-    List<UserInfoDTO> userSelectAllController() throws SQLException;
+    List<UserInfoDTO> userSelectAll() throws SQLException;
     
     /**
      * 회원 부분 검색(Admin 영역)
