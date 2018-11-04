@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author mark
  *
  */
-@WebServlet("/front")
+@WebServlet("/frontNotice")
 public class NoticeBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
