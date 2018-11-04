@@ -86,8 +86,26 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
      */
     @Override
     public int productUpdate(ProductDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "update product set pro_info = ?, pro_price = ?, category = ?, picture = ?, brand = ? where pro_name = ?";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dto.getProductInfo());
+            ps.setInt(2, dto.getProductPrice());
+            ps.setString(3, dto.getProductCategory());
+            ps.setString(4, dto.getProductPicture());
+            ps.setString(5, dto.getProductBrand());
+            ps.setString(6, dto.getProductName());
+            
+            result = ps.executeUpdate();
+        }finally {
+            DBUtil.dbClose(ps, con);
+        }
+        return result;
     }
     
     /**

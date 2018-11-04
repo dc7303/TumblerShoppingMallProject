@@ -49,8 +49,8 @@ public class ProductInfoServiceImpl implements ProductInfoService {
      */
     @Override
     public int productUpdate(ProductDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = daoImpl.productUpdate(dto);
+        return result;
     }
     
     /**
