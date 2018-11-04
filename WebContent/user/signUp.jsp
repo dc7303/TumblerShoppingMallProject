@@ -19,6 +19,7 @@
         <input type = "submit" value = "가입"></br>
         <input type = "reset" name = "취소"></br>
     </form>
+    
 
 </body>
 </html>

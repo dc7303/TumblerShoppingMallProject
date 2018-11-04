@@ -21,5 +21,8 @@
         EMAIL : <input type = "text" name = "userEmail1"/>@<input type = "text" name = "userEmail2"/><br/>
         <input type = "submit" value ="수정하기"/><input type ="reset" value ="리셋"/>
     </form>
+    <hr color ="red">
+    <a href = "${contextPath }/order/order.jsp"><strong>주문하기</strong></a>
+    
 </body>
 </html>

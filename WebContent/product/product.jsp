@@ -27,7 +27,7 @@
 	        <th>사진파일이름</th>
 	        <th>브랜드</th>
         </tr>
-        <c:forEach items="${requestScope.list }" var = "list">
+        <c:forEach items="${applicationScope.list }" var = "list">
         <tr>
             <td>${list.getProductNum() }</td>
             <td>${list.getProductName() }</td>

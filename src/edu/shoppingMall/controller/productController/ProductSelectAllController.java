@@ -26,7 +26,7 @@ public class ProductSelectAllController implements Controller {
         try {
             List<ProductDTO> list = service.productSelectAll();
             if(list != null) {
-                request.setAttribute("list", list);
+                request.getServletContext().setAttribute("list", list);
                 mv.setPath("/product/product.jsp");
             }else {
                 mv.setPath("/failMessage/failMessage.jsp");
