@@ -113,8 +113,27 @@ public class UserInfoDAOImpl implements UserInfoDAO {
      */
     @Override
     public int userUpdate(UserInfoDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "update shoppinguser set user_pwd = ?, name = ?, birth = ?, addr = ?, email = ? where user_id = ?";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dto.getUserPwd());
+            ps.setString(2, dto.getUserName());
+            ps.setString(3, dto.getUserBirth());
+            ps.setString(4, dto.getUserAddr());
+            ps.setString(5, dto.getUserEmail());
+            ps.setString(6, dto.getUserId());
+            
+            result = ps.executeUpdate();
+        }finally {
+            DBUtil.dbClose(ps, con);
+        }
+        
+        return result;
     }
 
     /**

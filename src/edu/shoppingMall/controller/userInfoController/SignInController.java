@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
@@ -22,6 +23,7 @@ public class SignInController implements Controller {
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserInfoService service = UserInfoServiceImpl.getInstance();
         ServletContext application = request.getServletContext();
+        HttpSession session = request.getSession();
         
         String id = request.getParameter("userId");
         String pwd = request.getParameter("userPwd");
@@ -33,6 +35,7 @@ public class SignInController implements Controller {
         try {
             boolean result = service.signIn(id, pwd);
             if(result) {
+                session.setAttribute("userId", id);
                 mv.setPath("/successView/loginSuccess.jsp");
                 mv.setRedirect(false);
             }else {

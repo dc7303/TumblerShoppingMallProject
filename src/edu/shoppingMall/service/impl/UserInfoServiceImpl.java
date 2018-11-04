@@ -58,8 +58,8 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public int userUpdate(UserInfoDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = daoImple.userUpdate(dto);
+        return result;
     }
 
     /**
