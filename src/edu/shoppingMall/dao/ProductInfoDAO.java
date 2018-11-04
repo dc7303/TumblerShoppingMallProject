@@ -1,18 +1,19 @@
-package edu.shoppingMall.service.adminService;
+package edu.shoppingMall.dao;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import edu.shoppingMall.dto.ProductDTO;
 
+
 /**
- * 제품 관리 Service Interface입니다.
- * 관리자 영역에서 사용하는 프로세서입니다.
+ * 상품관리에 관련된 DAO
+ * 관리자 페이지 영역임으로 관리자권한에 집중되어있습니다.
  * @author mark
  *
  */
-public interface ProductInfoService {
-    
+public interface ProductInfoDAO {
+
     /** 
      * 상품조회
      */  

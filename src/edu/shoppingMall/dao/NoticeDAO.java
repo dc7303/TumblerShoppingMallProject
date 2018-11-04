@@ -1,4 +1,4 @@
-package edu.shoppingMall.service.adminService;
+package edu.shoppingMall.dao;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -6,35 +6,36 @@ import java.util.List;
 import edu.shoppingMall.dto.NoticeBoardDTO;
 
 /**
- * 공지사항 게시판 Service Interface입니다.
- * 관리자 영역에서 사용하는 프로세서입니다.
+ * QnA 게시판 관리 DAO이며, 관리자와 유저 두 영역에서 사용하는 프로세서입니다. QnABoardDTO 변수 중
+ * qnaBoardChildNum을 사용해서 어느 글의 댓글인지 설정합니다.
+ * 
  * @author mark
- *
  */
-public interface NoticeBoardService {
-    
+public interface NoticeDAO {
+
     /**
-     * 게시물조회
+     * 게시글 전체검색
      */
     List<NoticeBoardDTO> noticeBoardSelectAll() throws SQLException;
-    
+
     /**
-     * 게시물키워드 조회
+     * 게시글 부분검색
      */
     List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;
-    
+
     /**
-     * 게시물추가
+     * 게시글 추가
      */
     int noticeBoardInsert(NoticeBoardDTO dto) throws SQLException;
-    
+
     /**
-     * 게시물수정
+     * 게시글 수정
      */
     int noticeBoardUpdate(NoticeBoardDTO dto) throws SQLException;
-    
+
     /**
-     * 게시물삭제
+     * 게시글 삭제
      */
-    int noticeBoardDelete(int noticeBoardNum) throws SQLException;
+    int noticeBoardDelete(String NoticeBoardNum) throws SQLException;
+
 }
