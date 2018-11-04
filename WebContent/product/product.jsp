@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+    <%String path = application.getContextPath(); %>
     <table>
         <tr>
 	        <th>상품번호</th>
@@ -33,11 +34,39 @@
             <td>${list.getProductInfo() }</td>
             <td>${list.getProductPrice() }</td>
             <td>${list.getProductCategory() }</td>
-            <td>${list.getProductFicture() }.jpg</td>
+            <td>${list.getProductPicture() }.jpg</td>
             <td>${list.getProductBrand() }</td>
         </tr>
         </c:forEach>
     </table>
     
+    
+    <hr>
+    
+	<h3>상품추가</h3>
+    <form action = "?command=productInsert" method = "post">
+	    상품이름 : <input type = "text" name = "proName"><br/>
+	    상품정보 : <input type = "text" name = "proInfo"><br/>
+	    상품가격 : <input type = "text" name = "proPrice"><br/>
+	    카테고리 : <input type = "text" name = "proCategory"><br/>
+	    사진이름 : <input type = "text" name = "proPicture"><br/>
+	    브랜드 : <input type = "text" name = "proBrand"><br/>
+	    <input type = "submit" value ="추가"/>
+	    <input type = "reset" value ="리셋"/>
+    </form>
+    
+    <hr>
+    
+    <h3>상품수정</h3>
+     <form action = "?command=productUpdate" method = "post">
+        상품이름 : <input type = "text" name = "proName"><br/>
+        상품정보 : <input type = "text" name = "proInfo"><br/>
+        상품가격 : <input type = "text" name = "proPrice"><br/>
+        카테고리 : <input type = "text" name = "proCategory"><br/>
+        사진이름 : <input type = "text" name = "proPicture"><br/>
+        브랜드 : <input type = "text" name = "proBrand"><br/>
+        <input type = "submit" value ="수정"/>
+        <input type = "reset" value ="리셋"/>
+    </form>
 </body>
 </html>
