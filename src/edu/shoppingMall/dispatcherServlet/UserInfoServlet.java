@@ -1,12 +1,17 @@
 package edu.shoppingMall.dispatcherServlet;
 
 import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import edu.shoppingMall.controller.Controller;
 
 /**
  * 유저관리 Dispatcher Servlet입니다.
@@ -24,7 +29,13 @@ public class UserInfoServlet extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		ServletContext application = request.getServletContext();
+		
+		Map<String, Controller> map = (Map<String, Controller>)application.getAttribute("map");
+	    String command = request.getParameter("command");
+	    
+	    = map.get(command);
+		request.getRequestDispatcher("").forward(request, response);
 	}
 
 }

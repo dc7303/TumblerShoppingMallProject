@@ -7,16 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.shoppingMall.controller.Controller;
+import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
 public class NoticeBoardSelectAllController implements Controller {
     
     /**
      * 공지사항 전체검색 Controller
+     * @return 
      */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-
+        return null;
     }
 
 }
