@@ -58,8 +58,8 @@ public class ProductInfoServiceImpl implements ProductInfoService {
      */
     @Override
     public int productDelete(int productNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = daoImpl.productDelete(productNum);
+        return result;
     }
 
 }

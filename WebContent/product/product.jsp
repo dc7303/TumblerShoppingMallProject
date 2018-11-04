@@ -39,6 +39,9 @@
         </tr>
         </c:forEach>
     </table>
+    <form action ="?command=productDelete" method = "post">
+        삭제할 상품번호 입력 : <input type ="text" name = "proNum"/><input type ="submit" value ="삭제"/>
+    </form>
     
     
     <hr>
@@ -68,5 +71,7 @@
         <input type = "submit" value ="수정"/>
         <input type = "reset" value ="리셋"/>
     </form>
+    
+    
 </body>
 </html>

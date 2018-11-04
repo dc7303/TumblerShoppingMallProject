@@ -113,8 +113,21 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
      */
     @Override
     public int productDelete(int productNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "delete from product where pro_num = ?";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, productNum);
+            
+            result = ps.executeUpdate();
+        }finally {
+            DBUtil.dbClose(ps, con);
+        }
+        return result;
     }
 
 }
