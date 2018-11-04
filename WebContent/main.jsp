@@ -13,6 +13,7 @@
         PW : <input type = "password" name = "userPwd"><br/>
         <input type = "submit" value = "SignIn"/></br>
     </form>
-    <a href = "${contextPath }/user/signUp.jsp"><strong>회원가입</strong></a>
+    <a href = "${contextPath }/user/signUp.jsp"><strong>회원가입</strong></a><br/>
+    <a href = "${contextPath }/product/selectAll.jsp"><strong>상품관리</strong></a><br/>
 </body>
 </html>
