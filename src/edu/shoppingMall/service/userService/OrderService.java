@@ -1,4 +1,4 @@
-package edu.shoppingMall.service;
+package edu.shoppingMall.service.userService;
 
 import java.sql.SQLException;
 import java.util.List;

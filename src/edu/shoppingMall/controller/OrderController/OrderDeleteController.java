@@ -1,4 +1,4 @@
-package edu.shoppingMall.controller.orderController;
+package edu.shoppingMall.controller.OrderController;
 
 import java.io.IOException;
 
@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.shoppingMall.controller.Controller;
-import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
 public class OrderDeleteController implements Controller {
     
@@ -15,9 +14,9 @@ public class OrderDeleteController implements Controller {
      * 주문 취소 Controller
      */
     @Override
-    public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        return null;
+
     }
 
 }

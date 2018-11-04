@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author mark
  *
  */
-@WebServlet("/qna")
+@WebServlet("/front")
 public class QnABoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
