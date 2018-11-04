@@ -1,4 +1,4 @@
-package edu.shoppingMall.controller.OrderController;
+package edu.shoppingMall.controller.orderController;
 
 import java.io.IOException;
 
