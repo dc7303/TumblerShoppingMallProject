@@ -1,4 +1,4 @@
-package edu.shoppingMall.dao.userDAO;
+package edu.shoppingMall.dao;
 
 import java.sql.SQLException;
 import java.util.List;

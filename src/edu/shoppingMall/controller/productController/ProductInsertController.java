@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.shoppingMall.controller.Controller;
+import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
 public class ProductInsertController implements Controller {
     
@@ -14,9 +15,9 @@ public class ProductInsertController implements Controller {
      * 메뉴 추가 Controller
      */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-
+        return null;
     }
 
 }

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author mark
  *
  */
-@WebServlet("/front")
+@WebServlet("/notice")
 public class NoticeBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +23,7 @@ public class NoticeBoardServlet extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("noticeServlet »Æ¿Œ");
 	}
 
 }

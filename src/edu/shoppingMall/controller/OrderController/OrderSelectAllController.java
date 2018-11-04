@@ -1,4 +1,4 @@
-package edu.shoppingMall.controller.OrderController;
+package edu.shoppingMall.controller.orderController;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.shoppingMall.controller.Controller;
+import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
 public class OrderSelectAllController implements Controller {
     
@@ -14,9 +15,9 @@ public class OrderSelectAllController implements Controller {
      * 주문내역 전체 조회 Controller
      */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-
+        return null;
     }
 
 }
