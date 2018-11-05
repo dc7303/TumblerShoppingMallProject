@@ -61,5 +61,6 @@
         <input type = "submit" value = "주문하기"/>
         <input type = "reset" value = "리셋"/>
      </form>
+     <a href = "../frontOrder?command=orderSelectAll"><h3>총 주문내역 보기</h3></a>
 </body>
 </html>

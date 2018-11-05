@@ -44,5 +44,9 @@
             </tr>
         </c:forEach>
     </table>
+    <form action ="${applicationScope.contextPath }/frontOrder?command=orderDelete" method="post">
+    삭제할 주문 번호 : <input type = "text" name = "orderNum"/>
+    <input type = "submit" value ="삭제"/>
+    </form>
 </body>
 </html>

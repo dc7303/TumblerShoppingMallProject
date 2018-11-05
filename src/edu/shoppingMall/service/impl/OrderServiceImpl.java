@@ -53,8 +53,11 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int orderDelete(int orderNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = daoImpl.orderDelete(orderNum);
+        if(result == 0) {
+            throw new SQLException("주문 취소를 실패했습니다.");
+        }
+        return result;
     }
 
 }

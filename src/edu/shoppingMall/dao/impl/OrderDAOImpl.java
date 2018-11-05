@@ -100,8 +100,21 @@ public class OrderDAOImpl implements OrderDAO {
      */
     @Override
     public int orderDelete(int orderNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "delete from orderInfo where order_num = ?";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, orderNum);
+            
+            result = ps.executeUpdate();
+        }finally {
+            DBUtil.dbClose(ps, con);
+        }
+        return result;
     }
 
 }

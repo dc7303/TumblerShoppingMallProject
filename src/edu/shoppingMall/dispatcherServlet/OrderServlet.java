@@ -33,7 +33,7 @@ public class OrderServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String command = request.getParameter("command");
-        
+        System.out.println(command);
         ModelAndView modelAndView = map.get(command).service(request, response);
         
         if(modelAndView.isRedirect()) {

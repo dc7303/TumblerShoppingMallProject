@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <%
-    String contextPath = application.getContextPath();
-    %>
     로그인 성공<br/>
     수정하실 항목을 입력하세요.
-    <form action = "${contextPath }/frontUserInfo?command=userUpdate" method = "post">
+    <form action = "${applicationScope.contextPath }/frontUserInfo?command=userUpdate" method = "post">
         ID : <input type = "text" name = "userId" value = "${userDTO.getUserId() }"/><br/>
         PW : <input type = "password" name = "userPwd"/><br/>
         NAME : <input type = "text" name = "userName"/><br/>
@@ -22,7 +19,7 @@
         <input type = "submit" value ="수정하기"/><input type ="reset" value ="리셋"/>
     </form>
     <hr color ="red">
-    <a href = "${contextPath }/order/order.jsp"><strong>주문하기</strong></a>
+    <a href = "${applicationScope.contextPath }/order/order.jsp"><strong>주문하기</strong></a>
     
 </body>
 </html>
