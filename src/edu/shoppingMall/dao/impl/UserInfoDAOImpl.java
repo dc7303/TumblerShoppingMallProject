@@ -93,7 +93,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "select * from shoppinguser where user_id = ? and user_pwd = ?";
-        UserInfoDTO dto = new UserInfoDTO();
+        UserInfoDTO dto = null;
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);

@@ -2,7 +2,9 @@ package edu.shoppingMall.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.shoppingMall.dao.OrderDAO;
@@ -23,8 +25,25 @@ public class OrderDAOImpl implements OrderDAO {
      */
     @Override
     public List<OrderDTO> orderSelectAll() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from orderInfo";
+        List<OrderDTO> list = new ArrayList<>();
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                list.add(new OrderDTO(rs.getInt("order_num"), rs.getInt("pro_num"), rs.getString("user_id"), 
+                        rs.getInt("basong_num"), rs.getInt("quantity"), rs.getString("pro_option"),
+                        rs.getString("basong_addr"), rs.getString("basong_phone"), rs.getString("basong_coment"), rs.getString("payment")));
+                
+            }
+        }finally {
+            DBUtil.dbClose(rs, ps, con);
+        }
+        return list;
     }
 
     /**
@@ -37,7 +56,7 @@ public class OrderDAOImpl implements OrderDAO {
     public int orderInsert(OrderDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into orderInfo values (order_num, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into orderInfo values (order_num_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int result = 0;
         
         System.out.println("dao¿¬°á");
@@ -53,7 +72,7 @@ public class OrderDAOImpl implements OrderDAO {
             ps.setString(7, dto.getBasongPhone());
             ps.setString(8, dto.getComent());
             ps.setString(9, dto.getPayment());
-            System.out.println(dto.getOrderNum());
+            System.out.println(dto.getOrderProductNum());
             result = ps.executeUpdate();
         }finally {
             DBUtil.dbClose(ps, con);

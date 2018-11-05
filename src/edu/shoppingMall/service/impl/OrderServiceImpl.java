@@ -21,8 +21,11 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public List<OrderDTO> orderSelectAll() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderDTO> list = daoImpl.orderSelectAll();
+        if(list == null) {
+            throw new SQLException("조회할 수 있는 주문내역이 없습니다.");
+        }
+        return list;
     }
 
     /**

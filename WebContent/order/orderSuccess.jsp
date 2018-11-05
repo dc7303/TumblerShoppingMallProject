@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-    결과는 성공
+    <!-- 주문성공 시 접근하는 페이지로 selectAll을 하기 위해서 브릿지를 역할을 합니다.  -->
+    <script type="text/javascript">
+      location.href = "?command=orderSelectAll";
+    </script>
 </body>
 </html>
