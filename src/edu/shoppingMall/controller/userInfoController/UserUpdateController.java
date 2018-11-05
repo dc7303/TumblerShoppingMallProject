@@ -31,18 +31,17 @@ public class UserUpdateController implements Controller {
         String userEmail = request.getParameter("userEmail1") + "@" + request.getParameter("userEmail2");
         
         ModelAndView mv = new ModelAndView();
+        String url = "/failView/failMessage.jsp";
         try {
-            result = service.userUpdate(new UserInfoDTO(userId, userPwd, userName, userBirth, userAddr, userEmail, "user"));
-            if(result > 0) {
-                mv.setPath("/successView/updateSuccess.jsp");
-            }else {
-                mv.setPath("/failView/failMessage.jsp");
-                mv.setRedirect(true);
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            service.userUpdate(new UserInfoDTO(userId, userPwd, userName, userBirth, userAddr, userEmail, "user")); //user는 관리자or유저 상태변수로 일단 user로 적용함
+            url = "/successView/updateSuccess.jsp";
+            mv.setRedirect(true);
+        }catch (SQLException e) {
             e.printStackTrace();
+            request.setAttribute("errorMsg", e.getMessage());
         }
+        
+        mv.setPath(url);
         return mv;
     }
 

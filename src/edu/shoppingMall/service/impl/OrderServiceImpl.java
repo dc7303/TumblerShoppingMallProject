@@ -30,8 +30,11 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int orderInsert(OrderDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        int result = daoImpl.orderInsert(dto);
+        if(result == 0) {
+            throw new SQLException("주문 실패했습니다.");
+        }
+        return result;
     }
     
     /**
@@ -39,8 +42,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int orderUpdate(OrderDTO dto) throws SQLException {
-        int result = daoImpl.orderInsert(dto);
-        return result;
+        return 0;
     }
 
     /**

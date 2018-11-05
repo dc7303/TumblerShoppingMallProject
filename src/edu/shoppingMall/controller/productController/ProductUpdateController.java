@@ -30,19 +30,16 @@ public class ProductUpdateController implements Controller {
         String proPicture = request.getParameter("proPicture");
         String proBrand = request.getParameter("proBrand");
         
-        int result = 0;
+        String url = "/failMessage/failMessage.jsp";
         try {
-            result = service.productUpdate(new ProductDTO(0, proName, proInfo, proPrice, proCategory, proPicture, proBrand));
-            if(result > 0) {
-                mv.setPath("?command=productSelectAll");
-            }else {
-                mv.setPath("/failMessage/failMessage.jsp");
-                mv.setRedirect(true);
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            service.productUpdate(new ProductDTO(0, proName, proInfo, proPrice, proCategory, proPicture, proBrand));
+            url = "?command=productSelectAll";
+        }catch (SQLException e) {
             e.printStackTrace();
+            request.setAttribute("errorMsg", e.getMessage());
         }
+        
+        mv.setPath(url);
         return mv;
     }
 

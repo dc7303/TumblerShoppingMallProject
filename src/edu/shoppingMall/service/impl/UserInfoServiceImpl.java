@@ -23,6 +23,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public List<UserInfoDTO> userSelectAll() throws SQLException {
         List<UserInfoDTO> list = daoImple.userSelectAll();
+        if(list == null) {
+            throw new SQLException("등록된 유저가 없습니다.");
+        }
         return list;
     }
     
@@ -41,6 +44,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public int signUp(UserInfoDTO dto) throws SQLException {
         int result = daoImple.signUp(dto);
+        if(result == 0) {
+            throw new SQLException("회원가입에 실패했습니다.");
+        }
         return result;
     }
 
@@ -48,9 +54,12 @@ public class UserInfoServiceImpl implements UserInfoService {
      * 로그인
      */
     @Override
-    public boolean signIn(String id, String pwd) throws SQLException {
-        boolean result = daoImple.signIn(id, pwd);
-        return result;
+    public UserInfoDTO signIn(String id, String pwd) throws SQLException {
+        UserInfoDTO dto = daoImple.signIn(id, pwd);
+        if(dto == null) {
+            throw new SQLException("정보가 일치하지 않습니다. 다시 로그인해주세요.");
+        }
+        return dto;
     }
 
     /**
@@ -59,6 +68,9 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public int userUpdate(UserInfoDTO dto) throws SQLException {
         int result = daoImple.userUpdate(dto);
+        if(result == 0) {
+            throw new SQLException("회원 정보를 수정할 수 없습니다.");
+        }
         return result;
     }
 

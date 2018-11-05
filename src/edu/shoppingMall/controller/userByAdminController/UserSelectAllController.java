@@ -23,20 +23,17 @@ public class UserSelectAllController implements Controller{
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserInfoService service = UserInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
-       
+        
+        String url = "/failView/failMessage.jsp";
         try {
             List<UserInfoDTO> list =  service.userSelectAll();
-            if(list != null) {
-                mv.setPath("/successView/signUpSuccess.jsp");
-                mv.setRedirect(false);
-            }else {
-                mv.setPath("/failView/failMessage.jsp");
-            }
-            
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            url = "/successView/signUpSuccess.jsp";
+        }catch (SQLException e) {
             e.printStackTrace();
+            request.setAttribute("errorMsg", e.getMessage());
         }
+        
+        mv.setPath(url);
         return mv;
     }
     

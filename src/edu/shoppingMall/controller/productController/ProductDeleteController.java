@@ -25,19 +25,17 @@ public class ProductDeleteController implements Controller {
         
         int proNum = Integer.parseInt(request.getParameter("proNum"));
         
-        int result = 0;
+        String url = "/failMessage/failMessage.jsp";
         try {
-            result = service.productDelete(proNum);
-            if(result > 0) {
-                mv.setPath("?command=productSelectAll");
-            }else {
-                mv.setPath("/failMessage/failMessage.jsp");
-                mv.setRedirect(true);
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            service.productDelete(proNum);
+            url = "?command=productSelectAll";
+            mv.setRedirect(true);
+        }catch(SQLException e) {
             e.printStackTrace();
+            request.setAttribute("errorMsg", e.getMessage());
         }
+        
+        mv.setPath(url);
         return mv;
     }
 

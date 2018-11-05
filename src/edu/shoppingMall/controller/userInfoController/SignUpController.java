@@ -31,18 +31,15 @@ public class SignUpController implements Controller {
         String userEmail = request.getParameter("userEmail1") + "@" + request.getParameter("userEmail2");
         
         ModelAndView mv = new ModelAndView();
+        String url = "/failView/failMessage.jsp";
         try {
-            result = service.signUp(new UserInfoDTO(userId, userPwd, userName, userBirth, userAddr, userEmail, null));
-            if(result > 0) {
-                mv.setPath("/successView/signUpSuccess.jsp");
-            }else {
-                mv.setPath("/failView/failMessage.jsp");
-                mv.setRedirect(true);
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            service.signUp(new UserInfoDTO(userId, userPwd, userName, userBirth, userAddr, userEmail, null));
+            url = "/successView/signUpSuccess.jsp";
+        }catch(SQLException e) {
             e.printStackTrace();
         }
+        
+        mv.setPath(url);
         return mv;
     }
 

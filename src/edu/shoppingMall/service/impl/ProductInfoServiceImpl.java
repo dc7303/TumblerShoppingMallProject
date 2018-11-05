@@ -22,7 +22,9 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public List<ProductDTO> productSelectAll() throws SQLException {
         List<ProductDTO> list = daoImpl.productSelectAll();
-        
+        if(list == null) {
+            throw new SQLException("조회할 제품이 존재하지 않습니다.");
+        }
         return list;
     }
     
@@ -41,6 +43,9 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public int productInsert(ProductDTO dto) throws SQLException {
         int result = daoImpl.productInsert(dto);
+        if(result == 0) {
+            throw new SQLException("제품 추가에 실패했습니다.");
+        }
         return result;
     }
     
@@ -50,6 +55,9 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public int productUpdate(ProductDTO dto) throws SQLException {
         int result = daoImpl.productUpdate(dto);
+        if(result == 0) {
+            throw new SQLException("제품 수정에 실패했습니다.");
+        }
         return result;
     }
     
@@ -59,6 +67,9 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public int productDelete(int productNum) throws SQLException {
         int result = daoImpl.productDelete(productNum);
+        if(result == 0) {
+            throw new SQLException("제품 삭제에 실패했습니다.");
+        }
         return result;
     }
 

@@ -37,7 +37,7 @@ public interface UserInfoService {
     /**
      * 로그인
      */
-    boolean signIn(String id, String pwd) throws SQLException;
+    UserInfoDTO signIn(String id, String pwd) throws SQLException;
     
     /**
      * 회원정보 수정

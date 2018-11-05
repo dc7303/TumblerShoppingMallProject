@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
+import edu.shoppingMall.dto.UserInfoDTO;
 import edu.shoppingMall.service.UserInfoService;
 import edu.shoppingMall.service.impl.UserInfoServiceImpl;
 
@@ -22,7 +23,6 @@ public class SignInController implements Controller {
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserInfoService service = UserInfoServiceImpl.getInstance();
-        ServletContext application = request.getServletContext();
         HttpSession session = request.getSession();
         
         String id = request.getParameter("userId");
@@ -30,21 +30,17 @@ public class SignInController implements Controller {
         
         ModelAndView mv = new ModelAndView();
         
-        String path = application.getAttribute("contextPath").toString();
-
+        String url = "/failView/failMessage.jsp";
         try {
-            boolean result = service.signIn(id, pwd);
-            if(result) {
-                session.setAttribute("userId", id);
-                mv.setPath("/successView/loginSuccess.jsp");
-                mv.setRedirect(false);
-            }else {
-                mv.setPath("/failView/failMessage.jsp");
-                mv.setRedirect(false);
-            }
-        } catch (SQLException e) {
+            UserInfoDTO dto = service.signIn(id, pwd);
+            session.setAttribute("userDTO", dto);
+            url = "/successView/loginSuccess.jsp";
+        }catch (SQLException e) {
             e.printStackTrace();
+            request.setAttribute("errorMsg", e.getMessage());
         }
+        
+        mv.setPath(url);
         return mv;
     }
 

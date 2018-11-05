@@ -88,12 +88,12 @@ public class UserInfoDAOImpl implements UserInfoDAO {
      * ·Î±×ÀÎ
      */
     @Override
-    public boolean signIn(String id, String pwd) throws SQLException {
+    public UserInfoDTO signIn(String id, String pwd) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "select * from shoppinguser where user_id = ? and user_pwd = ?";
-        boolean result = false;
+        UserInfoDTO dto = new UserInfoDTO();
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
@@ -101,11 +101,15 @@ public class UserInfoDAOImpl implements UserInfoDAO {
             ps.setString(2, pwd);
             rs = ps.executeQuery();
             
-            result = rs.next();
+            while(rs.next()) {
+                dto = new UserInfoDTO(rs.getString("user_id"), rs.getString("user_pwd"), 
+                            rs.getString("name"), rs.getString("birth"), rs.getString("addr"),
+                            rs.getString("email"), rs.getString("is_admin"));
+            }
         } finally {
             DBUtil.dbClose(rs, ps, con);
         }
-        return result;
+        return dto;
     }
 
     /**

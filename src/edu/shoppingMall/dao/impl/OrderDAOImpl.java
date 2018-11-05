@@ -39,6 +39,7 @@ public class OrderDAOImpl implements OrderDAO {
         PreparedStatement ps = null;
         String sql = "insert into orderInfo values (order_num, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int result = 0;
+        
         System.out.println("dao¿¬°á");
         try {
             con = DBUtil.getConnection();
@@ -52,7 +53,7 @@ public class OrderDAOImpl implements OrderDAO {
             ps.setString(7, dto.getBasongPhone());
             ps.setString(8, dto.getComent());
             ps.setString(9, dto.getPayment());
-            
+            System.out.println(dto.getOrderNum());
             result = ps.executeUpdate();
         }finally {
             DBUtil.dbClose(ps, con);

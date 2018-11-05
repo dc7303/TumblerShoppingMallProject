@@ -13,7 +13,7 @@
     로그인 성공<br/>
     수정하실 항목을 입력하세요.
     <form action = "${contextPath }/frontUserInfo?command=userUpdate" method = "post">
-        ID : <input type = "text" name = "userId" value = "${sessionScope.userId }"/><br/>
+        ID : <input type = "text" name = "userId" value = "${userDTO.getUserId() }"/><br/>
         PW : <input type = "password" name = "userPwd"/><br/>
         NAME : <input type = "text" name = "userName"/><br/>
         BIRTH : <input type = "text" name = "userBirth"/><br/>
