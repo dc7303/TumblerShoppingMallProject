@@ -37,8 +37,7 @@ public class OrderUpdateController implements Controller {
         
         String url = "/failView/failMessage.jsp";
         try {
-            service.orderUpdate(new OrderDTO(orderNum, proNum, userId, basongNum,
-                    quantity, option, basongAddr, basongPhone, coment, payment));
+            service.orderUpdate(new OrderDTO());
             url = "/order/orderSuccess.jsp";
         } catch (SQLException e) {
             e.printStackTrace();

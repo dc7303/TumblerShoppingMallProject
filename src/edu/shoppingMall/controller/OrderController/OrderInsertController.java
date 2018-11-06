@@ -40,8 +40,7 @@ public class OrderInsertController implements Controller {
         String url = "/failView/failMessage.jsp";
         
         try {
-            service.orderInsert(new OrderDTO(0, proNum, userId, basongNum, proQuantity,
-                    option, basongAddr, basongPhone, coment, payment));
+            service.orderInsert(new OrderDTO());
             url = "/order/orderSuccess.jsp";
         } catch (SQLException e) {
             e.printStackTrace();
