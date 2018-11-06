@@ -38,6 +38,8 @@
         </tr>
         </c:forEach>
      </table>
+     <a href = "../frontOrder?command=orderSelectAll"><h3>총 주문내역 보기</h3></a>
+     <br/>
      <h3>상품 주문 입력</h3>
      <form action = "../frontOrder?command=orderInsert" method = "post">
         상품 :
@@ -61,6 +63,12 @@
         <input type = "submit" value = "주문하기"/>
         <input type = "reset" value = "리셋"/>
      </form>
+     <hr/>
+     <h3>장바구니 프로세서</h3>
+     <table>
+        <tr>
+        </tr>
+     </table>
      <a href = "../frontOrder?command=orderSelectAll"><h3>총 주문내역 보기</h3></a>
 </body>
 </html>

@@ -14,19 +14,23 @@ public class ProductDTO {
     private String productCategory;     //카테고리
     private String productPicture;      //사진 파일명
     private String productBrand;        //브랜드
+    private int productQuantity;        //재고
+    private String date;                //등록일자
     
     public ProductDTO() {}
 
     public ProductDTO(int productNum, String productName, String productInfo, int productPrice, String productCategory,
-            String productFicture, String productBrand) {
+            String productPicture, String productBrand, int productQuantity, String date) {
         super();
         this.productNum = productNum;
         this.productName = productName;
         this.productInfo = productInfo;
         this.productPrice = productPrice;
         this.productCategory = productCategory;
-        this.productPicture = productFicture;
+        this.productPicture = productPicture;
         this.productBrand = productBrand;
+        this.productQuantity = productQuantity;
+        this.date = date;
     }
 
     public int getProductNum() {
@@ -57,6 +61,14 @@ public class ProductDTO {
         return productBrand;
     }
 
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
     public void setProductNum(int productNum) {
         this.productNum = productNum;
     }
@@ -85,7 +97,14 @@ public class ProductDTO {
         this.productBrand = productBrand;
     }
 
-   
-   
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    
     
 }

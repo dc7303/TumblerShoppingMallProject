@@ -10,21 +10,26 @@ public class QnABoardDTO {
     private int qnaBoardNum;           //게시판번호
     private String qnaBoardSubject;    //제목
     private String qnaBoardContent;    //내용
-    private String qnaBoardDate;       //등록일자
     private int qnaBoardPwd;           //비밀번호
+    private String qnaBoardDate;       //등록일자
+    private String qnaBoardPicture;    //사진
+    private int qnaBoardUserAdminFlag; //유저_관리자체크
     private String qnaBoardUserId;     //유저아이디
     private int qnaBoardChildNum;      //답글여부
     
     public QnABoardDTO() {}
 
-    public QnABoardDTO(int qnaBoardNum, String qnaBoardSubject, String qnaBoardContent, String qnaBoardDate,
-            int qnaBoardPwd, String qnaBoardUserId, int qnaBoardChildNum) {
+    public QnABoardDTO(int qnaBoardNum, String qnaBoardSubject, String qnaBoardContent, int qnaBoardPwd,
+            String qnaBoardDate, String qnaBoardPicture, int qnaBoardUserAdminFlag, String qnaBoardUserId,
+            int qnaBoardChildNum) {
         super();
         this.qnaBoardNum = qnaBoardNum;
         this.qnaBoardSubject = qnaBoardSubject;
         this.qnaBoardContent = qnaBoardContent;
-        this.qnaBoardDate = qnaBoardDate;
         this.qnaBoardPwd = qnaBoardPwd;
+        this.qnaBoardDate = qnaBoardDate;
+        this.qnaBoardPicture = qnaBoardPicture;
+        this.qnaBoardUserAdminFlag = qnaBoardUserAdminFlag;
         this.qnaBoardUserId = qnaBoardUserId;
         this.qnaBoardChildNum = qnaBoardChildNum;
     }
@@ -41,12 +46,20 @@ public class QnABoardDTO {
         return qnaBoardContent;
     }
 
+    public int getQnaBoardPwd() {
+        return qnaBoardPwd;
+    }
+
     public String getQnaBoardDate() {
         return qnaBoardDate;
     }
 
-    public int getQnaBoardPwd() {
-        return qnaBoardPwd;
+    public String getQnaBoardPicture() {
+        return qnaBoardPicture;
+    }
+
+    public int getQnaBoardUserAdminFlag() {
+        return qnaBoardUserAdminFlag;
     }
 
     public String getQnaBoardUserId() {
@@ -69,12 +82,20 @@ public class QnABoardDTO {
         this.qnaBoardContent = qnaBoardContent;
     }
 
+    public void setQnaBoardPwd(int qnaBoardPwd) {
+        this.qnaBoardPwd = qnaBoardPwd;
+    }
+
     public void setQnaBoardDate(String qnaBoardDate) {
         this.qnaBoardDate = qnaBoardDate;
     }
 
-    public void setQnaBoardPwd(int qnaBoardPwd) {
-        this.qnaBoardPwd = qnaBoardPwd;
+    public void setQnaBoardPicture(String qnaBoardPicture) {
+        this.qnaBoardPicture = qnaBoardPicture;
+    }
+
+    public void setQnaBoardUserAdminFlag(int qnaBoardUserAdminFlag) {
+        this.qnaBoardUserAdminFlag = qnaBoardUserAdminFlag;
     }
 
     public void setQnaBoardUserId(String qnaBoardUserId) {
@@ -84,6 +105,7 @@ public class QnABoardDTO {
     public void setQnaBoardChildNum(int qnaBoardChildNum) {
         this.qnaBoardChildNum = qnaBoardChildNum;
     }
+
     
    
     
