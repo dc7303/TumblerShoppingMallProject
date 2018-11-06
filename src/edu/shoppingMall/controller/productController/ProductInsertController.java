@@ -32,7 +32,7 @@ public class ProductInsertController implements Controller {
         
         String url = "/failMessage/failMessage.jsp";
         try {
-            service.productInsert(new ProductDTO(0, proName, proInfo, proPrice, proCategory, proPicture, proBrand));
+            service.productInsert(new ProductDTO());
             url = "?command=productSelectAll";
         }catch (SQLException e) {
             e.printStackTrace();

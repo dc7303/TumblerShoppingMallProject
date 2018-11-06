@@ -26,7 +26,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from product";
+        String sql = "select * from ???";
         List<ProductDTO> list = new ArrayList<>();
         try {
             con = DBUtil.getConnection();
@@ -34,9 +34,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
             rs = ps.executeQuery();
             
             while(rs.next()) {
-                list.add(new ProductDTO(rs.getInt("pro_num"), rs.getString("pro_name"),
-                        rs.getString("pro_info"), rs.getInt("pro_price"), rs.getString("category"),
-                        rs.getString("picture"), rs.getString("brand")));
+                list.add(new ProductDTO());
             }
             
         }finally {
@@ -61,18 +59,13 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
     public int productInsert(ProductDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into product values (pro_num_seq.nextval, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into ??? values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int result = 0;
         
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, dto.getProductName());
-            ps.setString(2, dto.getProductInfo());
-            ps.setInt(3, dto.getProductPrice());
-            ps.setString(4, dto.getProductCategory());
-            ps.setString(5, dto.getProductPicture());
-            ps.setString(6, dto.getProductBrand());
+            
             
             result = ps.executeUpdate();
         }finally {
@@ -88,18 +81,13 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
     public int productUpdate(ProductDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "update product set pro_info = ?, pro_price = ?, category = ?, picture = ?, brand = ? where pro_name = ?";
+        String sql = "update ??? set pro_info = ?, pro_price = ?, category = ?, picture = ?, brand = ? where pro_name = ?";
         int result = 0;
         
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, dto.getProductInfo());
-            ps.setInt(2, dto.getProductPrice());
-            ps.setString(3, dto.getProductCategory());
-            ps.setString(4, dto.getProductPicture());
-            ps.setString(5, dto.getProductBrand());
-            ps.setString(6, dto.getProductName());
+            
             
             result = ps.executeUpdate();
         }finally {
@@ -115,7 +103,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
     public int productDelete(int productNum) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "delete from product where pro_num = ?";
+        String sql = "delete from ??? where pro_num = ?";
         int result = 0;
         
         try {

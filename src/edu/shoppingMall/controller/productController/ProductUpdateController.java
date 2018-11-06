@@ -32,7 +32,7 @@ public class ProductUpdateController implements Controller {
         
         String url = "/failMessage/failMessage.jsp";
         try {
-            service.productUpdate(new ProductDTO(0, proName, proInfo, proPrice, proCategory, proPicture, proBrand));
+            service.productUpdate(new ProductDTO());
             url = "?command=productSelectAll";
         }catch (SQLException e) {
             e.printStackTrace();
