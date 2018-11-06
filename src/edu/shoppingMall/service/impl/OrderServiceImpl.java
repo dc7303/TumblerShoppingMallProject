@@ -45,7 +45,11 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int orderUpdate(OrderDTO dto) throws SQLException {
-        return 0;
+        int result = daoImpl.orderUpdate(dto);
+        if(result == 0) {
+            throw new SQLException("수정 실패했습니다.");
+        }
+        return result;
     }
 
     /**

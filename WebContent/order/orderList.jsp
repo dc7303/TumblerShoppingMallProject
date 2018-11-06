@@ -48,5 +48,26 @@
     삭제할 주문 번호 : <input type = "text" name = "orderNum"/>
     <input type = "submit" value ="삭제"/>
     </form>
+    
+    <hr/>
+    <h3>상품 수정하기</h3>
+    <h5>수정할 주문번호, 상품번호, 유저아이디는 유효성 체크를 위한 입력이고 실제 수정되는 부분은 배송번호부터 이하 수정됩니다.</h5>
+    <form action = "?command=orderUpdate" method = "post">
+        수정할 주문 번호 : <input type = "text" name = "orderNum"/><br/>
+        상품번호 : <input type = "text" name = "proNum"/><br/>
+        유저아이디 : <input type = "text" name = "userId" value = "${sessionScope.userDTO.getUserId() }"/><br/>
+        배송번호 : <input type = "text" name = "basongNum"/><br/>
+        상품수량 : <select name = "quantity">
+            <c:forEach begin="1" end="10" var="i">
+                <option value = "${i }">${i }</option>
+            </c:forEach>
+        </select><br/>
+        상품옵션 : <input type = "text" name = "option"/><br/>
+        배송주소 : <input type = "text" name = "basongAddr"/><br/>
+        배송핸드폰 : <input type = "text" name = "basongPhone"/><br/>
+        기타사항 : <input type = "text" name = "coment"/><br/>
+        주문상태 : <input type = "text" name = "payment"/><br/>
+        <input type = "submit" value = "수정"/><input type = "reset" value ="리셋"/>
+    </form>
 </body>
 </html>

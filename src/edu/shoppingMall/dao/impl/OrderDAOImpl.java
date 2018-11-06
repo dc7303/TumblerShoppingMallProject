@@ -88,8 +88,33 @@ public class OrderDAOImpl implements OrderDAO {
      */
     @Override
     public int orderUpdate(OrderDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "update orderInfo set basong_num = ?, quantity = ?,"
+                + " pro_option = ?, basong_addr = ?, basong_phone = ?,"
+                + " basong_coment = ?, payment = ? where order_num = ? and pro_num = ? and user_id = ?";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, dto.getBasongNum());
+            ps.setInt(2, dto.getOrderQuantity());
+            ps.setString(3, dto.getOrderOption());
+            ps.setString(4, dto.getBasongAddr());
+            ps.setString(5, dto.getBasongPhone());
+            ps.setString(6, dto.getComent());
+            ps.setString(7, dto.getPayment());
+            ps.setInt(8, dto.getOrderNum());
+            ps.setInt(9, dto.getOrderProductNum());
+            ps.setString(10, dto.getOrderUserId());
+            
+            result = ps.executeUpdate();
+        }finally {
+            DBUtil.dbClose(ps, con);
+        }
+        
+        return result;
     }
 
     /**
