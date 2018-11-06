@@ -36,9 +36,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
             rs = ps.executeQuery();
 
             while(rs.next()) {
-                list.add(new UserInfoDTO(rs.getString("user_id"), rs.getString("user_pwd"), 
-                        rs.getString("name"), rs.getString("birth"), rs.getString("addr"),
-                        rs.getString("email"), rs.getString("is_admin")));
+                list.add(new UserInfoDTO());
             }
         }finally {
             
@@ -62,19 +60,13 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     public int signUp(UserInfoDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into shoppinguser values (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into ????? values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int result = 0;
         
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, dto.getUserId());
-            ps.setString(2, dto.getUserPwd());
-            ps.setString(3, dto.getUserName());
-            ps.setString(4, dto.getUserBirth());
-            ps.setString(5, dto.getUserAddr());
-            ps.setString(6, dto.getUserEmail());
-            ps.setString(7, "user");
+           
             
             result = ps.executeUpdate();
         }finally {
@@ -92,7 +84,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from shoppinguser where user_id = ? and user_pwd = ?";
+        String sql = "select * from ??? where user_id = ? and user_pwd = ?";
         UserInfoDTO dto = null;
         try {
             con = DBUtil.getConnection();
@@ -102,9 +94,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
             rs = ps.executeQuery();
             
             while(rs.next()) {
-                dto = new UserInfoDTO(rs.getString("user_id"), rs.getString("user_pwd"), 
-                            rs.getString("name"), rs.getString("birth"), rs.getString("addr"),
-                            rs.getString("email"), rs.getString("is_admin"));
+                dto = new UserInfoDTO();
             }
         } finally {
             DBUtil.dbClose(rs, ps, con);
@@ -119,7 +109,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     public int userUpdate(UserInfoDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "update shoppinguser set user_pwd = ?, name = ?, birth = ?, addr = ?, email = ? where user_id = ?";
+        String sql = "update ??? set user_pwd = ?, name = ?, birth = ?, addr = ?, email = ? where user_id = ?";
         int result = 0;
         
         try {

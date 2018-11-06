@@ -14,8 +14,17 @@
         PW : <input type = "password" name = "userPwd"></br>
         NAME : <input type = "text" name = "userName"></br>
         BIRTH : <input type = "text" name = "userBirth"></br>
+        PHONE : <input type = "text" name = "userPhone"/><br/>
         ADDR : <input type = "text" name = "userAddr"></br>
-        EMAIL : <input type = "text" name = "userEmail1">@<input type = "text" name = "userEmail2"></br></br>
+        EMAIL : <input type = "text" name = "userEmail1">@<input type = "text" name = "userEmail2"></br>
+        <select name = "userAdminFlag">
+            <option value = "0">유저</option>
+            <option value = "1">관리자</option>
+        </select><br/>
+        <select name = "userSignUpFlag"/>
+            <option value = "0">가입된상태</option>
+            <option value = "1">탈퇴된상태</option>
+        </select><br/><br/>
         <input type = "submit" value = "가입"></br>
         <input type = "reset" name = "취소"></br>
     </form>

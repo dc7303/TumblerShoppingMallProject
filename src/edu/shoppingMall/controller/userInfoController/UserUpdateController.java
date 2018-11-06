@@ -33,7 +33,7 @@ public class UserUpdateController implements Controller {
         ModelAndView mv = new ModelAndView();
         String url = "/failView/failMessage.jsp";
         try {
-            service.userUpdate(new UserInfoDTO(userId, userPwd, userName, userBirth, userAddr, userEmail, "user")); //user는 관리자or유저 상태변수로 일단 user로 적용함
+            service.userUpdate(new UserInfoDTO()); 
             url = "/successView/updateSuccess.jsp";
             mv.setRedirect(true);
         }catch (SQLException e) {
