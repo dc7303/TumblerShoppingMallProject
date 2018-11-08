@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
-public class BasketSelectAllController implements Controller {
+public class BasketSelectByUserIdController implements Controller {
 
     /**
-     * 장바구니 전체조회 컨트롤러
+     * 장바구니 유저아이디로 조회 컨트롤러
      */
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response)

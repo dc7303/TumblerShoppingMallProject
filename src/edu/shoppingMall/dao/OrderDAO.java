@@ -20,6 +20,16 @@ public interface OrderDAO {
     List<OrderDTO> orderSelectAll() throws SQLException;
     
     /**
+     * 주문 키워드 검색 (ID 조회)
+     */
+    List<OrderDTO> orderSelectByUserId(String userId) throws SQLException;
+    
+    /**
+     * 주문 키워드 검색 (주문번호 조회)
+     */
+    OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException;
+    
+    /**
      * 주문 추가
      */
     int orderInsert(OrderDTO dto) throws SQLException;

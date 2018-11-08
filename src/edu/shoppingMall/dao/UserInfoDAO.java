@@ -24,10 +24,6 @@ public interface UserInfoDAO {
     List<UserInfoDTO> userSelectBySearch(String keyType, String keyWord) throws SQLException;
 
     /**
-     * 회원 정보 수정(부적절한 사용 회원 응징)
-     */
-
-    /**
      * 회원가입
      */
     int signUp(UserInfoDTO dto) throws SQLException;

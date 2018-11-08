@@ -27,6 +27,7 @@ public class OrderInsertController implements Controller {
         HttpSession session = request.getSession();
         ModelAndView mv = new ModelAndView();
         UserInfoDTO userDTO = (UserInfoDTO)session.getAttribute("userDTO");
+        
         int proNum = Integer.parseInt(request.getParameter("proNum"));
         int basongNum = Integer.parseInt(request.getParameter("basongNum"));
         String userId = userDTO.getUserId();
@@ -41,6 +42,7 @@ public class OrderInsertController implements Controller {
         
         try {
             service.orderInsert(new OrderDTO());
+            
             url = "/order/orderSuccess.jsp";
         } catch (SQLException e) {
             e.printStackTrace();

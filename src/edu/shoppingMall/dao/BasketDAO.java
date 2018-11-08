@@ -14,6 +14,20 @@ public interface BasketDAO {
     List<BasketDTO> basketSelectAll() throws SQLException;
     
     /**
+     * 장바구니 키워드 검색 (장바구니 번호로 검색)
+     * @return
+     * @throws SQLException
+     */
+    BasketDTO basketSelectByBasketNum(int basketNum) throws SQLException;
+    
+    /**
+     * 장바구니 키워드 검색 (유저 ID로 검색)
+     * @return
+     * @throws SQLException
+     */
+    List<BasketDTO> basketSelectByUserId(String userId) throws SQLException;
+    
+    /**
      * 장바구니 생성
      * @return
      * @throws SQLException

@@ -2,8 +2,11 @@ package edu.shoppingMall.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
+import edu.shoppingMall.dto.BasongDTO;
 import edu.shoppingMall.dto.OrderDTO;
+import edu.shoppingMall.dto.OrderDetailDTO;
 
 
 /**
@@ -15,14 +18,27 @@ import edu.shoppingMall.dto.OrderDTO;
 public interface OrderService {
     
     /**
-     * 주문 조회
+     * 주문 조회(BasongDTO, OrderDetailDTO 포함한 OrderDTO를 리턴한다
      */
     List<OrderDTO> orderSelectAll() throws SQLException;
     
     /**
-     * 주문 추가
+     * 주문 키워드 검색 (ID 조회, BasongDTO, OrderDetailDTO 포함한 OrderDTO를 리턴한다)
+     * ID를 파라미터로 받아 주문상세, 주문 각각 ID로 조회 가능한 DAO 메소드를 사용할 수 있다.
      */
-    int orderInsert(OrderDTO dto) throws SQLException;
+    List<OrderDTO> orderSelectByUserId(String userId) throws SQLException;
+    
+    /**
+     * 주문 키워드 검색 (주문번호 조회)
+     * 주문번호를 파라미터로 받아 배송, 주문상세, 주문 각각 주문번호로 조회 가능한 DAO 메소드를 사용할 수 있다.
+     */
+    OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException;
+    
+    
+    /**
+     * 주문 추가( BasongDTO, OrderDetailDTO 포함한 OrderDTO를 받는다)
+     */
+    int orderInsert(OrderDTO orderDTO) throws SQLException;
     
     /**
      * 주문 수정

@@ -1,4 +1,4 @@
-package edu.shoppingMall.controller.basketController;
+package edu.shoppingMall.controller.orderController;
 
 import java.io.IOException;
 
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
-public class BasketSelectAllController implements Controller {
+public class OrderSelectByOrderNumController implements Controller {
 
     /**
-     * 장바구니 전체조회 컨트롤러
+     * 주문 주문번호로 조회 컨트롤러
      */
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response)

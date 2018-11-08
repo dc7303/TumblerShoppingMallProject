@@ -11,6 +11,9 @@ import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
 public class BasketDeleteController implements Controller {
 
+    /**
+     * 장바구니 삭제 컨트롤러
+     */
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

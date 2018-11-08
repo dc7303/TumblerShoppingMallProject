@@ -45,6 +45,25 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     /**
+     * 주문 키워드 검색 (ID로 검색)
+     */
+    @Override
+    public List<OrderDTO> orderSelectByUserId(String userId) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * 주문 키워드 검색 (주문번호로 검색)
+     */
+    @Override
+    public OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
+    
+    /**
      * 주문 생성
      * @param dto
      * @return

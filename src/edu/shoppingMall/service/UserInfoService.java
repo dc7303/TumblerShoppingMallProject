@@ -19,31 +19,27 @@ public interface UserInfoService {
      * 회원전체 조회(Admin 영역)
      */
     List<UserInfoDTO> userSelectAll() throws SQLException;
-    
+
     /**
      * 회원 부분 검색(Admin 영역)
      */
     List<UserInfoDTO> userSelectBySearch(String keyType, String keyWord) throws SQLException;
-    
-    /**
-     * 회원 정보 수정(부적절한 사용 회원 응징)
-     */
-    
+
     /**
      * 회원가입
      */
     int signUp(UserInfoDTO dto) throws SQLException;
-    
+
     /**
      * 로그인
      */
     UserInfoDTO signIn(String id, String pwd) throws SQLException;
-    
+
     /**
      * 회원정보 수정
      */
     int userUpdate(UserInfoDTO dto) throws SQLException;
-    
+
     /**
      * 회원탈퇴
      */

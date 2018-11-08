@@ -10,6 +10,10 @@ import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
 
 public class BasketUpdateController implements Controller {
+    
+    /**
+     * 장바구니 수정 컨트롤러
+     */
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -7,13 +7,14 @@ package edu.shoppingMall.dto;
  *
  */
 public class OrderDTO {
-    private int orderNum;           //주문번호
-    private String orderUserId;     //유저아이디
-    private String orderDate;       //결제일자
-    private int orderPrice;         //결제금액
-    private String orderComment;    //주문기타사항
-    private int basongFlag;         //배송상태
-    
+    private int orderNum;            //주문번호
+    private String orderUserId;      //유저아이디
+    private String orderDate;        //결제일자
+    private int orderPrice;          //결제금액
+    private String orderComment;     //주문기타사항
+    private int basongFlag;          //배송상태
+    private OrderDetailDTO detailDTO;//상품디테일DTO
+    private BasongDTO basongDTO;     //배송 DTO
     public OrderDTO() {}
 
     public OrderDTO(int orderNum, String orderUserId, String orderDate, int orderPrice, String orderComment,
@@ -25,6 +26,20 @@ public class OrderDTO {
         this.orderPrice = orderPrice;
         this.orderComment = orderComment;
         this.basongFlag = basongFlag;
+    }
+    
+    
+    public OrderDTO(int orderNum, String orderUserId, String orderDate, int orderPrice, String orderComment,
+            int basongFlag, OrderDetailDTO detailDTO, BasongDTO basongDTO) {
+        super();
+        this.orderNum = orderNum;
+        this.orderUserId = orderUserId;
+        this.orderDate = orderDate;
+        this.orderPrice = orderPrice;
+        this.orderComment = orderComment;
+        this.basongFlag = basongFlag;
+        this.detailDTO = detailDTO;
+        this.basongDTO = basongDTO;
     }
 
     public int getOrderNum() {
@@ -73,6 +88,22 @@ public class OrderDTO {
 
     public void setBasongFlag(int basongFlag) {
         this.basongFlag = basongFlag;
+    }
+
+    public OrderDetailDTO getDetailDTO() {
+        return detailDTO;
+    }
+
+    public BasongDTO getBasongDTO() {
+        return basongDTO;
+    }
+
+    public void setDetailDTO(OrderDetailDTO detailDTO) {
+        this.detailDTO = detailDTO;
+    }
+
+    public void setBasongDTO(BasongDTO basongDTO) {
+        this.basongDTO = basongDTO;
     }
 
    
