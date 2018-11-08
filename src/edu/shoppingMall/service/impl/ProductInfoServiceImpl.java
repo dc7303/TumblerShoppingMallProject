@@ -21,11 +21,11 @@ public class ProductInfoServiceImpl implements ProductInfoService {
      */
     @Override
     public List<ProductDTO> productSelectAll() throws SQLException {
-        List<ProductDTO> list = daoImpl.productSelectAll();
-        if(list == null) {
-            throw new SQLException("조회할 제품이 존재하지 않습니다.");
-        }
-        return list;
+    	List<ProductDTO> list = daoImpl.productSelectAll();
+		if(list==null || list.size()==0) {
+			throw new SQLException("검색된 상품이 없습니다.");
+		}
+		return list;
     }
     
     /**

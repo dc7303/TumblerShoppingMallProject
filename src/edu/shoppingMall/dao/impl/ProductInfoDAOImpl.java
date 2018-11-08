@@ -23,24 +23,31 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
      */
     @Override
     public List<ProductDTO> productSelectAll() throws SQLException {
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "select * from ???";
-        List<ProductDTO> list = new ArrayList<>();
-        try {
-            con = DBUtil.getConnection();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
-            while(rs.next()) {
-                list.add(new ProductDTO());
-            }
-            
-        }finally {
-            DBUtil.dbClose(rs, ps, con);
-        }
-        return list;
+    	Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<ProductDTO> list = new ArrayList<>();
+		
+		try {
+			con = DBUtil.getConnection();
+			ps = con.prepareStatement("select * from tb_product");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO(     
+						rs.getInt("pno"),rs.getString("pname"),
+						rs.getString("info"),rs.getInt("price"),
+						rs.getString("category"),rs.getString("photo"),
+						rs.getString("brand"),rs.getInt("stock"),
+						rs.getString("regdt")			
+						);
+				
+				list.add(dto);
+			}
+		}finally {
+			DBUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
     }
 
     /**
