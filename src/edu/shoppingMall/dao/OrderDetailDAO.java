@@ -33,7 +33,7 @@ public interface OrderDetailDAO {
     int orderDetailUpdate(OrderDetailDTO dto) throws SQLException;
     
     /**
-     * 주문 상세 삭제
+     * 주문 상세 삭제(주문번호로 삭제)
      */
-    int orderDetailDelete(int orderDetailNum) throws SQLException;
+    int orderDetailDelete(int orderNum) throws SQLException;
 }

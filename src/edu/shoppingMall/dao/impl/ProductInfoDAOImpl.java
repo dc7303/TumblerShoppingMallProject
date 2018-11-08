@@ -48,8 +48,37 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
      */
     @Override
     public List<ProductDTO> productSelectBySearch(String keyType, String keyWord) throws SQLException {
-        // TODO Auto-generated method stub
+        
         return null;
+    }
+    
+    /**
+     * 상품 번호로 검색(Order 프로세서 작동시 상품정보(가격)를 가져오기 위한 것)
+     * 추후 재사용 가능성이 있어 select * from 으로 전체 정보 불러올 수 있도록 코드 구현.
+     */
+    @Override
+    public ProductDTO productSelectByProNum(int proNum) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from tb_product where pno = ?";
+        ProductDTO proDTO = new ProductDTO();
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, proNum);
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                proDTO = new ProductDTO(rs.getInt("pno"), rs.getString("pname"), rs.getString("info"),
+                        rs.getInt("price"), rs.getString("category"), rs.getString("photo"),
+                        rs.getString("brand"), rs.getInt("stock"), rs.getString("regdt"));
+            }
+            
+        }finally {
+            DBUtil.dbClose(rs, ps, con);
+        }
+        return proDTO;
     }
     
     /**

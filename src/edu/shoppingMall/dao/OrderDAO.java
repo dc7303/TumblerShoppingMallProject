@@ -30,6 +30,11 @@ public interface OrderDAO {
     OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException;
     
     /**
+     * 시퀀스값 가져오기
+     */
+    public int orderSeqSearch() throws SQLException;
+    
+    /**
      * 주문 추가
      */
     int orderInsert(OrderDTO dto) throws SQLException;

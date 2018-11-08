@@ -7,9 +7,25 @@ public class BasongDTO {
     private String basongAddr;          //배송지 주소
     private String basongPhone;         //주문자 번호
     private String basongDate;          //출발일자
-    private String orderNum;            //주문번호
+    private int orderNum;            //주문번호
+    private int basongStatus;        //배송상태
+    
+    public BasongDTO() {}
+    
+    
+    
+    public BasongDTO(String basongCompany, String basongInvoiceNum, String basongAddr, String basongPhone) {
+        super();
+        this.basongCompany = basongCompany;
+        this.basongInvoiceNum = basongInvoiceNum;
+        this.basongAddr = basongAddr;
+        this.basongPhone = basongPhone;
+    }
+
+
+
     public BasongDTO(int basongNum, String basongCompany, String basongInvoiceNum, String basongAddr,
-            String basongPhone, String basongDate, String orderNum) {
+            String basongPhone, String basongDate, int orderNum, int basongStatus) {
         super();
         this.basongNum = basongNum;
         this.basongCompany = basongCompany;
@@ -18,7 +34,9 @@ public class BasongDTO {
         this.basongPhone = basongPhone;
         this.basongDate = basongDate;
         this.orderNum = orderNum;
+        this.basongStatus = basongStatus;
     }
+    
     public int getBasongNum() {
         return basongNum;
     }
@@ -37,8 +55,11 @@ public class BasongDTO {
     public String getBasongDate() {
         return basongDate;
     }
-    public String getOrderNum() {
+    public int getOrderNum() {
         return orderNum;
+    }
+    public int getBasongStatus() {
+        return basongStatus;
     }
     public void setBasongNum(int basongNum) {
         this.basongNum = basongNum;
@@ -58,8 +79,12 @@ public class BasongDTO {
     public void setBasongDate(String basongDate) {
         this.basongDate = basongDate;
     }
-    public void setOrderNum(String orderNum) {
+    public void setOrderNum(int orderNum) {
         this.orderNum = orderNum;
+    }
+
+    public void setBasongStatus(int basongStatus) {
+        this.basongStatus = basongStatus;
     }
     
     

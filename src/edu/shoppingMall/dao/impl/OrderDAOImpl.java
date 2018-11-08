@@ -36,7 +36,6 @@ public class OrderDAOImpl implements OrderDAO {
             rs = ps.executeQuery();
             while(rs.next()) {
                 list.add(new OrderDTO());
-                
             }
         }finally {
             DBUtil.dbClose(rs, ps, con);
@@ -73,17 +72,50 @@ public class OrderDAOImpl implements OrderDAO {
     public int orderInsert(OrderDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into ??? values (?, ?, ?, ?, ?, ?)";
+        String sql = "insert into tb_order values (order_seq.nextval, ?, sysdate, ?, ?)";
+        int result = 0;
+
+        try {
+            con = DBUtil.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dto.getOrderUserId());
+            ps.setInt(2, dto.getOrderPrice());
+            ps.setString(3, dto.getOrderComment());
+            
+            result = ps.executeUpdate();
+        }finally {
+            if(result > 0) {
+                con.commit();
+            }else {
+                con.rollback();
+            }
+            DBUtil.dbClose(ps, con);
+        }
+        return result;
+    }
+    
+    /**
+     * 현재 시퀀스값 가져오기
+     * @return
+     * @throws SQLException
+     */
+    public int orderSeqSearch() throws SQLException{
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select order_seq.currval from dual";
         int result = 0;
         
-        System.out.println("dao연결");
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
-          
-            result = ps.executeUpdate();
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                result = rs.getInt("currval");
+            }
         }finally {
-            DBUtil.dbClose(ps, con);
+            DBUtil.dbClose(rs, ps, con);
         }
         return result;
     }
@@ -96,24 +128,8 @@ public class OrderDAOImpl implements OrderDAO {
      */
     @Override
     public int orderUpdate(OrderDTO dto) throws SQLException {
-        Connection con = null;
-        PreparedStatement ps = null;
-        String sql = "update ???? set basong_num = ?, quantity = ?,"
-                + " pro_option = ?, basong_addr = ?, basong_phone = ?,"
-                + " basong_coment = ?, payment = ? where order_num = ? and pro_num = ? and user_id = ?";
-        int result = 0;
-        
-        try {
-            con = DBUtil.getConnection();
-            ps = con.prepareStatement(sql);
-     
-            
-            result = ps.executeUpdate();
-        }finally {
-            DBUtil.dbClose(ps, con);
-        }
-        
-        return result;
+
+        return 0;
     }
 
     /**
@@ -126,16 +142,22 @@ public class OrderDAOImpl implements OrderDAO {
     public int orderDelete(int orderNum) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "delete from ???? where order_num = ?";
+        String sql = "delete from tb_order where ono = ? ";
         int result = 0;
         
         try {
             con = DBUtil.getConnection();
+            con.setAutoCommit(false);
             ps = con.prepareStatement(sql);
             ps.setInt(1, orderNum);
             
             result = ps.executeUpdate();
         }finally {
+            if(result > 0) {
+                con.commit();
+            }else {
+                con.rollback();
+            }
             DBUtil.dbClose(ps, con);
         }
         return result;

@@ -33,7 +33,7 @@ public interface BasongDAO {
     int basongUpdate(BasongDTO dto) throws SQLException;
     
     /**
-     * 배송 삭제
+     * 배송 삭제(주문번호로 삭제)
      */
-    int basongDelete(int basongNum) throws SQLException;
+    int basongDelete(int orderNum) throws SQLException;
 }
