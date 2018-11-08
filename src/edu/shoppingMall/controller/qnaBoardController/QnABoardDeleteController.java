@@ -16,8 +16,9 @@ public class QnABoardDeleteController implements Controller {
      */
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        return null;
+
+    	System.out.println("¼öÁ¤");
+    	return null;
     }
 
 }
