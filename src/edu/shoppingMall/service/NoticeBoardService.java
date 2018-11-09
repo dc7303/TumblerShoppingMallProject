@@ -19,9 +19,9 @@ public interface NoticeBoardService {
     List<NoticeBoardDTO> noticeBoardSelectAll() throws SQLException;
 
     /**
-     * 공지사항 부분검색
+     * 공지사항 부분검색 삭제
      */
-    List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;
+ /*   List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;*/
 
     /**
      * 공지사항 추가
@@ -36,5 +36,12 @@ public interface NoticeBoardService {
     /**
      * 공지사항 삭제
      */
-    int noticeBoardDelete(String NoticeBoardNum) throws SQLException;
+    int noticeBoardDelete(int NoticeBoardNum) throws SQLException;
+    
+   /**
+    * 공자사항번호로 검색 추가
+    * 
+    */
+    NoticeBoardDTO selectByNoticeNum(int NoticeBoardNum)throws SQLException;
+    
 }
