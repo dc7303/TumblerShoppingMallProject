@@ -126,6 +126,36 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
     }
     
     /**
+     * 상품 수량 수정
+     * 주문 프로세서에서 상품 수량 감소
+     */
+    @Override
+    public int productUpdateForQuantity(int productNum, int quantity) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "update tb_product set stock = stock - ? where pno = ?";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, quantity);
+            ps.setInt(2, productNum);
+            
+            result = ps.executeUpdate();
+        }finally {
+            if(result > 0) {
+                con.commit();
+            }else {
+                con.rollback();
+            }
+            DBUtil.dbClose(ps, con);
+        }
+        return result;
+    }
+    
+    /**
      * 상품 삭제
      */
     @Override

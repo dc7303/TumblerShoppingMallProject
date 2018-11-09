@@ -42,7 +42,7 @@ public interface OrderDAO {
     /**
      * 주문 수정
      */
-    int orderUpdate(OrderDTO dto) throws SQLException;
+    int orderUpdate(int orderNum, int price) throws SQLException;
     
     /**
      * 주문 취소

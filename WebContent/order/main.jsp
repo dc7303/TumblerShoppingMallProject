@@ -19,6 +19,7 @@
         <input type = "submit" value = "조회"/>
     </form>
     삭제할 주문 번호 입력 : <br/>
-    <a href = "delete.jsp">삭제하기(delete)</a>
+    <a href = "delete.jsp">삭제하기(delete)</a><br/>
+    <a href = "orderByBasket.jsp">장바구니 주문하기</a>
 </body>
 </html>

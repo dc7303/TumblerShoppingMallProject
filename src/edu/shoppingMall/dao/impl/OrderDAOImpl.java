@@ -223,15 +223,36 @@ join tb_delivery ve on o.ono = ve.ono;
     }
 
     /**
-     * 주문내역 수정
+     * 주문 수정
+     * 
      * @param dto
      * @return
      * @throws SQLException
      */
     @Override
-    public int orderUpdate(OrderDTO dto) throws SQLException {
-
-        return 0;
+    public int orderUpdate(int orderNum, int price) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "update tb_order set payment = ? where ono = ? ";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, price);
+            ps.setInt(2, orderNum);
+            
+            result = ps.executeUpdate();
+        }finally {
+            if(result > 0) {
+                con.commit();
+            }else {
+                con.rollback();
+            }
+            DBUtil.dbClose(ps, con);
+        }
+        return result;
     }
 
     /**

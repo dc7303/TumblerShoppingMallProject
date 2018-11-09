@@ -34,11 +34,16 @@ public interface OrderService {
      */
     OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException;
     
-    
     /**
      * 주문 추가( BasongDTO, OrderDetailDTO 포함한 OrderDTO를 받는다)
      */
     int orderInsert(OrderDTO orderDTO) throws SQLException;
+    
+    /**
+     * 장바구니에서 주문
+     * UserId를 받아 장바구니 조회 - > 주문 테이블 생성 - > 시퀀스 조회 - > 반복문으로 디테일과 배송 테이블 생성
+     */
+    int orderInsertByBasket(String userId, String comment, BasongDTO basongDTO) throws SQLException;
     
     /**
      * 주문 수정

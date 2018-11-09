@@ -40,6 +40,12 @@ public interface ProductInfoDAO {
     int productUpdate(ProductDTO dto) throws SQLException;
     
     /**
+     * 상품 수량 수정
+     * 주문 프로세서에서 상품 수량 감소
+     */
+    int productUpdateForQuantity(int productNum, int quantity) throws SQLException;
+    
+    /**
      * 상품삭제
      */
     int productDelete(int productNum) throws SQLException;

@@ -20,6 +20,19 @@ public class OrderDetailDTO {
         this.orderDetailOption = orderDetailOption;
     }
 
+    
+
+    public OrderDetailDTO(int orderNum, int productNum, int orderDetailPrice, int orderDetailQuantity,
+            String orderDetailOption) {
+        super();
+        this.orderNum = orderNum;
+        this.productNum = productNum;
+        this.orderDetailPrice = orderDetailPrice;
+        this.orderDetailQuantity = orderDetailQuantity;
+        this.orderDetailOption = orderDetailOption;
+    }
+
+
 
     public OrderDetailDTO(int orderDetailNum, int orderNum, int productNum, int orderDetailPrice,
             int orderDetailQuantity, String orderDetailOption, String orderDetailDate) {
