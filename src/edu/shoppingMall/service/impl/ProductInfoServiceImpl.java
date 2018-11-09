@@ -33,8 +33,27 @@ public class ProductInfoServiceImpl implements ProductInfoService {
      */
     @Override
     public List<ProductDTO> productSelectBySearch(String keyType, String keyWord) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+    	List<ProductDTO> list = daoImpl.productSelectBySearch(keyType, keyWord);
+    	if(list == null) {
+            throw new SQLException(keyType+"에 "+keyWord+"가 포함된 상품이 없습니다.");
+        }
+        return list;
+    }
+    
+    /**
+     * 추가사항 - 제품번호로 하나의 제품찾기 
+     */
+    @Override
+    public ProductDTO productSelectByProductNum(int productNum) throws SQLException {
+    	List<ProductDTO> list = daoImpl.productSelectAll();
+    	ProductDTO dto = daoImpl.productSelectByProductNum(productNum);
+    	
+    	if(list == null || list.size()==0) {
+			if(dto != list.get(productNum)) {
+				throw new SQLException(productNum+"인 상품번호인 상품이 없습니다.");
+			}
+		}
+		return dto;
     }
     
     /**

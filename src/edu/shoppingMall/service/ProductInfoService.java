@@ -24,6 +24,11 @@ public interface ProductInfoService {
     List<ProductDTO> productSelectBySearch(String keyType, String keyWord) throws SQLException;
     
     /**
+     * 추가사항 - 상품상세페이지 : 상품번호에 해당하는 레코드 검색
+     */
+    ProductDTO productSelectByProductNum(int pno) throws SQLException; 
+    
+    /**
      * 상품추가
      */
     int productInsert(ProductDTO dto) throws SQLException;

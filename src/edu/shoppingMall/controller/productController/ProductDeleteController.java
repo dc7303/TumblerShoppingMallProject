@@ -22,21 +22,25 @@ public class ProductDeleteController implements Controller {
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
+        String url="product/productDetailResult.jsp";
         
-        int proNum = Integer.parseInt(request.getParameter("proNum"));
+        String pno = request.getParameter("pno");
         
-        String url = "/failMessage/failMessage.jsp";
         try {
-            service.productDelete(proNum);
-            url = "?command=productSelectAll";
-            mv.setRedirect(true);
-        }catch(SQLException e) {
-            e.printStackTrace();
-            request.setAttribute("errorMsg", e.getMessage());
-        }
-        
-        mv.setPath(url);
-        return mv;
-    }
-
+			if(pno==null || pno.equals("")) {
+				throw new SQLException("삭제하시려는 상품번호가 잘못되었습니다.");
+			}
+			service.productDelete(Integer.parseInt(pno));
+			url = "product";
+			mv.setRedirect(true);
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());
+		}
+	
+		mv.setPath(url);
+		return mv;
+	}
 }
+
