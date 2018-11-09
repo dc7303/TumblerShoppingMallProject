@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h1>주문 실패</h1>
+    <h1>${requestScope.errorMsg }</h1>
 </body>
 </html>

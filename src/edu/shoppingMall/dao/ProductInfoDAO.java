@@ -27,7 +27,7 @@ public interface ProductInfoDAO {
     /**
      * 상품 번호로 검색(Order 프로세서 작동시 상품정보(가격)를 가져오기 위한 것)
      */
-    ProductDTO productSelectByProNum(int proNum) throws SQLException;
+    ProductDTO productSelectByProductNum(int pno) throws SQLException;
     
     /**
      * 상품추가

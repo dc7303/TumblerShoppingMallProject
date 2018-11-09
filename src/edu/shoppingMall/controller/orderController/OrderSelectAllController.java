@@ -23,16 +23,18 @@ public class OrderSelectAllController implements Controller {
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         OrderService service = OrderServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
-        String url = "failView/failMessage.jsp";
+
+        String url = "/order/failView.jsp";
         try {
             List<OrderDTO> list = service.orderSelectAll();
-            url = "/order/orderList.jsp";
+            url = "/order/orderSelect.jsp";
             request.setAttribute("orderList", list);
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMsg", e.getMessage());
         }
         mv.setPath(url);
+
         return mv;
     }
 

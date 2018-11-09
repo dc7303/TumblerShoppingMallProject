@@ -57,7 +57,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
      * 추후 재사용 가능성이 있어 select * from 으로 전체 정보 불러올 수 있도록 코드 구현.
      */
     @Override
-    public ProductDTO productSelectByProNum(int proNum) throws SQLException {
+    public ProductDTO productSelectByProductNum(int pno) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -66,7 +66,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, proNum);
+            ps.setInt(1, pno);
             rs = ps.executeQuery();
             
             while(rs.next()) {

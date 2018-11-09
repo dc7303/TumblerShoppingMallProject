@@ -47,7 +47,7 @@ public class OrderInsertController implements Controller {
         BasongDTO basongDTO = new BasongDTO(company, shipNum, addr, phone);
         
         
-        String url = "/order/orderInsertFail.jsp";
+        String url = "/order/failView.jsp";
 
         try {
             service.orderInsert(new OrderDTO(userId, orther, detailDTO, basongDTO));

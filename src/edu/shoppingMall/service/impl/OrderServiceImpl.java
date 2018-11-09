@@ -26,34 +26,47 @@ public class OrderServiceImpl implements OrderService {
     public static OrderServiceImpl getInstance() {
         return service;
     }
+    
 
     /**
      * 주문 전체 검색 (OrderDetailDTO와 BasongDTO를 포함한 DTO를 리턴한다.)
+     * 관리자 판매 내역 확인.
      */
     @Override
     public List<OrderDTO> orderSelectAll() throws SQLException {
-
-        return null;
+        List<OrderDTO> list = orderDAO.orderSelectAll();
+        if(list == null) {
+            throw new SQLException("판매내역이 없습니다. 다시 확인해주세요.");
+        }
+        return list;
     }
-
+    
     /**
      * 주문 조회 UserID로 조회하기 리턴값은 (OrderDetailDTO와 BasongDTO를 포함한 DTO를 리턴한다.) ID를 파라미터로
      * 받아 주문상세, 주문 각각 ID로 조회 가능한 DAO 메소드를 사용할 수 있다.
+     * 고객 마이페이지 주문내역 확인
      */
     @Override
     public List<OrderDTO> orderSelectByUserId(String userId) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        List<OrderDTO> list = orderDAO.orderSelectByUserId(userId);
+        if(list == null) {
+            throw new SQLException("주문하신 내역이 없습니다.");
+        }
+        return list;
     }
 
     /**
      * 주문번호로 검색하기 (OrderDetailDTO와 BasongDTO를 포함한 DTO를 리턴한다.) 주문번호를 파라미터로 받아 배송,
      * 주문상세, 주문 각각 주문번호로 조회 가능한 DAO 메소드를 사용할 수 있다.
+     * 주문 상세내역 확인
      */
     @Override
     public OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+        OrderDTO orderDTO = orderDAO.orderSelectByOrderNum(orderNum);
+        if(orderDTO == null) {
+            throw new SQLException("검색하신 주문번호는 없는 번호입니다.");
+        }
+        return orderDTO;
     }
 
     /**
@@ -67,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
         OrderDetailDTO detailDTO = dto.getDetailDTO();
         BasongDTO basongDTO = dto.getBasongDTO();
         
-        ProductDTO proDTO = proDAO.productSelectByProNum(detailDTO.getProductNum());    //상품번호 입력
+        ProductDTO proDTO = proDAO.productSelectByProductNum(detailDTO.getProductNum());    //상품번호 입력
         if(proDTO == null) {
             throw new SQLException("주문 요청하신 상품은 존재하지 않습니다");
         }else if (proDTO.getProductQuantity() == 0) {
