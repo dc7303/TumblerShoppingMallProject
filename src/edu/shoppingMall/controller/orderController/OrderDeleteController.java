@@ -22,12 +22,13 @@ public class OrderDeleteController implements Controller {
         OrderService service = OrderServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
         int orderNum = Integer.parseInt(request.getParameter("orderNum"));
+        System.out.println(orderNum);
         
-        String url = "/failView/failMessage.jsp";
+        String url = "/order/failView.jsp";
 
         try {
             service.orderDelete(orderNum);
-            url = "/order/orderSuccess.jsp";
+            url = "?command=orderSelectAll";
             mv.setRedirect(true);
         } catch (SQLException e) {
             e.printStackTrace();

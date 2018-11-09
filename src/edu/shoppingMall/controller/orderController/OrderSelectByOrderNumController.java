@@ -24,7 +24,7 @@ public class OrderSelectByOrderNumController implements Controller {
             throws ServletException, IOException {
         OrderService service = OrderServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
-        
+       
         int orderNum = Integer.parseInt(request.getParameter("orderNum"));
         
         String url = "/order/failView.jsp";

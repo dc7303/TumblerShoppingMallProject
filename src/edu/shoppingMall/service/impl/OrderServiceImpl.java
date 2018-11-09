@@ -137,7 +137,28 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int orderDelete(int orderNum) throws SQLException {
-        return 0;
+        int result = 0;
+        
+        //배송테이블 삭제
+        int basongResult = basongDAO.basongDelete(orderNum);
+        if(basongResult == 0) {
+            throw new SQLException("배송테이블 삭제가 불가능합니다.");
+        }
+        
+        //디테일 테이블 삭제
+        int detailResult = detailDAO.orderDetailDelete(orderNum);
+        if(detailResult == 0){
+            throw new SQLException("주문상세 테이블 삭제가 불가능합니다.");
+        }
+        
+        //주문테이블 삭제
+        int orderResult = orderDAO.orderDelete(orderNum);
+        if(orderResult == 0) {
+            throw new SQLException("주문 삭제가 불가능합니다.");
+        }
+        
+        result = basongResult + detailResult + orderResult;
+        return result;
     }
 
 }

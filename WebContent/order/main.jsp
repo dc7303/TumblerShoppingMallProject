@@ -18,5 +18,7 @@
         <input type = "text" name = "orderNum" value = "25"/>
         <input type = "submit" value = "조회"/>
     </form>
+    삭제할 주문 번호 입력 : <br/>
+    <a href = "delete.jsp">삭제하기(delete)</a>
 </body>
 </html>

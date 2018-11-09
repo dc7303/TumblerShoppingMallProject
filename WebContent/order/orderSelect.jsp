@@ -19,9 +19,22 @@
         background-color:lightblue;
     }
 </style>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<script>
+  $(function(){
+    $(document).on("click", "a", function(){
+      location.href = "order/delete.jsp?orderNum=" + $(this).text();
+    });
+  });
+</script>
 </head>
 <body>
-    <table>
+    
+
+    <table> 
         <tr>
             <th>주문번호</th>
             <th>유저아이디</th>
@@ -44,7 +57,7 @@
         </tr>
 	    <c:forEach items = "${requestScope.orderList }" var = "list">
 	        <tr>
-	           <td>${list.getOrderNum() }</td>
+	           <td><a href="#">${list.getOrderNum() }</td>
 	           <td>${list.getOrderUserId() }</td>
 	           <td>${list.getOrderDate() }</td>p
 	           <td>${list.getOrderPrice() }</td>
@@ -65,5 +78,6 @@
 	        </tr>
 	    </c:forEach>
     </table>
+    
 </body>
 </html>
