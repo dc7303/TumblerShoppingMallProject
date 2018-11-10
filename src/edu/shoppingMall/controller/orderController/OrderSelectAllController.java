@@ -24,10 +24,10 @@ public class OrderSelectAllController implements Controller {
         OrderService service = OrderServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
 
-        String url = "/order/failView.jsp";
+        String url = "/orderInfo/failView.jsp";
         try {
             List<OrderDTO> list = service.orderSelectAll();
-            url = "/order/orderSelect.jsp";
+            url = "/orderInfo/userOrder.jsp";
             request.setAttribute("orderList", list);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -50,10 +50,12 @@ public class OrderServiceImpl implements OrderService {
      * 주문 조회 UserID로 조회하기 리턴값은 (OrderDetailDTO와 BasongDTO를 포함한 DTO를 리턴한다.) ID를 파라미터로
      * 받아 주문상세, 주문 각각 ID로 조회 가능한 DAO 메소드를 사용할 수 있다.
      * 고객 마이페이지 주문내역 확인
+     * 
+     * basongFlage 파라미터로 주문내역, 지난 결제내역 분리해서 사용가능.
      */
     @Override
-    public List<OrderDTO> orderSelectByUserId(String userId) throws SQLException {
-        List<OrderDTO> list = orderDAO.orderSelectByUserId(userId);
+    public List<OrderDTO> orderSelectByUserId(String userId, String basongFlag) throws SQLException {
+        List<OrderDTO> list = orderDAO.orderSelectByUserId(userId, basongFlag);
         if(list == null) {
             throw new SQLException("주문하신 내역이 없습니다.");
         }

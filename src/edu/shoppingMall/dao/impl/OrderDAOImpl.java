@@ -21,12 +21,6 @@ public class OrderDAOImpl implements OrderDAO {
     }
     
     /**
-     * select o.ono, userid, paydt, payment, other, de.dno, pno, price, amount,
-d_option, orderdt, ve.dno, company, shipnum, addr, phone, startdate, status 
-from tb_order o join tb_detail de on o.ono = de.ono 
-join tb_delivery ve on o.ono = ve.ono;
-     */
-    /**
      * 주문 전체 조회
      * 관리자 판매내역 확인
      * @return
@@ -78,7 +72,7 @@ join tb_delivery ve on o.ono = ve.ono;
      * 마이페이지 주문내역 확인
      */
     @Override
-    public List<OrderDTO> orderSelectByUserId(String userId) throws SQLException {
+    public List<OrderDTO> orderSelectByUserId(String userId, String basongFlag) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -95,6 +89,12 @@ join tb_delivery ve on o.ono = ve.ono;
                 "join tb_delivery ve on o.ono = ve.ono where o.userid = ?";
         List<OrderDTO> list = new ArrayList<>();
         try {
+            if(basongFlag.equals("use")) {
+                sql = "select o.ono, userid, paydt, payment, other, de.dno, pno, price, amount," + 
+                        "d_option, orderdt, ve.dno ve_dno, company, shipnum, addr, phone, startdate, status " + 
+                        "from tb_order o join tb_detail de on o.ono = de.ono " + 
+                        "join tb_delivery ve on o.ono = ve.ono where o.userid = ? and ve.status < 3";
+            }
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
             ps.setString(1, userId);

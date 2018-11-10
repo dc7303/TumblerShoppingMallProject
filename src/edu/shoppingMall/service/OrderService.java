@@ -25,8 +25,10 @@ public interface OrderService {
     /**
      * 주문 키워드 검색 (ID 조회, BasongDTO, OrderDetailDTO 포함한 OrderDTO를 리턴한다)
      * ID를 파라미터로 받아 주문상세, 주문 각각 ID로 조회 가능한 DAO 메소드를 사용할 수 있다.
+     * 
+     * basongFlage 파라미터로 주문내역, 지난 결제내역 분리해서 사용가능.
      */
-    List<OrderDTO> orderSelectByUserId(String userId) throws SQLException;
+    List<OrderDTO> orderSelectByUserId(String userId, String basongFlag) throws SQLException;
     
     /**
      * 주문 키워드 검색 (주문번호 조회)
