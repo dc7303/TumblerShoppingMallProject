@@ -60,14 +60,19 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     public int signUp(UserInfoDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into ????? values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into tb_user values (?, ?, ?, ?, ?, ?, ?, 0, 0, sysdate)";
         int result = 0;
         
         try {
             con = DBUtil.getConnection();
             ps = con.prepareStatement(sql);
-           
-            
+            ps.setString(1, dto.getUserId());
+            ps.setString(2, dto.getUserName());
+            ps.setString(3, dto.getUserPwd());
+            ps.setString(4, dto.getUserBirth());
+            ps.setString(5, dto.getUserPhone());
+            ps.setString(6, dto.getUserAddr());
+            ps.setString(7, dto.getUserEmail());
             result = ps.executeUpdate();
         }finally {
             DBUtil.dbClose(ps, con);
@@ -84,7 +89,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from ??? where user_id = ? and user_pwd = ?";
+        String sql = "select * from tb_user where userid = ? and pwd = ?";
         UserInfoDTO dto = null;
         try {
             con = DBUtil.getConnection();
@@ -109,7 +114,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     public int userUpdate(UserInfoDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "update ??? set user_pwd = ?, name = ?, birth = ?, addr = ?, email = ? where user_id = ?";
+        String sql = "update tb_user set pwd = ?, name = ?, birth = ?, addr = ?, email = ? where userid = ?";
         int result = 0;
         
         try {

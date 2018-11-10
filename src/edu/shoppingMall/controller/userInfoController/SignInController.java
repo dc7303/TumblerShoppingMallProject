@@ -34,7 +34,7 @@ public class SignInController implements Controller {
         try {
             UserInfoDTO dto = service.signIn(id, pwd);
             session.setAttribute("userDTO", dto);
-            url = "/successView/loginSuccess.jsp";
+            url = "user/signInResult.jsp";
         }catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMsg", e.getMessage());

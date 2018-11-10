@@ -8,7 +8,7 @@
 <body>
 <script>
 
-alert("가입이 완료되었습니다");
+alert("로그인 완료");
 self.close();
 
 </script>
