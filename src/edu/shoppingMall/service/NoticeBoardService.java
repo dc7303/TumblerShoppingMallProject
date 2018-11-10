@@ -19,7 +19,7 @@ public interface NoticeBoardService {
     List<NoticeBoardDTO> noticeBoardSelectAll(int pageNo,int pageSize) throws SQLException;
 
     /**
-     * 공지사항 부분검색
+     * 공지사항 부분검색 삭제
      */
  /*   List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;*/
 
@@ -39,7 +39,7 @@ public interface NoticeBoardService {
     int noticeBoardDelete(int NoticeBoardNum) throws SQLException;
     
    /**
-    * 공자사항번호로 검색
+    * 공지사항번호로 검색 추가
     * 
     */
     NoticeBoardDTO selectByNoticeNum(int NoticeBoardNum)throws SQLException;

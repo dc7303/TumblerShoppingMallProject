@@ -35,7 +35,6 @@ function checkValid() {
 
 
 <div class='container'>
-
   <center>
 <h3>공 지 등 록</h3>
 </center>
@@ -73,7 +72,6 @@ function checkValid() {
 <footer>
 </footer>
 </div>
-
 
 
 </BODY>

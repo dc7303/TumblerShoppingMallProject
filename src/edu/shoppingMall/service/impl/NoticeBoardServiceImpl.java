@@ -79,7 +79,11 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 
 	
     /**
+<<<<<<< HEAD
      * 공자사항번호로 검색
+=======
+     * 공자사항번호로 검색 추가
+>>>>>>> 5434c7984b256b3c1973e7edc8ff6b7fdfa247e1
      * 
      */
     @Override
@@ -95,8 +99,6 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	public int getTotalCount() throws SQLException {
 		return noticedao.selectCount();
 	}
-    
-    
     
     
 }

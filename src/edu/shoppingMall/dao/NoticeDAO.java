@@ -19,10 +19,9 @@ public interface NoticeDAO {
    List<NoticeBoardDTO> noticeBoardSelectAll(int startIndex,int endIndex) throws SQLException;
     
     /**
-     * 게시글 부분검색
+     * 게시글 부분검색--> 삭제
      */
-/*    List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;
-*/
+/*    List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;*/
     /**
      * 게시글 추가
      */

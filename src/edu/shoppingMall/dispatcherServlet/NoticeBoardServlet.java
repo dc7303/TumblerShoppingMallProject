@@ -23,23 +23,23 @@ import edu.shoppingMall.controller.modelAndView.ModelAndView;
 public class NoticeBoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Map<String,Controller> map;
-	
-	
+
+
 	public void init(ServletConfig config) throws ServletException {
 		map = (Map<String, Controller>)config.getServletContext().getAttribute("map");
-		//System.out.println(map);
+		System.out.println(map);
 	}
 
-	
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key= request.getParameter("command");
 		//System.out.println("key:"+key);
 		//System.out.println("values:"+map.get(key));
 		ModelAndView mv = map.get(key).service(request, response);
-			if(mv.isRedirect()) {//redirect로 이동
-				response.sendRedirect(mv.getPath());
-			}else {request.getRequestDispatcher(mv.getPath()).forward(request, response);
-	}	
+		if(mv.isRedirect()) {//redirect로 이동
+			response.sendRedirect(mv.getPath());
+		}else {request.getRequestDispatcher(mv.getPath()).forward(request, response);
+		}	
 	}
 
 }

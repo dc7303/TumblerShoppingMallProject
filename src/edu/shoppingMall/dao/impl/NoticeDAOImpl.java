@@ -10,7 +10,6 @@ import java.util.List;
 import edu.shoppingMall.dao.NoticeDAO;
 import edu.shoppingMall.dto.NoticeBoardDTO;
 import edu.shoppingMall.util.DBUtil;
-import oracle.net.aso.p;
 
 public class NoticeDAOImpl implements NoticeDAO {
     private static NoticeDAOImpl noticeDAO = new NoticeDAOImpl();
@@ -86,7 +85,6 @@ public class NoticeDAOImpl implements NoticeDAO {
 			ps.setString(1, dto.getNoticeBoardSubject());
 			ps.setString(2, dto.getNoticeBoardContent());
 			result = ps.executeUpdate();
-			
 		}finally {
 			DBUtil.dbClose( ps, con);
 		}
@@ -185,8 +183,5 @@ public class NoticeDAOImpl implements NoticeDAO {
 		}
 		return result;
 	}
-
-    
-    
     
 }

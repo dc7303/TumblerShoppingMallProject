@@ -123,19 +123,3 @@ $('#currBtn').html(currPageNo);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
