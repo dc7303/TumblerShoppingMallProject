@@ -17,27 +17,32 @@ public interface QnABoardDAO {
     /**
      * 게시글 전체검색
      */
-    List<QnABoardDTO> qnaBoardSelectAll() throws SQLException;
+	  List<QnABoardDTO> qnaBoardSelectAll() throws SQLException;
     
     /**
      * 게시글 부분검색
      */
-    List<QnABoardDTO> qnaBoardSelectBySearch(String keyType, String keyWord) throws SQLException;
+	  List<QnABoardDTO> qnaBoardSelectBySearch(String keyType, String keyWord) throws SQLException;
     
     /**
      * 게시글 추가
      */
-    int qnaBoardInsert(QnABoardDTO dto) throws SQLException;
+	  int qnaBoardInsert(QnABoardDTO dto) throws SQLException;
     
     /**
      * 게시글 수정
      */
-    int qnaBoardUpdate(QnABoardDTO dto) throws SQLException;
+	  int qnaBoardUpdate(QnABoardDTO dto) throws SQLException;
     
     /**
      * 게시글 삭제
      */
-    int qnaBoardDelete(String qnaBoardNum) throws SQLException;
+	   int qnaBoardDelete(String qnaBoardNum) throws SQLException;
+	   
+	   /**
+	     * 게시글 부분검색
+	     */
+	    QnABoardDTO qnaBoardSelectByNo(int no) throws SQLException;
     
     
 }

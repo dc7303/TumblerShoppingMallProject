@@ -3,74 +3,55 @@ package edu.shoppingMall.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import edu.shoppingMall.dao.QnABoardDAO;
+import edu.shoppingMall.dao.impl.QnABoardDAOImpl;
 import edu.shoppingMall.dto.QnABoardDTO;
 import edu.shoppingMall.service.QnABoardService;
 
 public class QnABoardServiceImpl implements QnABoardService {
-    private static QnABoardServiceImpl service = new QnABoardServiceImpl();
-    
-    public static QnABoardServiceImpl getInstance() {
-        return service;
-    }
-    
-    /**
-     * Q&A 게시판 전체조회
-     * @return
-     * @throws SQLException
-     */
-    @Override
-    public List<QnABoardDTO> qnaBoardSelectAll() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	QnABoardDAO dao = new QnABoardDAOImpl();
 
-    /**
-     * Q&A 게시판 키워드 검색
-     * @param keyType
-     * @param keyWord
-     * @return
-     * @throws SQLException
-     */
-    @Override
-    public List<QnABoardDTO> qnaBoardSelectBySearch(String keyType, String keyWord) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public List<QnABoardDTO> qnaBoardSelectAll() throws SQLException {
+	
+		List<QnABoardDTO> list = dao.qnaBoardSelectAll();
+		return list;
+	}
 
-    /**
-     * Q&A 게시판 추가
-     * @param dto
-     * @return
-     * @throws SQLException
-     */
-    @Override
-    public int qnaBoardInsert(QnABoardDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	@Override
+	public List<QnABoardDTO> qnaBoardSelectBySearch(String keyType, String keyWord) throws SQLException {
+			List<QnABoardDTO> list = dao.qnaBoardSelectBySearch(keyType, keyWord);
+		return list;
+	}
 
-    /**
-     * Q&A 게시판 수정
-     * @param dto
-     * @return
-     * @throws SQLException
-     */
-    @Override
-    public int qnaBoardUpdate(QnABoardDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	@Override
+	public int qnaBoardInsert(QnABoardDTO dto) throws SQLException {
+	  int result = dao.qnaBoardInsert(dto);
+		return result;
+	}
 
-    /**
-     * Q&A 게시판 삭제
-     * @param qnaBoardNum
-     * @return
-     * @throws SQLException
-     */
-    @Override
-    public int qnaBoardDelete(String qnaBoardNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
-    }
+	public int qnaBoardUpdate(QnABoardDTO dto) throws SQLException {
+		int result = dao.qnaBoardUpdate(dto);
+		System.out.println("serviceImpl"+dto.getQnaBoardContent());
+		return result;
+	}
 
+	@Override
+	public int qnaBoardDelete(String qnaBoardUserId) throws SQLException {
+	
+		int result = dao.qnaBoardDelete( qnaBoardUserId);
+	    
+		return result;
+	}
+
+	@Override
+	public QnABoardDTO qnaBoardSelectByNo(int no) throws SQLException {
+		return dao.qnaBoardSelectByNo(no);
+		
+		
+		
+	}
+		
+		
+	
 }
