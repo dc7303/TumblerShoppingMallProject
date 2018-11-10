@@ -47,5 +47,5 @@ public interface BasketDAO {
      * @return
      * @throws SQLException
      */
-    int baksetDelete(int basketNum) throws SQLException;
+    int baksetDelete(String userId) throws SQLException;
 }

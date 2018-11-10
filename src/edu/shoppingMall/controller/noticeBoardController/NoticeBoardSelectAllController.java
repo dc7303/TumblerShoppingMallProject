@@ -1,6 +1,7 @@
 package edu.shoppingMall.controller.noticeBoardController;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -26,11 +27,11 @@ public class NoticeBoardSelectAllController implements Controller {
     	 String url="notice/NoticeSelectAll.jsp";
     	try {
 	    	List<NoticeBoardDTO> list = service.noticeBoardSelectAll();
-			System.out.println(list);
+			
 	    	request.setAttribute("list", list);
 	    	//뷰에서 자바로 가져올 때는 getParameter(" key " );
 	    	//자바에서 뷰로 보내줄때는 setAttribute("list",list);
-    	} catch (Exception e) {
+    	} catch (SQLException e) {
     		e.printStackTrace();
     		url="errorView/error.jsp";
     	}

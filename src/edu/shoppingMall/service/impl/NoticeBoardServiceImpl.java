@@ -9,9 +9,10 @@ import edu.shoppingMall.dto.NoticeBoardDTO;
 import edu.shoppingMall.service.NoticeBoardService;
 
 public class NoticeBoardServiceImpl implements NoticeBoardService {
-    private static NoticeBoardServiceImpl service = new NoticeBoardServiceImpl();
+    private NoticeDAO noticedao = new NoticeDAOImpl().getInstance(); 
+	private static NoticeBoardServiceImpl service = new NoticeBoardServiceImpl();
     
-    public static NoticeDAO noticedao = new NoticeDAOImpl();
+
     
     public static NoticeBoardServiceImpl getInstance () {
         return service;
@@ -23,7 +24,8 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
     @Override
     public List<NoticeBoardDTO> noticeBoardSelectAll() throws SQLException {
     	List<NoticeBoardDTO> list = noticedao.noticeBoardSelectAll();
-		return list;
+    	if(list==null)throw new SQLException("notice검색결과가 없습니다.");
+    	return list;
     }
 
     /**
@@ -46,18 +48,14 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		
 	}
     
-    
-    
-    
-
-    /**
+      /**
      * 공지사항 수정
      */
     @Override
     public int noticeBoardUpdate(NoticeBoardDTO dto) throws SQLException {
-    	int re = noticedao.noticeBoardUpdate(dto);
-		if(re==0)throw new SQLException("수정되지 않았습니다.");
-		return re;
+    	int result = noticedao.noticeBoardUpdate(dto);
+		if(result==0)throw new SQLException("수정되지 않았습니다.");
+		return result;
     }
 
     /**
@@ -66,10 +64,7 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
     @Override
     public int noticeBoardDelete(int NoticeBoardNum) throws SQLException {
     	int result = noticedao.noticeBoardDelete(NoticeBoardNum);
-		if(result == 0)
-			throw new SQLException("검색된 레코드가 없습니다.");
-		
-		
+		if(result == 0)throw new SQLException("검색된 레코드가 없습니다.");
 		return result;
     }
 

@@ -3,12 +3,15 @@ package edu.shoppingMall.service.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import edu.shoppingMall.dao.BasketDAO;
+import edu.shoppingMall.dao.impl.BasketDAOImpl;
 import edu.shoppingMall.dto.BasketDTO;
 import edu.shoppingMall.service.BasketService;
 
 public class BasketServiceImpl implements BasketService {
     private static BasketServiceImpl service = new BasketServiceImpl();
-    
+    private BasketDAO basketDAO = BasketDAOImpl.getInstance();
+  
     public static BasketServiceImpl getInstance () {
         return service;
     }
@@ -18,8 +21,9 @@ public class BasketServiceImpl implements BasketService {
      */
     @Override
     public List<BasketDTO> basketSelectAll() throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+       List<BasketDTO>list = basketDAO.basketSelectAll();
+      if(list==null)throw new SQLException("장바구니 조회결과가 없습니다."); 
+       return list;
     }
 
     /**
@@ -27,8 +31,9 @@ public class BasketServiceImpl implements BasketService {
      */
     @Override
     public BasketDTO basketSelectByBasketNum(int basketNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+       BasketDTO basketdto = basketDAO.basketSelectByBasketNum(basketNum);
+       if(basketdto==null)throw new SQLException("장바구니 조회결과가 없습니다.");
+       return basketdto;
     }
 
     /**
@@ -36,8 +41,9 @@ public class BasketServiceImpl implements BasketService {
      */
     @Override
     public List<BasketDTO> basketSelectByUserId(String userId) throws SQLException {
-        // TODO Auto-generated method stub
-        return null;
+    	List<BasketDTO> list = basketDAO.basketSelectByUserId(userId);
+    	if(list==null)throw new SQLException("검색한 id로 조회한 결과가 없습니다.");
+    	return list; 
     }
 
     /**
@@ -45,8 +51,10 @@ public class BasketServiceImpl implements BasketService {
      */
     @Override
     public int basketInsert(BasketDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+    	int result = basketDAO.basketInsert(dto);
+    	if(result==0)throw new SQLException("등록되지 않았습니다.");
+    	return result;
+    	
     }
     
     /**
@@ -54,17 +62,19 @@ public class BasketServiceImpl implements BasketService {
      */
     @Override
     public int basketUpdate(BasketDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+       int result = basketDAO.basketUpdate(dto);
+       if(result==0)throw new SQLException("수정되지 않았습니다.");
+       return result;
     }
 
     /**
      * 장바구니 삭제
      */
     @Override
-    public int baksetDelete(int basketNum) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+    public int baksetDelete(String userId) throws SQLException {
+    	int result = basketDAO.baksetDelete(userId);
+    	if(result==0)throw new SQLException("검색된 물품이 없습니다.");
+    	return result;
     }
 
 }

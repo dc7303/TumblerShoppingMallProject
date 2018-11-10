@@ -1,6 +1,7 @@
 package edu.shoppingMall.controller.noticeBoardController;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,7 @@ public class NoticeBoardReadController implements Controller {
 			request.setAttribute("noticeDto", noticeDto);
 			url = "notice/NoticeRead.jsp";
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());
 		}

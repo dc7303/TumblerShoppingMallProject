@@ -11,6 +11,11 @@ import edu.shoppingMall.dao.NoticeDAO;
 import edu.shoppingMall.dto.NoticeBoardDTO;
 import edu.shoppingMall.util.DBUtil;
 
+/**
+ * 
+ * catch제거
+ *
+ */
 public class NoticeDAOImpl implements NoticeDAO {
     private static NoticeDAOImpl noticeDAO = new NoticeDAOImpl();
     
@@ -40,8 +45,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 			}
 			System.out.println(list);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		
 
 
 		} finally {
@@ -87,8 +91,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 			ps.setString(2, dto.getNoticeBoardContent());
 			result = ps.executeUpdate();
 			
-		}catch (SQLException e) {
-			e.printStackTrace();
+		
 		}finally {
 			DBUtil.dbClose( ps, con);
 		}
@@ -117,11 +120,13 @@ public class NoticeDAOImpl implements NoticeDAO {
 			ps.setInt(3, dto.getNoticeBoardNum());
 			
 			result = ps.executeUpdate();
+			
+		
 		}finally{
 			DBUtil.dbClose( ps, con);
 		}
 		return result;
-    }
+    	}
 
     /**
      * 공지사항 삭제
@@ -141,8 +146,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,NoticeBoardNum );
 			result = ps.executeUpdate();
-		}catch (Exception e) {
-			e.printStackTrace();
+		
 		}finally {
 			DBUtil.dbClose( ps, con);
 		}
