@@ -18,7 +18,7 @@
 </head>
 <body>
 
-
+<jsp:include page="../nav.jsp"></jsp:include>
 
 <div class='container'>
  <center>
@@ -69,6 +69,7 @@
   </ul>
 </nav>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 
 
 
