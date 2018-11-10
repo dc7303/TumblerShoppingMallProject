@@ -9,7 +9,13 @@ import edu.shoppingMall.dto.QnABoardDTO;
 import edu.shoppingMall.service.QnABoardService;
 
 public class QnABoardServiceImpl implements QnABoardService {
-	QnABoardDAO dao = new QnABoardDAOImpl();
+	QnABoardDAO dao = QnABoardDAOImpl.getInstance();
+    private static QnABoardServiceImpl service = new QnABoardServiceImpl();
+    
+    public static QnABoardServiceImpl getInstance() {
+        return service;
+    }
+
 
 	@Override
 	public List<QnABoardDTO> qnaBoardSelectAll() throws SQLException {
@@ -32,24 +38,19 @@ public class QnABoardServiceImpl implements QnABoardService {
 
 	public int qnaBoardUpdate(QnABoardDTO dto) throws SQLException {
 		int result = dao.qnaBoardUpdate(dto);
-		System.out.println("serviceImpl"+dto.getQnaBoardContent());
 		return result;
 	}
 
 	@Override
-	public int qnaBoardDelete(String qnaBoardUserId) throws SQLException {
+	public int qnaBoardDelete(int qno) throws SQLException {
 	
-		int result = dao.qnaBoardDelete( qnaBoardUserId);
-	    
+		int result = dao.qnaBoardDelete(qno);
 		return result;
 	}
 
 	@Override
 	public QnABoardDTO qnaBoardSelectByNo(int no) throws SQLException {
 		return dao.qnaBoardSelectByNo(no);
-		
-		
-		
 	}
 		
 		

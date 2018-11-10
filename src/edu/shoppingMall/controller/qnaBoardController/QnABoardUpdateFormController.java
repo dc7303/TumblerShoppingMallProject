@@ -14,22 +14,20 @@ import edu.shoppingMall.service.impl.QnABoardServiceImpl;
 
 
 public class QnABoardUpdateFormController implements Controller {
-	private static QnABoardService service = new QnABoardServiceImpl();
 
 	@Override
 	public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+		QnABoardService service = QnABoardServiceImpl.getInstance();
+
 		ModelAndView mv = new ModelAndView();
-		 String url="qna/read.jsp";
-		 String qnaBoardQno= request.getParameter("qnaBoardQno");
-		 System.out.println(qnaBoardQno);
+		 String url="qna/qnaUpdate.jsp";
+		 int qno= Integer.parseInt(request.getParameter("qnaBoardQno"));
 
 		 try {
-			 
-		 	   QnABoardDTO dto = service.qnaBoardSelectByNo(Integer.parseInt(qnaBoardQno));
+		 	   QnABoardDTO dto = service.qnaBoardSelectByNo(qno);
 			 request.setAttribute("dto", dto);
-			 	url="qna/update.jsp";
+			 	url="qna/qnaUpdate.jsp";
 		
 		 }catch (Exception e) {
 			 e.printStackTrace();

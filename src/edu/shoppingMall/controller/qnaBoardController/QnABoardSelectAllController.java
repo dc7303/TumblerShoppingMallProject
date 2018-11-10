@@ -23,11 +23,11 @@ public class QnABoardSelectAllController implements Controller {
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-    	String url = "qna/list.jsp"; //default로
+    	
+		QnABoardService service = QnABoardServiceImpl.getInstance();
+    	String url = "qna/qnaSelectAll.jsp"; //default로
 		try {
 				
-				//전체검색기능
-			  QnABoardService service =  new QnABoardServiceImpl();
 				List<QnABoardDTO>list =service.qnaBoardSelectAll();
 				request.setAttribute("list", list);
 		}catch (Exception e) {

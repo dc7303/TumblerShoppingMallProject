@@ -13,28 +13,28 @@ import edu.shoppingMall.service.QnABoardService;
 import edu.shoppingMall.service.impl.QnABoardServiceImpl;
 
 public class QnABoardDeleteController implements Controller {
-    
-    /**
-     * QnA 게시판 삭제 Controller
-     */
-    @Override
-    public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-    		String url = "qna?command=qnaSelectAll";
-   			String qnaBoardUserId = request.getParameter("qnaBoardUserId");
-   			System.out.println(qnaBoardUserId);
-    		QnABoardService service = new QnABoardServiceImpl();
-    		try {
-    			service.qnaBoardDelete(qnaBoardUserId.trim());
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
 
-    		ModelAndView mv = new ModelAndView();
-    		mv.setPath(url);
-    			
-    		return mv;
-    }
+	/**
+	 * QnA 게시판 삭제 Controller
+	 */
+	@Override
+	public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		QnABoardService service = QnABoardServiceImpl.getInstance();
+		String url = "frontQna?command=qnaSelectAll";
+		int qno = Integer.parseInt(request.getParameter("qnaBoardQno"));
+		try {
+			service.qnaBoardDelete(qno);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		ModelAndView mv = new ModelAndView();
+		mv.setPath(url);
+
+		return mv;
+	}
 
 }

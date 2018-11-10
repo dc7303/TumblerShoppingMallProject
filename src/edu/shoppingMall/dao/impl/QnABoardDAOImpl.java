@@ -16,7 +16,12 @@ import edu.shoppingMall.util.DBUtil;
 
 
 public class QnABoardDAOImpl implements QnABoardDAO {
-
+	 private static QnABoardDAOImpl qnaDAO = new QnABoardDAOImpl();
+	    
+	    public static QnABoardDAOImpl getInstance() {
+	        return qnaDAO;
+	    }	
+	
 	@Override
 	public List<QnABoardDTO> qnaBoardSelectAll() throws SQLException {
 		Connection con = null;
@@ -25,21 +30,21 @@ public class QnABoardDAOImpl implements QnABoardDAO {
 		List<QnABoardDTO> list = new ArrayList<>();
 		try {
 			con=DBUtil.getConnection();
-			ps = con.prepareStatement("select * from qnaBoard ");
+			ps = con.prepareStatement("select * from tb_qna ");
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				QnABoardDTO dto = new  QnABoardDTO(
-						rs.getInt("qnaBoardQno"),rs.getString("qnaBoardSubject"), rs.getString("qnaBoardContent"),
-						rs.getString("qnaBoardPwd"),rs.getString("qnaBoardDate"), 
-						rs.getString("qnaBoardUserId"),0 );
-						list.add(dto);
+						rs.getInt("qno"),rs.getString("title"), rs.getString("content"),
+						rs.getString("pwd"),rs.getString("regdt"),rs.getString("userid"), 
+						rs.getString("photo"),rs.getInt("qno2"));
+				list.add(dto);
 			}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBUtil.dbClose(rs, ps, con);
-			}
-			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbClose(rs, ps, con);
+		}
+		return list;
 	}
 
 	@Override
@@ -48,7 +53,7 @@ public class QnABoardDAOImpl implements QnABoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<QnABoardDTO> list= new ArrayList<>();
-		String sql = "select * from qnaBoard where ";
+		String sql = "select * from tb_qna where ";
 		try {
 			if(keyType.equals("qnaBoardQno")) {
 				sql+="qnoBoardQno like ?";
@@ -63,15 +68,15 @@ public class QnABoardDAOImpl implements QnABoardDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				QnABoardDTO dto = new QnABoardDTO(
-						rs.getInt("qnoBoardQno"), 
-						rs.getString("qnaBoardSubject"),
-						rs.getString("qnaBoardContent"));
+						rs.getInt("qno"),rs.getString("title"), rs.getString("content"),
+						rs.getString("pwd"),rs.getString("regdt"), 
+						rs.getString("userid"),rs.getString("photo"),rs.getInt("qno2"));
 				list.add(dto);
 			}
 		}finally {
 			DBUtil.dbClose(rs, ps, con);
 		}
-			
+
 		return list;
 	}
 
@@ -81,43 +86,46 @@ public class QnABoardDAOImpl implements QnABoardDAO {
 		PreparedStatement ps = null;
 		int result = 0;
 		String sql = 
-				("insert into qnaBoard values(qna_seq.nextval,?,?,?,sysdate,?)");
+				("insert into tb_qna values(qna_seq.nextval,?,?,?,sysdate,?,0,?,null)");
 		try{
 			con=DBUtil.getConnection();
 			ps=con.prepareStatement(sql);
-		//	ps.setInt(1, dto.getQnaBoardQno());
 			ps.setString(1, dto.getQnaBoardSubject());
 			ps.setString(2, dto.getQnaBoardContent());
 			ps.setString(3, dto.getQnaBoardPwd());
-			ps.setString(4, dto.getQnaBoardUserId());
+			ps.setString(4, dto.getQnaBoardPhoto());
+			ps.setString(5, dto.getQnaBoardUserId());
+
 			result = ps.executeUpdate();
-			
+
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-		   DBUtil.dbClose(ps, con);
+			DBUtil.dbClose(ps, con);
 		}
 		return result;
 	}
-	
-	
+
+
 
 	@Override
 	public int qnaBoardUpdate(QnABoardDTO dto) throws SQLException {
-		
+
 		Connection con =null;
 		PreparedStatement ps =null;
 		int result =0;
-		String sql ="update qnaBoard set qnaBoardSubject=?,qnaBoardContent=? where qnaBoardQno=?";
+		String sql ="update tb_qna set title=?,content=? where qno=?";
 		try{
-			
+
 			con=DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			 System.out.println("test"+dto.getQnaBoardSubject());
-			 ps.setString(1, dto.getQnaBoardSubject());
+			ps.setString(1, dto.getQnaBoardSubject());
 			ps.setString(2, dto.getQnaBoardContent());
 			ps.setInt(3, dto.getQnaBoardQno());
 			result = ps.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
 		}finally{
 			DBUtil.dbClose( ps, con);
 		}
@@ -125,20 +133,20 @@ public class QnABoardDAOImpl implements QnABoardDAO {
 		return result;
 
 	}
-	
+
 
 	@Override
-	public int qnaBoardDelete(String qnaBoardUserId) throws SQLException {
+	public int qnaBoardDelete(int qno) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
 		try {
 			con=DBUtil.getConnection();
-			  ps = con.prepareStatement("delete from qnaBoard where qnaBoardUserId=?");
-			  ps.setString(1, qnaBoardUserId);
-			  result = ps.executeUpdate();
+			ps = con.prepareStatement("delete from tb_qna where qno=?");
+			ps.setInt(1, qno);
+			result = ps.executeUpdate();
 		}catch (Exception e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}finally {
 			DBUtil.dbClose( ps, con);
 		}
@@ -147,29 +155,32 @@ public class QnABoardDAOImpl implements QnABoardDAO {
 
 	@Override
 	public QnABoardDTO qnaBoardSelectByNo(int no) throws SQLException {
-		// TODO Auto-generated method stub
-		// select * from qnaBoard where qno=?
-		
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		QnABoardDTO dto = null;
-		String sql = "select * from qnaBoard where qnaboardqno=?";
+		
+		String sql = "select * from tb_qna where qno=?";
 		try {
 			con=DBUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1,no);
 			rs=ps.executeQuery();
-			if(rs.next()) {
-				dto = new QnABoardDTO(rs.getInt("qnaBoardQno"), rs.getString("qnaBoardSubject"),rs.getString("qnaBoardContent"),
-						rs.getString("qnaBoardDate"), rs.getString("qnaBoardPwd"),
-						rs.getString("qnaBoardUserId"),0 );
-			}
-			}finally{
-				DBUtil.dbClose(rs, ps, con);
-			}
-			return dto;
+			while(rs.next()) {
+				dto = new  QnABoardDTO(
+						rs.getInt("qno"),rs.getString("title"), rs.getString("content"),
+						rs.getString("pwd"),rs.getString("regdt"), 
+						rs.getString("userid"),rs.getString("photo"),rs.getInt("qno2"));
+			} 
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.dbClose(rs, ps, con);
+		}
+		return dto;
 	}
 }
-	
-	
+
+

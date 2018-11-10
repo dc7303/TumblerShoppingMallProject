@@ -13,30 +13,33 @@ public class QnABoardDTO {
     private String qnaBoardPwd;           //비밀번호
     private String qnaBoardDate;       //등록일자
     private String qnaBoardUserId;     //유저아이디
+    private String qnaBoardPhoto;      // 사진
     private int qnaBoardChildNum;      //답글여부
     
    
 
-    
-    public QnABoardDTO(int qnaBoardQno, String qnaBoardSubject, String qnaBoardContent,  String qnaBoardPwd,
-    		String qnaBoardDate, String qnaBoardUserId, int qnaBoardChildNum) {
-        super();
-        this.qnaBoardQno = qnaBoardQno;
-        this.qnaBoardSubject = qnaBoardSubject;
-        this.qnaBoardContent = qnaBoardContent;
-        this.qnaBoardDate = qnaBoardDate;
-        this.qnaBoardPwd = qnaBoardPwd;
-        this.qnaBoardUserId = qnaBoardUserId;
-        this.qnaBoardChildNum = qnaBoardChildNum;
-    }
-
-    public QnABoardDTO(QnABoardDTO dto) {
+    public QnABoardDTO(int qnaBoardQno, String qnaBoardSubject, String qnaBoardContent, String qnaBoardPwd,
+			String qnaBoardDate, String qnaBoardUserId, String qnaBoardPhoto, int qnaBoardChildNum) {
+		super();
+		this.qnaBoardQno = qnaBoardQno;
+		this.qnaBoardSubject = qnaBoardSubject;
+		this.qnaBoardContent = qnaBoardContent;
+		this.qnaBoardPwd = qnaBoardPwd;
+		this.qnaBoardDate = qnaBoardDate;
+		this.qnaBoardUserId = qnaBoardUserId;
+		this.qnaBoardPhoto = qnaBoardPhoto;
+		this.qnaBoardChildNum = qnaBoardChildNum;
 	}
 
-	
+	public QnABoardDTO(QnABoardDTO dto) {
+	}
 
-	public QnABoardDTO(int no, String subject, String content) {
-		this(no,subject,content,null,null,null,0);
+	public QnABoardDTO(String qnaBoardSubject, String qnaBoardContent,String qnaBoardPwd,String qnaBoardUserId, String qnaBoardPhoto) {
+		this(0,qnaBoardSubject,qnaBoardContent,qnaBoardPwd,null,qnaBoardUserId,qnaBoardPhoto,0);
+	}
+	
+	public QnABoardDTO(int qnaBoardQno, String qnaBoardSubject, String qnaBoardContent) {
+		this(qnaBoardQno,qnaBoardSubject,qnaBoardContent,null,null,null,null,0);
 	}
 
 	public int getQnaBoardQno() {
@@ -94,6 +97,14 @@ public class QnABoardDTO {
     public void setQnaBoardChildNum(int qnaBoardChildNum) {
         this.qnaBoardChildNum = qnaBoardChildNum;
     }
+
+	public String getQnaBoardPhoto() {
+		return qnaBoardPhoto;
+	}
+
+	public void setQnaBoardPhoto(String qnaBoardPhoto) {
+		this.qnaBoardPhoto = qnaBoardPhoto;
+	}
     
    
     

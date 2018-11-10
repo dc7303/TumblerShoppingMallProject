@@ -18,10 +18,11 @@ import edu.shoppingMall.controller.modelAndView.ModelAndView;
  * @author mark
  *
  */
-@WebServlet("/qna")
+@WebServlet("/frontQna")
 public class QnABoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Map<String, Controller> map;
+	
 	public void init(ServletConfig config) throws ServletException {
 		map = (Map<String, Controller>)config.getServletContext().getAttribute("map");
 	}
@@ -33,7 +34,7 @@ public class QnABoardServlet extends HttpServlet {
 		if(key==null || key.equals("")) {
 			key="qnaSelectAll";
 		}
-		System.out.println(map.get(key));
+		//System.out.println(map.get(key));
 		ModelAndView mv = map.get(key).service(request, response);
 		if(mv.isRedirect()) {
 			response.sendRedirect(mv.getPath());

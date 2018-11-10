@@ -22,14 +22,13 @@ public class QnABoardUpdateController implements Controller {
 	public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		QnABoardService service = QnABoardServiceImpl.getInstance();
 		ModelAndView mv = new ModelAndView();
 		String url = "qna/update.jsp";
 		String qnaBoardQno = request.getParameter("qnaBoardQno");
 		String qnaBoardSubject = request.getParameter("qnaBoardSubject");
 		String qnaBoardContent = request.getParameter("qnaBoardContent");
 		try {
-			//System.out.println(qnaBoardSubject);
-			//System.out.println(qnaBoardContent);
 			if (
 					qnaBoardQno==null ||qnaBoardQno.equals("") ||
 			qnaBoardSubject == null || qnaBoardSubject.equals("") || 
@@ -39,9 +38,9 @@ public class QnABoardUpdateController implements Controller {
 			
 			QnABoardDTO dto = new QnABoardDTO(Integer.parseInt(qnaBoardQno),qnaBoardSubject, qnaBoardContent);
 			
-			QnABoardService service = new QnABoardServiceImpl();
+			
 			service.qnaBoardUpdate(dto);
-			url = "qna?command=qnaRead&qnaBoardQno="+qnaBoardQno;
+			url = "frontQna?command=qnaRead&qnaBoardQno="+qnaBoardQno;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
