@@ -30,7 +30,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
 		
 		try {
 			con = DBUtil.getConnection();
-			ps = con.prepareStatement("select * from product");
+			ps = con.prepareStatement("select * from tb_product");
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				ProductDTO dto = new ProductDTO(
@@ -59,7 +59,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<>();
-		String sql = "select * from product where ";
+		String sql = "select * from tb_product where ";
 		
 		try {
 			if(keyType.equals("pno")) {
@@ -131,7 +131,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "insert into product(pno,pname,info,price,category,photo,brand,stock,regdt) values(?,?,?,?,?,?,?,?,sysdate)";
+		String sql = "insert into tb_product(pno,pname,info,price,category,photo,brand,stock,regdt) values(?,?,?,?,?,?,?,?,sysdate)";
 		
 		try {
 			con = DBUtil.getConnection();
@@ -160,7 +160,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "update product set pname=?,info=?,price=?,category=?,photo=?,brand=?,stock=? where pno=?";//상품번호 변경불가
+		String sql = "update tb_product set pname=?,info=?,price=?,category=?,photo=?,brand=?,stock=? where pno=?";//상품번호 변경불가
 		
 		try {
 			con = DBUtil.getConnection();
@@ -220,7 +220,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "delete product where pno=?";
+		String sql = "delete tb_product where pno=?";
 		
 		try {
 			con = DBUtil.getConnection();
