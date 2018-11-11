@@ -8,9 +8,20 @@
   <script>
     $(function(){
       $(document).on("click", 'input[value=배송조회]', function(){
-        
+        var formTarget = "basongSearch";
+        var basongForm = $(this).parent();//배송조회 폼이름
+        window.open('', formTarget, 'width=550, height=500, resizable=no');
+        basongForm.submit();
+      });
+      
+      $(document).on("click", ".orderInfo", function(){
+        var formTarget = "orderInfo";
+        var orderForm = $(this).parent();
+        window.open('', formTarget, 'width=550, height=500, resizable=no');
+        orderForm.submit();
       });
     });
+       
   </script>
 
   <style>
@@ -33,6 +44,10 @@
   .failList {
     height:300px;
     text-align:center;
+  }
+  
+  .px11{
+    font-size:11px;
   }
   </style>
 <title>Insert title here</title>
@@ -58,10 +73,20 @@
 			<c:forEach items="${requestScope.orderList }" var ="orderList">
 		        <tr>
 		            <td>${orderList.getOrderDate() }</td>
-		            <td>
-                        <strong>${orderList.getProDTO().getProductName() }</strong><br/>
+                    <td>
+                        <c:set value = "${orderList.getDetailDTO() }" var = "deatilInfo"/>
+                        <form name = "orderForm" action ="orderInfo/orderInfo.jsp" method = "post" target ="orderInfo">
+                          <a href = "#" class="orderInfo"><strong>${orderList.getProDTO().getProductName() }</strong></a><br/>
+                          <input type = "hidden" name = "orderNum" value = "${orderList.getOrderNum() }"/>
+                          <input type = "hidden" name = "picture" value = "${orderList.getProDTO().getProductPicture() }"/>
+                          <input type = "hidden" name = "proName" value ="${orderList.getProDTO().getProductName() }"/>
+                          <input type = "hidden" name = "detailPrice" value = "${deatilInfo.getOrderDetailPrice() }"/>
+                          <input type = "hidden" name = "detailQuantity" value = "${deatilInfo.getOrderDetailQuantity() }"/>
+                          <input type = "hidden" name = "detailOption" value = "${deatilInfo.getOrderDetailOption() }"/>
+                          <input type = "hidden" name = "detailDate" value = "${deatilInfo.getOrderDetailDate() }"/>
+                        </form>
                         <p class = "px11">옵션:${orderList.getDetailDTO().getOrderDetailOption() }</p>
-		            </td>
+                    </td>
 		            <td>
                         <strong><fmt:formatNumber> ${orderList.getOrderPrice() }</fmt:formatNumber>원</strong><br/>
                         <p class = "px11">(구매수량:${orderList.getDetailDTO().getOrderDetailQuantity() })</p>
@@ -75,13 +100,13 @@
                         </c:when>
                         <c:when test="${basongStatus eq 1 }">
                           <strong>배송시작</strong><br/>
-                          <p style="font-size:9px;">송장번호:</p>
+                          <p class = "px11">송장번호:</p>
                           ${orderList.getBasongDTO().getBasongInvoiceNum()}
                         </c:when>
                         <c:when test="${basongStatus eq 2 }">
                           <strong>배송중</strong><br/>
-                          <p style="font-size:9px">송장번호:</p>
-                          ${orderList.getBasongDTO().getBasongInvoiceNum()}
+                          <p class = "px11">송장번호:<br/>
+                          ${orderList.getBasongDTO().getBasongInvoiceNum()}</p>
                         </c:when>
                         <c:when test="${basongStatus eq 3 }">
                           <strong>배송완료</strong><br/>

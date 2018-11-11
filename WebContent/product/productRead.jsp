@@ -6,5 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-    연결..</body>
+
+</body>
 </html>

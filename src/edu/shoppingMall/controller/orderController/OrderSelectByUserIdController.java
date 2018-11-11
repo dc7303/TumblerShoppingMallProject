@@ -1,7 +1,6 @@
 package edu.shoppingMall.controller.orderController;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import edu.shoppingMall.dto.OrderDTO;
 import edu.shoppingMall.dto.UserInfoDTO;
 import edu.shoppingMall.service.OrderService;
 import edu.shoppingMall.service.impl.OrderServiceImpl;
-import net.sf.json.JSONArray;
 
 public class OrderSelectByUserIdController implements Controller{
 

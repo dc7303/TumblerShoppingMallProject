@@ -76,10 +76,11 @@
 		        <tr>
 		            <td>${orderList.getOrderDate() }</td>
 		            <td>
+		                <c:set value = "${orderList.getDetailDTO() }" var = "deatilInfo"/>
 		                <form name = "orderForm" action ="orderInfo/orderInfo.jsp" method = "post" target ="orderInfo">
                           <a href = "#" class="orderInfo"><strong>${orderList.getProDTO().getProductName() }</strong></a><br/>
                           <input type = "hidden" name = "orderNum" value = "${orderList.getOrderNum() }"/>
-                          <input type = "hidden" name = "orderNum" value = "${orderList.getProDTO().getProductPicture() }"/>
+                          <input type = "hidden" name = "picture" value = "${orderList.getProDTO().getProductPicture() }"/>
                           <input type = "hidden" name = "proName" value ="${orderList.getProDTO().getProductName() }"/>
                           <input type = "hidden" name = "detailPrice" value = "${deatilInfo.getOrderDetailPrice() }"/>
                           <input type = "hidden" name = "detailQuantity" value = "${deatilInfo.getOrderDetailQuantity() }"/>
@@ -89,7 +90,6 @@
 		                <p class = "px11">옵션:${orderList.getDetailDTO().getOrderDetailOption() }</p>
 		            </td>
 		            <td>
-		                <c:set value = "${orderList.getDetailDTO() }" var = "deatilInfo"/>
 		                <strong><fmt:formatNumber> ${orderList.getOrderPrice() }</fmt:formatNumber>원</strong><br/>
 		                <p class = "px11">(구매수량:${orderList.getDetailDTO().getOrderDetailQuantity() })</p>
 		            </td>
