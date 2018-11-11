@@ -5,9 +5,9 @@
 	<title>header</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript" src="https:code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/basic.css">
+	<script type="text/javascript" src="${applicationScope.conPath }/js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="${applicationScope.conPath }/css/basic.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
 
 			<span>
 				<a href="#none">
-				Q'n'A 게시판
+				QnA 게시판
 				</a>
 			</span>
 		</div>

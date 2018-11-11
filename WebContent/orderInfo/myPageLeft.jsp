@@ -43,7 +43,6 @@
     <hr/>
     <h5>회원 정보</h5> 
     <a href = "#" class = "leftList">회원정보 수정</a><br/>
-    <a href = "#" class = "leftList">나의 배송지 관리</a><br/>
     <a href = "#" class = "leftList">회원탈퇴</a><br/>
     
     

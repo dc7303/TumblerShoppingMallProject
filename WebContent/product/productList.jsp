@@ -73,42 +73,7 @@
 </head>
 
 <body>
-
-
-  <div class="container">
-    <div class="header_menu_bar">
-
-      <span id="logo">
-        <a href="#none" >
-           Tumbler 
-        </a>
-      </span>
-
-      <span id="sign" >
-      </span>
-
-    <br><br>
-
-      <span>
-        <!--notice.jsp 연걸 -->
-        <a href="#none">공지사항  </a>
-      </span>
-
-      <span>
-        <!--productlist.jsp 연걸 -->
-        <a href="#none">  PRODUCT  </a>
-      </span>
-
-      <span>
-          <!-- mypage.jsp 연걸 -->
-        <a href="#none">  마이페이지  </a>
-      </span>
-
-      <span>
-        <a href="#none">  Q'n'A 게시판  </a>
-      </span>
-    </div>
-
+<jsp:include page="../nav.jsp"/>
 
 <div class="main">
   <a href = "../frontProduct?command=productDetail&pno=21">스타벅스텀블러</a>
@@ -129,7 +94,7 @@
                 <dd>플라스틱텀블러</dd>
                 <dd>스테인리스텀블러</dd>
                 <dd>보온병</dd>
-
+ 
             </dl>
             </div>
 
@@ -182,5 +147,6 @@
     </div>
 
     </div>
+    <jsp:include page="../footer.jsp"/>
 </body>
 </html>
