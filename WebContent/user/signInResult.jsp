@@ -9,6 +9,7 @@
 <script>
 
 alert("로그인 완료");
+opener.location.reload();
 self.close();
 
 </script>

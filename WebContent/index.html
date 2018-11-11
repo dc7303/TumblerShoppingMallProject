@@ -30,9 +30,9 @@
 					str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
 					$("#sign").html(str);
 				} else {
-					str += "<a href='#'>마이페이지&nbsp;</a>"
+					str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
 						str += "<a>/</a>"
-						str += "<a href='#'>&nbsp;로그아웃</a>"
+						str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
 						$("#sign").html(str);
 				}
 			},
@@ -86,7 +86,7 @@
       </span>
 
       <span>
-        <a href="frontNotice?command=qnaSelectAll">  QnA 게시판  </a>
+        <a href="frontQna?command=qnaSelectAll">  QnA 게시판  </a>
       </span>
     </div>
 

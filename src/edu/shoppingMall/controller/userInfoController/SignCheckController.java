@@ -23,8 +23,7 @@ public class SignCheckController extends HttpServlet {
 		
 		if(dto != null) {
 			out.println(dto.getUserId());
-		}
-		
+		} 
 		
 	}
 

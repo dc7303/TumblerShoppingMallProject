@@ -27,7 +27,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from shoppinguser";
+        String sql = "select * from tb_user";
         List<UserInfoDTO> list = new ArrayList<>();
         
         try {
@@ -99,7 +99,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
             rs = ps.executeQuery();
             
             while(rs.next()) {
-                dto = new UserInfoDTO();
+                dto = new UserInfoDTO(rs.getString("userid"),rs.getString("name"),rs.getString("pwd"),rs.getString("birth"),rs.getString("phone"),rs.getString("addr"),rs.getString("email"),rs.getInt("manger"),rs.getInt("flag"),rs.getString("regdt"));
             }
         } finally {
             DBUtil.dbClose(rs, ps, con);
