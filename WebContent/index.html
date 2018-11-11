@@ -28,12 +28,14 @@
 				var str = "";
 				if(result == ""){
 					str += "<a href='#' onclick='windowSignIn()'>로그인&nbsp</a><a>/</a>";
+					str += "<a href = 'product/productList.jsp'>상품리드테스트</a>";              //지워야함
 					str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
 					$("#sign").html(str);
 				} else {
-					str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
-						str += "<a>/</a>"
-						str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
+					str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>";
+					    str += "<a href = 'product/productList.jsp'>상품리드테스트</a>;"          //지워야함
+						str += "<a>/</a>";
+						str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>";
 						$("#sign").html(str);
 				}
 			},

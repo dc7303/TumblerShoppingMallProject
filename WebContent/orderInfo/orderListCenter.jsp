@@ -20,9 +20,48 @@
         window.open('', formTarget, 'width=550, height=500, resizable=no');
         orderForm.submit();
       });
+      
+      
     });
        
   </script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script>
+    $(function(){
+        $.ajax({
+            url:"signCheck",
+            type:"post",
+            dataType:"text",
+            success:function(result){
+                var str = "";
+                if(result == ""){
+                    str += "<a href='#' onclick='windowSignIn()'>로그인&nbsp</a><a>/</a>";
+                    str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
+                    $("#sign").html(str);
+                } else {
+                    str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
+                        str += "<a>/</a>"
+                        str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
+                        $("#sign").html(str);
+                }
+            },
+            error:function(err){
+                alert(err);
+            }
+            
+            });
+        });
+        
+    function windowSignIn(){
+        window.open('user/signIn.jsp', 'signIn', 'width=550 height=500')
+    }
+    
+    function windowSignUp(){
+        window.open('user/signUp.jsp', 'signup', 'width=550 height=500')
+    }
+        </script>
 
   <style>
   
@@ -54,6 +93,8 @@
 </head>
 <body>
 <h3>주문내역</h3>
+<p style="color:grey">고객님께서 주문하신 상품 리스트입니다.<br/>
+주문 정보를 자세히 보시려면 '주문상품정보'에서 상품명을 클릭해주세요.<br/><br/></p>
   <div>
 	<table class = "orderListT">
 	  <tr>

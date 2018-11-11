@@ -20,9 +20,9 @@ public class ProductDetailController implements Controller {
 		ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
         
-        String url="product/productDetailResult.jsp";
+        String url="product/productRead.jsp";
 		String pno = request.getParameter("pno");
-		
+		System.out.println(pno);
 		try {
 			ProductDTO dto = service.productSelectByProductNum(Integer.parseInt(pno));
 			request.setAttribute("dto", dto);
