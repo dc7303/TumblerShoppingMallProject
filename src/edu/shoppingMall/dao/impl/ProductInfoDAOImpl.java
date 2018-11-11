@@ -23,7 +23,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
      */
     @Override
     public List<ProductDTO> productSelectAll() throws SQLException {
-		Connection con = null;
+    	Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<>();
@@ -33,7 +33,7 @@ public class ProductInfoDAOImpl implements ProductInfoDAO {
 			ps = con.prepareStatement("select * from tb_product");
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				ProductDTO dto = new ProductDTO(
+				ProductDTO dto = new ProductDTO(     
 						rs.getInt("pno"),rs.getString("pname"),
 						rs.getString("info"),rs.getInt("price"),
 						rs.getString("category"),rs.getString("photo"),

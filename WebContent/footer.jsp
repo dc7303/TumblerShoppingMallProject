@@ -11,8 +11,6 @@
 </head>
 
 <body>
-
-
 		<div class="footer">
 			<div class="border">
 
@@ -77,7 +75,6 @@
 		</div>
 		</div>
 	</div>
-
 	</div>
 </body>
 

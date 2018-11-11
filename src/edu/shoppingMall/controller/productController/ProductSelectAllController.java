@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +25,13 @@ public class ProductSelectAllController implements Controller {
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
-		String url = "product/productSelectAllResult.jsp";
-		
+
+        String url = "product/productSelectAllResult.jsp";
+        
+        // view path РќДо
+        ServletContext application = request.getServletContext();
+		application.setAttribute("path", request.getServletContext().getRealPath("C:\\edu\\img"));
+
 		try {
 			List<ProductDTO> list = service.productSelectAll();
 			request.setAttribute("list", list);

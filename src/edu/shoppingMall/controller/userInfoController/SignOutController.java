@@ -16,8 +16,11 @@ public class SignOutController implements Controller {
      */
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        return null;
+    	request.getSession().invalidate();
+    	ModelAndView mv = new ModelAndView();
+    	mv.setPath("index.html");
+    	mv.setRedirect(true);
+    	return mv;
     }
 
 }
