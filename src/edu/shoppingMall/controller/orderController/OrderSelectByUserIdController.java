@@ -36,13 +36,7 @@ public class OrderSelectByUserIdController implements Controller{
         String basongFlag = request.getParameter("basongFlag"); //배송 플레그가 use일 경우 배송상태 3(배송완료)를 제외한 상품 조회.
         try {
             List<OrderDTO> list = service.orderSelectByUserId("dong", basongFlag);//테스트용. 추후 세션값 받아와서 매개변수 전달해야함.
-            
-            //요청 목적에 따라 url 변경.
-            if(whereGo.equals("order") || whereGo.equals("totalOrder")) {       //주문내역 또는 지난 총 결제내역
-                url = "/orderInfo/userOrderList.jsp";
-            }else if(whereGo.equals("basong")) {                                //배송조회
-                url = "/orderInfo/userOrderList.jsp";
-            }
+            url = "/orderInfo/myPage.jsp";
             request.setAttribute("orderList", list);
         } catch (SQLException e) {
             e.printStackTrace();

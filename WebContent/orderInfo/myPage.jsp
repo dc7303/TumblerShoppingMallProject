@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <head>
-    <title>결제 내역 조회</title>
+    <title>My Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/basic.css">
@@ -28,7 +28,7 @@
   
   .main {
     padding-top:135px;
-    padding-bottom:100px;
+    padding-bottom:200px;
   }
   
   .center {
@@ -84,16 +84,19 @@
 <div class="main">
     <!-- 좌측메뉴 -->
     <div class = "left">
-      <jsp:include page="orderListLeft.jsp"/>
+      <jsp:include page="myPageLeft.jsp"/>
     </div>
     
-    <!-- 전송된 파라미터 search 값에 따라 센터 include가 달라진다. -->
+    <!-- 
+    전송된 파라미터 basongFlag 값에 따라 센터 include가 달라진다. 
+    no: 지난 총내역 조회, use: 현재 배송진행중인 구매내역
+    -->
     <div class = "center"></div>
       <c:choose>
-        <c:when test ="${param.search == 'order' }">
+        <c:when test ="${param.basongFlag == 'use' }">
           <jsp:include page="orderListCenter.jsp"/>
         </c:when>
-        <c:when test ="${param.search == 'totalOrder' }">
+        <c:when test ="${param.basongFlag == 'no' }">
           <jsp:include page="totalOrderListCenter.jsp"/>
         </c:when>
       </c:choose>

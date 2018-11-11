@@ -8,9 +8,20 @@
   <script>
     $(function(){
       $(document).on("click", 'input[value=배송조회]', function(){
-        
+        var formTarget = "basongSearch";
+        var basongForm = $(this).parent();//배송조회 폼이름
+        window.open('', formTarget, 'width=550, height=500, resizable=no');
+        basongForm.submit();
+      });
+      
+      $(document).on("click", ".orderInfo", function(){
+        var formTarget = "orderInfo";
+        var orderForm = $(this).parent();
+        window.open('', formTarget, 'width=550, height=500, resizable=no');
+        orderForm.submit();
       });
     });
+       
   </script>
 
   <style>
@@ -22,7 +33,7 @@
   th {
     border:1px solid #333;
     background-color:#333;
-    color:white;
+    color:lightgrey;
   }
   
   td {
@@ -33,6 +44,10 @@
   .failList {
     height:300px;
     text-align:center;
+  }
+
+  .px11{
+    font-size:11px;
   }
   </style>
 <title>Insert title here</title>
@@ -54,21 +69,46 @@
 	    조건에 만족하지 않을 시 구매내역이 존재하지 않는다고 표시해준다.
 	    -->
 	    <!-- 결과 테이블 논리연산자에 따라 입력 시작 -->
+	    <!-- 배송조회는 히든으로 open할때 전해진다. -->
 		<c:choose>
 		<c:when test = "${not empty requestScope.orderList  }">
 			<c:forEach items="${requestScope.orderList }" var ="orderList">
 		        <tr>
 		            <td>${orderList.getOrderDate() }</td>
 		            <td>
-		                ${orderList.getDetailDTO().getProductNum() }<br/><br/>
-		                옵션:${orderList.getDetailDTO().getOrderDetailOption() }
+		                <form name = "orderForm" action ="orderInfo/orderInfo.jsp" method = "post" target ="orderInfo">
+                          <a href = "#" class="orderInfo"><strong>${orderList.getProDTO().getProductName() }</strong></a><br/>
+                          <input type = "hidden" name = "orderNum" value = "${orderList.getOrderNum() }"/>
+                          <input type = "hidden" name = "orderNum" value = "${orderList.getProDTO().getProductPicture() }"/>
+                          <input type = "hidden" name = "proName" value ="${orderList.getProDTO().getProductName() }"/>
+                          <input type = "hidden" name = "detailPrice" value = "${deatilInfo.getOrderDetailPrice() }"/>
+                          <input type = "hidden" name = "detailQuantity" value = "${deatilInfo.getOrderDetailQuantity() }"/>
+                          <input type = "hidden" name = "detailOption" value = "${deatilInfo.getOrderDetailOption() }"/>
+                          <input type = "hidden" name = "detailDate" value = "${deatilInfo.getOrderDetailDate() }"/>
+                        </form>
+		                <p class = "px11">옵션:${orderList.getDetailDTO().getOrderDetailOption() }</p>
 		            </td>
 		            <td>
+		                <c:set value = "${orderList.getDetailDTO() }" var = "deatilInfo"/>
 		                <strong><fmt:formatNumber> ${orderList.getOrderPrice() }</fmt:formatNumber>원</strong><br/>
-		                (수량:${orderList.getDetailDTO().getOrderDetailQuantity() })
+		                <p class = "px11">(구매수량:${orderList.getDetailDTO().getOrderDetailQuantity() })</p>
 		            </td>
 		            <td>무료</td>
-		            <td><input type ="button" value ="배송조회"/></td>
+		            <td>
+		              <c:set  value = "${orderList.getBasongDTO() }" var = "basongInfo"/>
+		              <form name = "basongForm" action="orderInfo/basongSearch.jsp" method = "post" target="basongSearch">
+		                <input type = "hidden" name = "proName" value ="${orderList.getProDTO().getProductName() }"/>
+		                <input type = "hidden" name = "orderNum" value ="${orderList.getOrderNum() }"/>
+		                <input type = "hidden" name = "basongNum" value ="${basongInfo.getBasongNum() }"/>
+		                <input type = "hidden" name = "company" value ="${basongInfo.getBasongCompany() }"/>
+		                <input type = "hidden" name = "invoiceNum" value ="${basongInfo.getBasongInvoiceNum() }"/>
+		                <input type = "hidden" name = "basongAddr" value ="${basongInfo.getBasongAddr() }"/>
+		                <input type = "hidden" name = "basongPhone" value ="${basongInfo.getBasongPhone() }"/>
+		                <input type = "hidden" name = "basongDate" value ="${basongInfo.getBasongDate() }"/>
+		                <input type = "hidden" name = "status" value ="${basongInfo.getBasongStatus() }"/>
+		                <input type ="button" value ="배송조회"/>
+		              </form> 
+		            </td>
 		            <td>
 		              <c:set value="${orderList.getBasongDTO().getBasongStatus() }" var ="basongStatus"/>
 		              <c:choose>
@@ -77,13 +117,14 @@
 		                </c:when>
 		                <c:when test="${basongStatus eq 1 }">
                           <strong>배송시작</strong><br/>
-                          <p style="font-size:9px;">송장번호:</p>
+                          <p class = "px11">송장번호:</p>
                           ${orderList.getBasongDTO().getBasongInvoiceNum()}
                         </c:when>
                         <c:when test="${basongStatus eq 2 }">
                           <strong>배송중</strong><br/>
-                          <p style="font-size:9px">송장번호:</p>
-                          ${orderList.getBasongDTO().getBasongInvoiceNum()}
+                          <p class = "px11">송장번호:<br/>
+                          ${orderList.getBasongDTO().getBasongInvoiceNum()}</p>
+
                         </c:when>
                         <c:otherwise/>
 		              </c:choose>

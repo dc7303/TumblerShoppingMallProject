@@ -10,9 +10,11 @@
     $(document).on('click', 'a', function(){
       //basongFlag를 파라미터값으로 넘겨 줄때 use를 넘겨주면 배송완료 된 것을 제외한 주문내역을 출력시켜준다.
       if($(this).text() == '주문/배송조회'){
-        location.href = "frontOrder?command=orderByUserId&search=order&basongFlag=use" ;
+        //use : 배송완료 상태는 제외하고 조회한다.
+        location.href = "frontOrder?command=orderByUserId&basongFlag=use" ;
       }else if($(this).text() == '총 구매내역'){
-        location.href = "frontOrder?command=orderByUserId&search=totalOrder&basongFlag=no";
+        //no : 배송완료 상태 포함 전체 조회.
+        location.href = "frontOrder?command=orderByUserId&basongFlag=no";
       }
       
     });

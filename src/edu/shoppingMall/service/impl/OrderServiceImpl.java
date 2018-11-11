@@ -40,6 +40,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<OrderDTO> orderSelectAll() throws SQLException {
         List<OrderDTO> list = orderDAO.orderSelectAll();
+        
+        for(int i = 0; i < list.size(); i++) {
+            //상품번호를 이용해서 상품이름을 가져온다.(뷰에서 상품이름을 쓰기 위함.)
+            int proNum = list.get(i).getDetailDTO().getProductNum();
+            ProductDTO proDTO = productDAO.productSelectByProductNum(proNum);
+            //상품정보를 셋팅해준다.
+            list.get(i).setProDTO(proDTO);  
+        }
         if(list == null) {
             throw new SQLException("판매내역이 없습니다. 다시 확인해주세요.");
         }
@@ -56,6 +64,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<OrderDTO> orderSelectByUserId(String userId, String basongFlag) throws SQLException {
         List<OrderDTO> list = orderDAO.orderSelectByUserId(userId, basongFlag);
+        for(int i = 0; i < list.size(); i++) {
+            //상품번호를 이용해서 상품이름을 가져온다.(뷰에서 상품이름을 쓰기 위함.)
+            int proNum = list.get(i).getDetailDTO().getProductNum();
+            ProductDTO proDTO = productDAO.productSelectByProductNum(proNum);
+            //상품정보를 셋팅해준다.
+            list.get(i).setProDTO(proDTO);  
+        }
         if(list == null) {
             throw new SQLException("주문하신 내역이 없습니다.");
         }
@@ -70,6 +85,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException {
         OrderDTO orderDTO = orderDAO.orderSelectByOrderNum(orderNum);
+        //상품 정보 셋팅
+        int proNum = orderDTO.getDetailDTO().getProductNum();
+        ProductDTO proDTO = productDAO.productSelectByProductNum(proNum);
+        orderDTO.setProDTO(proDTO);
         if(orderDTO == null) {
             throw new SQLException("검색하신 주문번호는 없는 번호입니다.");
         }

@@ -22,11 +22,11 @@
   th {
     border:1px solid #333;
     background-color:#333;
-    color:white;
+    color:lightgrey;
   }
   
   td {
-    border:1px solid grey;
+    border:1px solid grey; 
     text-align:center;
   }
   
@@ -59,12 +59,12 @@
 		        <tr>
 		            <td>${orderList.getOrderDate() }</td>
 		            <td>
-		                ${orderList.getDetailDTO().getProductNum() }<br/><br/>
-		                옵션:${orderList.getDetailDTO().getOrderDetailOption() }
+                        <strong>${orderList.getProDTO().getProductName() }</strong><br/>
+                        <p class = "px11">옵션:${orderList.getDetailDTO().getOrderDetailOption() }</p>
 		            </td>
 		            <td>
-		                <strong><fmt:formatNumber> ${orderList.getOrderPrice() }</fmt:formatNumber>원</strong><br/>
-		                (수량:${orderList.getDetailDTO().getOrderDetailQuantity() })
+                        <strong><fmt:formatNumber> ${orderList.getOrderPrice() }</fmt:formatNumber>원</strong><br/>
+                        <p class = "px11">(구매수량:${orderList.getDetailDTO().getOrderDetailQuantity() })</p>
 		            </td>
 		            <td>무료</td>
                     <td>

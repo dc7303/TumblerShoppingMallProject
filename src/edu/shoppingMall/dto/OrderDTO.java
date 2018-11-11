@@ -14,6 +14,7 @@ public class OrderDTO {
     private String orderComment;     //주문기타사항
     private OrderDetailDTO detailDTO;//상품디테일DTO
     private BasongDTO basongDTO;     //배송 DTO
+    private ProductDTO proDTO;       //상품 DTO
     public OrderDTO() {}
 
     
@@ -60,6 +61,19 @@ public class OrderDTO {
         this.orderComment = orderComment;
         this.detailDTO = detailDTO;
         this.basongDTO = basongDTO;
+    }
+    
+    public OrderDTO(int orderNum, String orderUserId, String orderDate, int orderPrice, String orderComment,
+            OrderDetailDTO detailDTO, BasongDTO basongDTO, ProductDTO proDTO) {
+        super();
+        this.orderNum = orderNum;
+        this.orderUserId = orderUserId;
+        this.orderDate = orderDate;
+        this.orderPrice = orderPrice;
+        this.orderComment = orderComment;
+        this.detailDTO = detailDTO;
+        this.basongDTO = basongDTO;
+        this.proDTO = proDTO;
     }
 
     public int getOrderNum() {
@@ -116,6 +130,16 @@ public class OrderDTO {
 
     public void setBasongDTO(BasongDTO basongDTO) {
         this.basongDTO = basongDTO;
+    }
+
+
+    public ProductDTO getProDTO() {
+        return proDTO;
+    }
+
+
+    public void setProDTO(ProductDTO proDTO) {
+        this.proDTO = proDTO;
     }
 
    
