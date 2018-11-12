@@ -1,4 +1,4 @@
-package edu.shoppingMall.controller.userInfoController;
+package edu.shoppingMall.dispatcherServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import edu.shoppingMall.dto.UserInfoDTO;
 
 @WebServlet("/signCheck")
-public class SignCheckController extends HttpServlet {
+public class SignCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

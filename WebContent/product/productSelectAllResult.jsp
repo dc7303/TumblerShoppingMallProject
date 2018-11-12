@@ -1,136 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>product selectAll 요청 결과 page입니다.</h1>
-
-
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
-
-<link rel="stylesheet" href="${path}/css/style.css">
-
-<table align="center" border="0" cellpadding="5" cellspacing="2" width="100%" bordercolordark="white" bordercolorlight="black">
-<caption>상품 LIST</caption>
-	<colgroup>
-		<col width="7%"/>
-		<col width="20%"/>
-		<col width="13%"/>
-		<col width="10%"/>
-		<col width="10%"/>
-		<col width="10%"/>
-		<col width="10%"/>
-		<col width="5%"/>
-		<col width="30%"/>
-	</colgroup>
-	<tr>
-        <td bgcolor="#00cc00">
-            <p align="center">
-            <font color="white"><b><span style="font-size:12pt;">상품번호</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">상품이름</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">상품정보</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">상품가격</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">카테고리</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">사진</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">브랜드</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">재고량</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:12pt;">등록일</span></b></font></p>
-        </td>
-    </tr>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
     
-    <c:choose>
-    <c:when test="${empty requestScope.list}">
-	   <tr>
-        <td colspan="5">
-            <p align="center"><b><span style="font-size:9pt;">등록된 상품이 없습니다.</span></b></p>
-        </td>
-    </tr>
-    </c:when>
-    <c:otherwise>
-	<c:forEach items="${requestScope.list}" var="productDTO">
-		    <tr onmouseover="this.style.background='#eaeaea'"
-		        onmouseout="this.style.background='white'">
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${productDTO.pno}</span></p>
-		        </td>
-		        <td bgcolor="">
-					<p><span style="font-size:9pt;">
-					<a href="product?command=read&modelNum=${productDTO.pno}">
-					  ${productDTO.pname}
-					</a>
-					</span></p>
-		        </td>
-		        
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${productDTO.info}</span></p>
-		        </td>
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            <fmt:formatNumber value="${productDTO.price}"/></span></p>
-		        </td>
-		        
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${productDTO.category}</span></p>
-		        </td>
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${productDTO.photo}</span></p>
-		        </td>
-		        
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${productDTO.brand}</span></p>
-		        </td>
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${productDTO.stock}</span></p>
-		        </td>
-		        
-		        <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${productDTO.regdt}</span></p>
-		        </td>
-		        <%-- <td bgcolor="">
-		            <p align="center"><span style="font-size:9pt;">
-		            ${elecDto.readnum}</span></p>
-		        </td> --%>
-		    </tr>
-    </c:forEach>
-	</c:otherwise>
-    </c:choose>
-</table>
-<hr>
-<div align=right>
-<span style="font-size:9pt;"><a href="${path}/product/productForm.html">상품등록하기</a></span></div>
+    <link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/shop.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  </head>
+  <body>
 
-</body>
+<%@ include file="../nav.jsp" %>
+       <div
+				class="module_list_product_default extend_five extend_thumbnail_square">
+				
+				<table class="list">
+				<tr>
+					<c:forEach items="${list}" var="productDTO"  begin="0" end="${fn:length(list)}"  varStatus="status">
+								<c:if test = "${status.index % 5 == 0}">
+									</tr><tr>
+								</c:if>
+												<td class="item">
+													<a href="frontProduct?command=productDetail&pno=${list[status.index].productNum}">
+														<div class="thumbnail ">
+			 													<img src='img/${list[status.index].productPicture}' style="width:100%">
+														</div> 
+														<strong class="title" title="빨대 세척솔"> ${list[status.index].productName}</strong>
+														<div class="area_price">
+															<strong class="price"><span class="number">${list[status.index].productPrice}</span>
+															<span class="currency">원</span></strong>
+														</div>
+													</a>
+													<a href="frontBasket?command=basketInsert&pno=${list[status.index].productNum}">장바구니에 담기</a>
+												</td>
+								</c:forEach>					
+						</tr>
+				</table>
+			</div>
+
+<%@ include file="../footer.jsp" %>
+  </body>
 </html>
+
+

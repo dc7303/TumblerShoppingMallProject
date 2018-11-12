@@ -15,11 +15,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel='stylesheet' href='${pageContext.request.contextPath}/lib/bootstrap/dist/css/bootstrap.min.css'>
 <link rel='stylesheet' href='${pageContext.request.contextPath}/css/style1.css'>
+<link rel='stylesheet' href='${pageContext.request.contextPath}/css/common.css'>
+<link rel='stylesheet' href='${pageContext.request.contextPath}/css/basic.css'>
 </head>
 <body>
 
-<jsp:include page="../nav.jsp"></jsp:include>
-
+<%@ include file="../nav.jsp" %>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class='container'>
  <center>
   <h3>공   지</h3>
@@ -69,7 +75,7 @@
   </ul>
 </nav>
 </div>
-<jsp:include page="../footer.jsp"></jsp:include>
+<%@ include file="../footer.jsp" %>
 
 
 
