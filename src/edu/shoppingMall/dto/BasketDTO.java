@@ -1,5 +1,9 @@
 package edu.shoppingMall.dto;
 
+/**
+ * @author sorry
+ *
+ */
 public class BasketDTO {
     private int basketNum;              //장바구니번호
     private int productNum;             //상품번호
@@ -7,6 +11,7 @@ public class BasketDTO {
     private String basketOption;        //옵션
     private int basketQuantity;         //수량
     private int basketPrice;            //총가격
+    private ProductDTO productDto; // productDTO
     public BasketDTO(int basketNum, int productNum, String userId, String basketOption, int basketQuantity,
             int basketPrice) {
         super();
@@ -53,6 +58,11 @@ public class BasketDTO {
     public void setBasketPrice(int basketPrice) {
         this.basketPrice = basketPrice;
     }
-    
+	public ProductDTO getProductDto() {
+		return productDto;
+	}
+	public void setProductDto(ProductDTO productDto) {
+		this.productDto = productDto;
+	}
     
 }

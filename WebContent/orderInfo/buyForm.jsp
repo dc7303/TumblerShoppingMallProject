@@ -86,36 +86,59 @@
     <input type="button" value="이전 페이지" id="backBtn"/>
     <br/><br/>
     <form action = "" method = "post" name = "orderInputT">
-	    <table class ="orderInfoTable">
-	      <tr>
-	        <th>상품/옵션정보</th>
-	        <th>수량</th>
-	        <th>상품금액</th>
-	        <th>할인금액</th>
-	        <th>배송비</th>
-	      </tr>
-	  <c:choose>
+       <table class ="orderInfoTable">
+         <tr>
+           <th>상품/옵션정보</th>
+           <th>수량</th>
+           <th>상품금액</th>
+           <th>할인금액</th>
+           <th>배송비</th>
+         </tr>
+     <c:choose>
         <c:when test="${param.flag == 'buyNow' }">
-	      <tr>
-	        <td class="optionInfoT">
-	          <img src = "${applicationScope.conPath }/img/1.jpg" class="tableInImg"/>
-	          <strong class = "optionProName">${param.proName }</strong><br/><br/>
-	          ${param.option }
-	        </td>
-	        <td>
-	          ${param.amount }
-	        </td>
-	        <td>
-	          <fmt:formatNumber>${param.proPrice * param.amount }</fmt:formatNumber>원
-	        </td>
-	        <td>0원</td>
-	        <td>무료배송</td>
-	      </tr>
-	    </table>
-	       <input type = "hidden" name="proNum" value = "${param.proNum }"/>
+         <tr>
+           <td class="optionInfoT">
+             <img src = "${applicationScope.conPath }/img/1.jpg" class="tableInImg"/>
+             <strong class = "optionProName">${param.proName }</strong><br/><br/>
+             ${param.option }
+           </td>
+           <td>
+             ${param.amount }
+           </td>
+           <td>
+             <fmt:formatNumber>${param.proPrice * param.amount }</fmt:formatNumber>원
+           </td>
+           <td>0원</td>
+           <td>무료배송</td>
+         </tr>
+       </table>
+          <input type = "hidden" name="proNum" value = "${param.proNum }"/>
            <input type = "hidden" name="amount" value = "${param.amount }"/>
            <input type = "hidden" name="option" value = "${param.option }"/>
-	  </c:when>
+     </c:when>
+     <c:otherwise>
+        <c:set var="i" value="0"></c:set>
+     	<c:forEach items="${list}" var="item">
+     	<tr>
+           <td class="optionInfoT">
+             <img src = "${applicationScope.conPath }/img/${item.productDto.productPicture}" class="tableInImg"/>
+             <strong class = "optionProName">${item.productDto.productName}</strong><br/><br/>
+             ${item.basketOption}
+           </td>
+           <td>
+             ${item.getBasketQuantity()}
+           </td>
+           <td>
+           		
+             <fmt:formatNumber>${item.basketPrice}</fmt:formatNumber>원
+           </td>
+           <td>0원</td>
+           <td>무료배송</td>
+         </tr>           			
+     		<c:set var ="i" value = "${i + item.basketPrice }"/>
+     	</c:forEach>
+     
+     </c:otherwise>
     </c:choose>
     <br/><br/><br/>
     <span class="tableName">배송지 정보 입력</span>
@@ -146,7 +169,14 @@
          <th>총 합계</th>
          <td><span class = "totalPrice">
          <fmt:formatNumber>
+           <c:choose>
+        	<c:when test="${param.flag == 'buyNow' }">
            ${param.proPrice * param.amount }
+           </c:when>
+				<c:otherwise>
+           			${i}
+           		</c:otherwise>
+           </c:choose>
          </fmt:formatNumber>&nbsp;&nbsp;</span> 원</td>
         </tr>
       </table><br/>

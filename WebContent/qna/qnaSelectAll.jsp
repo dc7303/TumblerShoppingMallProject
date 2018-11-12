@@ -3,18 +3,32 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지 게시판</title>
 <!--  부트스트랩 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/lib/bootstrap/dist/css/bootstrap.min.css'>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style1.css'>
+<script src="${conPath}/lib/jquery-3.3.1.min.js"></script>
+<script src="${conPath}/lib/SemanticUI/semantic.min.js"></script>
+<link rel='stylesheet' href='${conPath}/css/common.css'>
+<link rel='stylesheet' href='${conPath}/css/basic.css'>
+<link rel="stylesheet" type="text/css" href="${conPath}/lib/SemanticUI/semantic.min.css">
+<style>
+  .table-container {
+  	width :600px;
+  	margin-left: 250px;
+	margin-top : 135px;
+	margin-bottom: 200px;
+  }	
+  
+  .table-container a{
+  		float:right;
+  }
+  .trTable td{
+  	text-align:center;
+  }
+</style>
 </head>
 <body>
 
@@ -22,31 +36,20 @@
 
 <div class='container'>
  <center>
-  <h3>공   지</h3>
+  <h3>QnA게시판</h3>
 </center>
 
 
-<nav class="navbar navbar-light justify-content-between">
-  <a href='qna/qnaInsert.jsp' class='btn btn-primary btn-sm'>추가</a>
-  <form class="form-inline">
-    <input id="words" name="words"
-           class="form-control form-control-sm mr-sm-2" type="search"
-           placeholder="검색" aria-label="Search">
-    <button id="searchBtn" class="btn btn-sm btn-outline-success my-2 my-sm-0"
-            type="button">Search</button>
-  </form>
-</nav>
+<div class='table-container'>
+<table class="ui celled padded table">
+  <thead >
+    <tr><th class="single line">번호</th><th>제목</th><th>등록일</th><th>작성자</th>
+  </tr>
+  </thead>
+  <tbody>
 
-<table id="list" class='table table-hover'>
-<thead>
-<tr>
-    <th>번호</th><th>제목</th><th>등록일</th><th>작성자</th>
-</tr>
-</thead>
-
-<tbody>
 	<c:forEach items="${requestScope.list}" var="item">
-		    <tr>
+		    <tr class="trTable">
 		            <td>${item.qnaBoardQno}</td> 
 					<td><a href="frontQna?command=qnaRead&qnaBoardQno=${item.qnaBoardQno}">
 					  ${item.qnaBoardSubject}</a></td>
@@ -54,25 +57,31 @@
                      <td>${item.qnaBoardUserId}</td>
 		    </tr>
     </c:forEach>
-</tbody>
-</table>
-
-<nav aria-label="Page navigation">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-        <a id="prevBtn" class="page-link" tabindex="-1">이전</a></li>
+  </tbody>
+  <tfoot>
+  
+    <tr>
+    <th colspan="4">
+            <div class="ui right floated pagination menu">
+        <a class="icon item" id="prevBtn">
+          <i class="left chevron icon"></i>
+        </a>
         
-    <li class="page-item">
-        <a id="currBtn" class="page-link" href="#">1</a></li>
-    
-    <li class="page-item ">
-        <a id="nextBtn" class="page-link" tabindex="0">다음</a></li>
-  </ul>
-</nav>
+        <a  id="currBtn"  class="item">1</a>
+        
+        <a class="icon item" id="nextBtn">
+          <i class="right chevron icon"></i>
+        </a>
+	</div>
+    </th>
+  </tr>
+  </tfoot>
+</table>
+    <a href='qna/qnaInsert.jsp' ><button class="ui black basic button">Write</button></a>
+
+</div>
 </div>
 <jsp:include page="../footer.jsp"></jsp:include>
-
-
 
 <script type="text/javascript">
 var currPageNo = 1;

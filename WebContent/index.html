@@ -32,10 +32,17 @@
 					str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
 					$("#sign").html(str);
 				} else {
+<<<<<<< HEAD
 					str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>";
 					    str += "<a href = 'product/productList.jsp'>상품리드테스트</a>;"          //지워야함
 						str += "<a>/</a>";
 						str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>";
+=======
+					str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
+						str += "<a>/</a>"
+						str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
+						str += "<a>/</a>"+"<a href='frontBasket?command=basketByUserID&flag=no'>&nbsp;장바구니</a>"
+>>>>>>> origin/sorryisme
 						$("#sign").html(str);
 				}
 			},
@@ -80,7 +87,7 @@
 
       <span>
         <!--productlist.jsp 연걸 -->
-        <a href="#none">  PRODUCT  </a>
+        <a href="frontProduct?command=productSelectAll">  PRODUCT  </a>
       </span>
 
       <span>

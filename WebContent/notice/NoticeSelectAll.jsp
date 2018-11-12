@@ -4,72 +4,83 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지 게시판</title>
-<!--  부트스트랩 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/lib/bootstrap/dist/css/bootstrap.min.css'>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style1.css'>
+<script src="${conPath}/lib/jquery-3.3.1.min.js"></script>
+<script src="${conPath}/lib/SemanticUI/semantic.min.js"></script>
+<link rel='stylesheet' href='${conPath}/css/common.css'>
+<link rel='stylesheet' href='${conPath}/css/basic.css'>
+<link rel="stylesheet" type="text/css" href="${conPath}/lib/SemanticUI/semantic.min.css">
+<style>
+  .table-container {
+  	width :600px;
+  	margin-left: 250px;
+	margin-top : 135px;
+	margin-bottom: 200px;
+  }	
+  
+  .table-container a{
+  		float:right;
+  }
+  .trTable td{
+  	text-align:center;
+  }
+  
+
+</style>
 </head>
 <body>
 
-<jsp:include page="../nav.jsp"></jsp:include>
+<jsp:include page="../nav.jsp"/>
 
 <div class='container'>
  <center>
   <h3>공   지</h3>
 </center>
 
-
-<nav class="navbar navbar-light justify-content-between">
-  <a href='notice/NoticeInsert.jsp' class='btn btn-primary btn-sm'>추가</a>
-  <form class="form-inline">
-    <input id="words" name="words"
-           class="form-control form-control-sm mr-sm-2" type="search"
-           placeholder="검색" aria-label="Search">
-    <button id="searchBtn" class="btn btn-sm btn-outline-success my-2 my-sm-0"
-            type="button">Search</button>
-  </form>
-</nav>
-
-<table id="list" class='table table-hover'>
-<thead>
-<tr>
-    <th>번호</th><th>제목</th><th>등록일</th>
-</tr>
-</thead>
-
-<tbody>
-	<c:forEach items="${requestScope.list}" var="noticeDto">
-		    <tr>
-		            <td>${noticeDto.getNoticeBoardNum()}</td> 
-					<td><a href="frontNotice?command=noticeRead&noticeBoardNum=${noticeDto.getNoticeBoardNum()}">
+<div class='table-container'>
+<table class="ui celled padded table">
+  <thead >
+    <tr><th class="single line">번호</th><th>제목</th><th>등록일</th>
+  </tr>
+  </thead>
+  <tbody>
+  
+     <c:forEach items="${requestScope.list}" var="noticeDto">
+		    <tr class="trTable">
+		            <td class="single line">${noticeDto.getNoticeBoardNum()}</td> 
+					<td class="single line"><a href="frontNotice?command=noticeRead&noticeBoardNum=${noticeDto.getNoticeBoardNum()}">
 					  ${noticeDto.getNoticeBoardSubject()}</a></td>
-                     <td>${noticeDto.getDate()} </td>
+                     <td class="single line">${noticeDto.getDate()} </td>
 		    </tr>
     </c:forEach>
-</tbody>
-</table>
-
-<nav aria-label="Page navigation">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-        <a id="prevBtn" class="page-link" tabindex="-1">이전</a></li>
-        
-    <li class="page-item">
-        <a id="currBtn" class="page-link" href="#">1</a></li>
     
-    <li class="page-item ">
-        <a id="nextBtn" class="page-link" tabindex="0">다음</a></li>
-  </ul>
-</nav>
+  </tbody>
+  <tfoot>
+  
+    <tr>
+    <th colspan="3s">
+            <div class="ui right floated pagination menu">
+        <a class="icon item" id="prevBtn">
+          <i class="left chevron icon"></i>
+        </a>
+        <a  id="currBtn"  class="item">1</a>
+        <a class="icon item" id="nextBtn">
+          <i class="right chevron icon"></i>
+        </a>
+	</div>
+    </th>
+  </tr>
+  </tfoot>
+</table>
+    <a href='notice/NoticeInsert.jsp' ><button class="ui black basic button">Write</button></a>
+
 </div>
-<jsp:include page="../footer.jsp"></jsp:include>
+</div>
+<jsp:include page="../footer.jsp"/>
 
 
 
@@ -93,16 +104,16 @@ $('#nextBtn').click(function() {
 
 $(function(){
 	if (pageNo == 1) {
-	    $("#prevBtn").parent().addClass("disabled");
+	    $("#prevBtn").addClass("disabled");
 	} else {
-		$("#prevBtn").parent().removeClass("disabled");
+		$("#prevBtn").removeClass("disabled");
 	}
 	
 	//자바에서 값이 없다면 다음버튼 disable
 	if (lastPageNo == pageNo) {
-	    $("#nextBtn").parent().addClass("disabled");
+	    $("#nextBtn").addClass("disabled");
 	} else {
-	    $("#nextBtn").parent().removeClass("disabled");
+	    $("#nextBtn").removeClass("disabled");
 	}
 
 });

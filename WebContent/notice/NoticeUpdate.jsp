@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>공지 게시판</title>
 <!--  부트스트랩 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/lib/bootstrap/dist/css/bootstrap.min.css'>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style1.css'>
+<script src="${conPath}/lib/jquery-3.3.1.min.js"></script>
+<script src="${conPath}/lib/SemanticUI/semantic.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${conPath}/lib/SemanticUI/semantic.min.css">
 <SCRIPT >
 function checkValid() {
 	var f = window.document.updateForm;
@@ -28,50 +28,52 @@ function checkValid() {
 }
 
 </SCRIPT>
-
+<style>
+ .table-container {
+  	width :600px;
+  	margin-left: 250px;
+	margin-top : 135px;
+	margin-bottom: 200px;
+  }	
+  .floatRight{
+  	float:right;
+  }
+</style>
 </HEAD>
 
 <BODY>
 
-
+<jsp:include page="../nav.jsp"/>
 <div class='container'>
   <center>
 <h3>공 지 등 록</h3>
 </center>
 
 
-<form name=updateForm method=post action="${path}/frontNotice" onSubmit="return checkValid()">
-
+<div class="table-container ">
+<form class="ui form" name=updateForm method=post action="frontNotice" onSubmit="return checkValid()">
 <input type="hidden" name="command" value="noticeUpdate" >
 <input type='hidden' name='NoticeNum' value="${noticeDto.getNoticeBoardNum()}">
 
-<div class='form-group row'>
-<label for='noticeTitle' class='col-sm-2 col-form-label'>공지제목</label>
-<div class='col-sm-10'>
-<input class='form-control' id='noticeTitle' type='text' name='title' value='${noticeDto.noticeBoardSubject}'>
-</div>
-</div>
+  
+  <div class="field">
+    <label>제목</label>
+    <input type="text" id='noticeTitle' type='text' name='title' value='${noticeDto.noticeBoardSubject}'>
+  </div>
+  
+  <div class="field">
+    <label>내용</label>
+	<textarea rows="10" cols="50" class='form-control' id='noticeDescription' name='content' >${noticeDto.noticeBoardContent}
+	</textarea>
+  </div>
 
-<div class='form-group row'>
-<label for='noticeDescription' class='col-sm-2 col-form-label'>공지내용</label>
-<div class='col-sm-10'>
-<textarea rows="10" cols="50" class='form-control' id='noticeDescription' name='content' >${noticeDto.noticeBoardContent}
-</textarea>
-</div>
-</div>
-	
-<div class='form-group row'>
-<div class='col-sm-10'>
-<input type="submit" value="수정하기" class='btn btn-primary btn-sm my-new'/>
-<a href="${path}/frontNotice?command=noticeSelectAll"><input type="button" value="목록" class='btn btn-primary btn-sm my-new'/></a>
-
-</div>
-</div>
+ <a href="frontNotice?command=noticeSelectAll"><input type=button value="목록으로" class='ui black basic button floatRight'></a>
+<input type="submit" value="수정하기" class='ui black basic button floatRight'>
+  
 </form>
-
-<footer>
-</footer>
 </div>
+
+<jsp:include page="../footer.jsp"/>
 
 
 </BODY>
