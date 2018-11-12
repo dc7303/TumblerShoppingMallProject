@@ -4,17 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지 게시판</title>
-<!--  부트스트랩 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/lib/bootstrap/dist/css/bootstrap.min.css'>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style1.css'>
+<script src="${conPath}/lib/jquery-3.3.1.min.js"></script>
+<script src="${conPath}/lib/SemanticUI/semantic.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${conPath}/lib/SemanticUI/semantic.min.css">
 <SCRIPT language=javascript>
 function checkValid() {
     var f = window.document.writeForm;
@@ -32,46 +29,46 @@ function checkValid() {
     return true;
 }
 </SCRIPT>
+<style>
+ .table-container {
+  	width :600px;
+  	margin-left: 250px;
+	margin-top : 135px;
+	margin-bottom: 200px;
+  }	
+  .floatRight{
+  	float:right;
+  }
+</style>
 
 </head>
 <body>
 
-
+<jsp:include page="../nav.jsp"/>
 
 <div class='container'>
-
   <center>
 <h3>공 지 등 록</h3>
 </center>
 
+<div class="table-container ">
+<form class="ui form" name="writeForm" method="post" action="../frontNotice?command=noticeInsert"  onSubmit='return checkValid()'>
+  <div class="field">
+    <label>title</label>
+    <input type="text" name="title" placeholder="title">
+  </div>
+  
+  <div class="field">
+    <label>Text</label>
+    <textarea rows="10" cols="50" name="content"></textarea>
+  </div>
 
-<form name="writeForm" method="post" action="../frontNotice?command=noticeInsert"  onSubmit='return checkValid()'>
-
-<div class='form-group row'>
-<label for='noticeTitle' class='col-sm-2 col-form-label'>공지제목</label>
-<div class='col-sm-10'>
-<input class='form-control' id='noticeTitle' type='text' name='title'>
-</div>
-</div>
-
-<div class='form-group row'>
-<label for='noticeDescription' class='col-sm-2 col-form-label'>공지내용</label>
-<div class='col-sm-10'>
-<textarea rows="10" cols="50" class='form-control' id='noticeDescription' name='content' >
-</textarea>
-</div>
-</div>
-
-<div class='form-group row'>
-<div class='col-sm-10'>
-<button id="addBtn" type="submit" class='btn btn-primary btn-sm my-new'>추가</button>
-</div>
-</div>
+  
+  <button type="submit" class="ui black basic button floatRight">Write</button>
 </form>
-
-<footer>
-</footer>
 </div>
+
+<jsp:include page="../footer.jsp"/>
 
 
 </body>

@@ -1,20 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
-<c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지 게시판</title>
-<!--  부트스트랩 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/lib/bootstrap/dist/css/bootstrap.min.css'>
-<link rel='stylesheet' href='${pageContext.request.contextPath}/css/style1.css'>
+<title>QnA 게시판</title>
+<script src="${conPath}/lib/jquery-3.3.1.min.js"></script>
+<script src="${conPath}/lib/SemanticUI/semantic.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${conPath}/lib/SemanticUI/semantic.min.css">
 <SCRIPT language=javascript>
 function checkValid() {
 	var f = window.document.writeForm;
@@ -44,69 +38,54 @@ function checkValid() {
     return true;
 }
 </SCRIPT>
+<style>
+ .table-container {
+  	width :600px;
+  	margin-left: 250px;
+	margin-top : 135px;
+	margin-bottom: 200px;
+  }	
+  .floatRight{
+  	float:right;
+  }
+</style>
 
 </head>
 <body>
 
-
+<jsp:include page="../nav.jsp"/>
 
 <div class='container'>
-
   <center>
-<h3>QnA 등록</h3>
+<h3>QnA 등 록</h3>
 </center>
 
+<div class="table-container ">
+<form class="ui form"  name="writeForm" method="post" action="../frontQna?command=qnaInsert"  onSubmit='return checkValid()' enctype="multipart/form-data">
+  <div class="field">
+    <label>제목</label>
+    <input type="text" id='qnaBoardSubject' type='text' name='qnaBoardSubject'>
+  </div>
+  
+  <div class="field">
+    <label>내용</label>
+    <textarea rows="10" cols="50" class='form-control' id='qnaBoardContent' name='qnaBoardContent' ></textarea>
+  </div>
+  
+    <div class="field">
+    <label>비밀번호</label>
+    <input type="text" id='qnaBoardPwd' type='password' name='qnaBoardPwd'>
+  </div>
 
-<form name="writeForm" method="post" action="../frontQna?command=qnaInsert"  onSubmit='return checkValid()' enctype="multipart/form-data">
-
-
-<div class='form-group row'>
-<label for='noticeTitle' class='col-sm-2 col-form-label'>제목</label>
-<div class='col-sm-10'>
-<input class='form-control' id='qnaBoardSubject' type='text' name='qnaBoardSubject'>
-</div>
-</div>
-
-<div class='form-group row'>
-<label for='qnaBoardContent' class='col-sm-2 col-form-label'>내용</label>
-<div class='col-sm-10'>
-<textarea rows="10" cols="50" class='form-control' id='qnaBoardContent' name='qnaBoardContent' >
-</textarea>
-</div>
-</div>
-
-<div class='form-group row'>
-<label for='qnaBoardPwd' class='col-sm-2 col-form-label'>비밀번호</label>
-<div class='col-sm-10'>
-<input class='form-control' id='qnaBoardPwd' type='password' name='qnaBoardPwd'>
-</div>
-</div>
-
-
-<div class='form-group row'>
-<label for='qnaBoardPwd' class='col-sm-2 col-form-label'>파일</label>
-<div class='col-sm-10'>
-<input class='form-control' id='qnaBoardPhoto' type='file' name='qnaBoardPhoto'>
-</div>
-</div>
-
-
-
-
-
-<div class='form-group row'>
-<div class='col-sm-10'>
-
-<button id="addBtn" type="submit" class='btn btn-primary btn-sm my-new'>추가</button>
-<a href="../qna?command=qnaSelectAll"><button id="listBtn" type="button" class='btn btn-primary btn-sm my-new'>목록</button></a>
-
-</div>
-</div>
+    <div class="field">
+    <label>사진</label>
+    <input type="file" class='form-control' id='qnaBoardPhoto' type='file' name='qnaBoardPhoto'>
+  </div>
+  <button type="submit" class="ui black basic button floatRight">Write</button>
 </form>
-
-<footer>
-</footer>
 </div>
+
+<jsp:include page="../footer.jsp"/>
 
 
 </body>

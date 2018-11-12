@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-		<div class="footer">
-			<div class="border">
+<html lang="ko">
+
+<head>
+	<title>footer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="${applicationScope.conPath }/css/footer.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+		<div class="footerDiv">
+			<div class="borderDiv">
 
 				<hr class="hr01">
 
@@ -64,4 +75,6 @@
 		</div>
 	</div>
 	</div>
+</body>
 
+</html>
