@@ -42,6 +42,8 @@
             if($(this).attr('class')=='goBuy'){
               if($('input[name=userId]').val() == null || $('input[name=userId]').val() == ""){
                 alert("로그인 후 사용해주세요.")
+              }else if ($('select[name=option]').val()=='0') {
+                alert('옵션을 선택핵주세요');
               }else{
                 $(this).parent().attr("action", "product/buyForm.jsp");
                 $(this).parent().submit();
@@ -161,36 +163,36 @@
     <span class = "readListName">카드혜택안내</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href = "#">혜택 알아보기</a><br/>
     <hr/>
-    <span class = "readListName">옵션</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <select name = "option">
-      <option value = "0">선택하세요</option>
-      <option value = "1">기본</option>
-    </select><br/><br/>
-    <span class = "readListName">주문수량</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <select>
-      <c:forEach begin="1" end="10" var="i">
-        <option value = "${i }">${i }</option>
-      </c:forEach>
-    </select><br/><br/>
-    <span class = "readListName">관련 EVENT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href = "#" class ="eventMessage">현재 진행중인 이벤트가 없습니다.</a><br/><br/>
-    <hr/>
-      <span class = "readListName">
-        주문 후 배송은 1~2일 정도 소요되며, 공휴일 또는 명절이 겹쳐있을 경우 지연될 수 있습니다.
-      </span>
-    <hr/>
     <form action = "" method = "post">
-      <input type = "hidden" name = "proName" value="${proDTO.getProductName() }"/>
-      <input type = "hidden" name = "proInfo" value="${proDTO.getProductInfo() }"/>
-      <input type = "hidden" name = "proPrice" value="${proDTO.getProductPrice() }"/>
-      <input type = "hidden" name = "proPicture" value="${proDTO.getProductPicture() }"/>
-      <input type = "hidden" name = "proBrand" value="${proDTO.getProductBrand() }"/>
-      <input type = "hidden" name = "proQuantity" value="${proDTO.getProductQuantity() }"/>
-      <input type = "hidden" name = "userId" value="${userDTO.getUserId() }"/>
-      <a href = "#" name = "btn" class = "goBasket"><img src = "img/proReadBtn/btn_basket.png"/></a>
-      <a href = "#" name = "btn" class = "goBuy"><img src = "img/proReadBtn/btn_buy_now.png"/></a>
+	    <span class = "readListName">옵션</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <select name = "option">
+	      <option value = "0">선택하세요</option>
+	      <option value = "기본">기본</option>
+	    </select><br/><br/>
+	    <span class = "readListName">주문수량</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <select name = "amount">
+	      <c:forEach begin="1" end="10" var="i">
+	        <option value = "${i }">${i }</option>
+	      </c:forEach>
+	    </select><br/><br/>
+	    <span class = "readListName">관련 EVENT</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <a href = "#" class ="eventMessage">현재 진행중인 이벤트가 없습니다.</a><br/><br/>
+	    <hr/>
+	      <span class = "readListName">
+	        주문 후 배송은 1~2일 정도 소요되며, 공휴일 또는 명절이 겹쳐있을 경우 지연될 수 있습니다.
+	      </span>
+	    <hr/>
+	    <input type = "hidden" name = "proNum" value="${proDTO.getProductNum() }"/>
+	    <input type = "hidden" name = "proName" value="${proDTO.getProductName() }"/>
+	    <input type = "hidden" name = "proInfo" value="${proDTO.getProductInfo() }"/>
+	    <input type = "hidden" name = "proPrice" value="${proDTO.getProductPrice() }"/>
+	    <input type = "hidden" name = "proPicture" value="${proDTO.getProductPicture() }"/>
+	    <input type = "hidden" name = "proBrand" value="${proDTO.getProductBrand() }"/>
+        <input type = "hidden" name = "proQuantity" value="${proDTO.getProductQuantity() }"/>
+        <a href = "#" name = "btn" class = "goBasket"><img src = "img/proReadBtn/btn_basket.png"/></a>
+	    <a href = "#" name = "btn" class = "goBuy"><img src = "img/proReadBtn/btn_buy_now.png"/></a>
     </form>
   </div>
 </div>

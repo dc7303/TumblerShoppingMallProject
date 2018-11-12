@@ -362,4 +362,5 @@ insert into tb_basket values(basket_seq.nextval, 1003,'test2','test-option1',2,2
 insert into tb_basket values(basket_seq.nextval, 1003,'test2','test-option1',3,3000);
 insert into tb_basket values(basket_seq.nextval, 1001,'test1','test-option1',1,1000);
 select * from tb_basket;
->>>>>>> sorryisme
+
+commit
