@@ -27,18 +27,18 @@
   <style>
   
   .orderListT {
-    border:2px solid #333;
+    border-top:2px solid #333;
+    border-bottom:1px solid #333;
   }
   
   th {
-    border:1px solid #333;
     background-color:#333;
     color:lightgrey;
   }
   
   td {
-    border:1px solid grey; 
     text-align:center;
+    height:60px;
   }
   
   .failList {

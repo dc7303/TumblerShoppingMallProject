@@ -48,6 +48,11 @@
         window.open('user/signUp.jsp', 'signup', 'width=550 height=500')
     }
     */
+    $(function(){
+      $('#backBtn').on('click', function(){
+        history.back();
+      });
+    });
         </script>
   <style>
   .w3-sidebar a {font-family: "Roboto", sans-serif}
@@ -77,7 +82,7 @@
   
   .orderInfoTable th {
     background-color:#333;
-    color:grey;
+    color:lightgrey;
     border:1px solid #333;  
   }
   
@@ -134,7 +139,7 @@
   
   .totalPriceT th {
     background-color:#333;
-    color:grey;
+    color:lightgrey;
     font-size:20px;
     width:200px;
     text-align:left;
@@ -154,8 +159,12 @@
   }
   
   .payBtn {
-   float:left;
-   padding-right:10px;
+    float:right;
+    padding-right:10px;
+  }
+  .backBtn {
+    float:right;
+    padding-top:1px;
   }
   </style>
 </head>
@@ -165,38 +174,42 @@
 
 <div class="main">
   <div class = "buyTop">
-    <img src = "../img/buyForm/buy_top_text.png"/>
+    <img src = "${applicationScope.conPath }/img/buyForm/buy_top_text.png"/>
     <hr/><br/>
   </div>
   <div class = "buyProTable">
     <span class= tableName>주문상품 확인</span>
-    * 상품수량 및 옵션병경은 상품상세 또는 장바구니에서 가능합니다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="이전 페이지"/>
+    * 상품수량 및 옵션병경은 상품상세 또는 장바구니에서 가능합니다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="이전 페이지" id="backBtn"/>
     <br/><br/>
     <form action = "" method = "">
-    <table class ="orderInfoTable">
-      <tr>
-        <th>상품/옵션정보</th>
-        <th>수량</th>
-        <th>상품금액</th>
-        <th>할인금액</th>
-        <th>배송비</th>
-      </tr>
-      <tr>
-        <td class="optionInfoT">
-          <img src = "../img/1.jpg" class="tableInImg"/>
-          <strong class = "optionProName">${param.proName }</strong><br/><br/>
-          ${param.option }
-        </td>
-        <td>
-          ${param.amount }
-        </td>
-        <td>
-          <fmt:formatNumber>${param.proPrice * param.amount }</fmt:formatNumber>원
-        </td>
-        <td>0원</td>
-        <td>무료배송</td>
-      </tr>
-    </table>
+    <c:choose>
+      <c:when test="${param.flag == 'buyNow' }">
+	    <table class ="orderInfoTable">
+	      <tr>
+	        <th>상품/옵션정보</th>
+	        <th>수량</th>
+	        <th>상품금액</th>
+	        <th>할인금액</th>
+	        <th>배송비</th>
+	      </tr>
+	      <tr>
+	        <td class="optionInfoT">
+	          <img src = "${applicationScope.conPath }/img/1.jpg" class="tableInImg"/>
+	          <strong class = "optionProName">${param.proName }</strong><br/><br/>
+	          ${param.option }
+	        </td>
+	        <td>
+	          ${param.amount }
+	        </td>
+	        <td>
+	          <fmt:formatNumber>${param.proPrice * param.amount }</fmt:formatNumber>원
+	        </td>
+	        <td>0원</td>
+	        <td>무료배송</td>
+	      </tr>
+	    </table>
+	  </c:when>
+    </c:choose>
     <br/><br/><br/>
     <span class="tableName">배송지 정보 입력</span>
     <c:set value="${sessionScope.userDTO }" var="userDTO"/>
@@ -230,8 +243,8 @@
          </fmt:formatNumber>&nbsp;&nbsp;</span> 원</td>
         </tr>
       </table><br/>
-      <a href = ""><img src = "../img/buyForm/btn_payment.png" class="payBtn"/></a>
-      <a href = ""><img src = "../img/buyForm/btn_backpage.png" class="backBtn"/></a>
+      <a href = ""><img src = "${applicationScope.conPath }/img/buyForm/btn_backpage.png" class="backBtn"/></a>
+      <a href = ""><img src = "${applicationScope.conPath }/img/buyForm/btn_payment.png" class="payBtn"/></a>
     </form>
   </div>
 </div>

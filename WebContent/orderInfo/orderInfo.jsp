@@ -6,24 +6,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-table {
+.orderProInfoT {
     border: 1px solid #333;
     width: 500px;
+    border-spacing:0px;
 }
 
-th {
+.orderProInfoT th {
     background-color: #333;
     color: lightgrey;
+    border:1px solid lightgrey
 }
 
-tr, td, th {
-    border: 1px solid #333;
+.orderProInfoT td {
+    border:1px solid lightgrey;
+    height:20px;
+}
+
+.proImg {
+  width:200px;
+  height:200px;
 }
 </style>
 </head>
 <body>
   <h3>주문 상품 정보</h3>
-  <table>
+  <table class="orderProInfoT">
     <tr>
       <th>주문번호</th>
       <td>${param.orderNum }</td>
@@ -49,7 +57,7 @@ tr, td, th {
       <td>${param.detailOption }</td>
     </tr>
     <tr>
-      <td colspan="2">상품이미지 들어갈 예정<img src ="${picture }"></td>
+      <td colspan="2"><img src ="${applicationScope.conPath }/img/1.jpg" class = "proImg"/></td>
     </tr>
   </table>
 </body>

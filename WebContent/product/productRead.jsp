@@ -7,11 +7,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/basic.css">
-  <link rel="stylesheet" href="css/main01.css">
-  <link rel="stylesheet" href="css/font-roboto.css">
-  <link rel="stylesheet" href="css/font-montserrat.css">
-  <link rel="stylesheet" href="css/font-montserrat-02.css">
-  <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/main01.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/font-roboto.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat-02.css">
+  <script type="text/javascript" src="${applicationScope.conPath }/lib/jquery-3.3.1.min.js"></script>
   
     <script>
     $(function(){
@@ -45,7 +45,8 @@
               }else if ($('select[name=option]').val()=='0') {
                 alert('옵션을 선택핵주세요');
               }else{
-                $(this).parent().attr("action", "product/buyForm.jsp");
+                $(this).parent().attr("action", "orderInfo/buyForm.jsp");
+                $('input[name=flag]').attr("value", "buyNow");
                 $(this).parent().submit();
               }
             }else if($(this).attr('class')=='goBasket'){
@@ -122,7 +123,7 @@
     border:solid 1.5px #6e6e6e;
   }
   
-  .readCenter>hr {
+  .readCenter hr {
     margin-left:448px;
   }
   
@@ -154,7 +155,7 @@
     <hr/><br/>
   </div>
   <div class = "readCenter">
-    <img src = "img/1.jpg" class= "readImg"/>
+    <img src = "${applicationScope.conPath }/img/1.jpg" class= "readImg"/>
     <span class = "freeDel">무료배송</span><br/><br/><br/>
     <span class = "readListName">판매가</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -191,8 +192,10 @@
 	    <input type = "hidden" name = "proPicture" value="${proDTO.getProductPicture() }"/>
 	    <input type = "hidden" name = "proBrand" value="${proDTO.getProductBrand() }"/>
         <input type = "hidden" name = "proQuantity" value="${proDTO.getProductQuantity() }"/>
-        <a href = "#" name = "btn" class = "goBasket"><img src = "img/proReadBtn/btn_basket.png"/></a>
-	    <a href = "#" name = "btn" class = "goBuy"><img src = "img/proReadBtn/btn_buy_now.png"/></a>
+	    <input type = "hidden" name = "userId" value="${userDTO.getUserId() }"/>
+	    <input type = "hidden" name = "flag" value = ""/>
+        <a href = "#" name = "btn" class = "goBasket"><img src = "${applicationScope.conPath }/img/proReadBtn/btn_basket.png"/></a>
+	    <a href = "#" name = "btn" class = "goBuy"><img src = "${applicationScope.conPath }/img/proReadBtn/btn_buy_now.png"/></a>
     </form>
   </div>
 </div>

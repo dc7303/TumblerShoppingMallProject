@@ -22,7 +22,6 @@ public class ProductDetailController implements Controller {
         
         String url="product/productRead.jsp";
 		String pno = request.getParameter("pno");
-		System.out.println(pno);
 		try {
 			ProductDTO dto = service.productSelectByProductNum(Integer.parseInt(pno));
 			request.setAttribute("dto", dto);

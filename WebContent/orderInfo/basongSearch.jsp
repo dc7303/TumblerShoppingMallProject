@@ -10,6 +10,7 @@
 table {
 	border: 1px solid #333;
 	width: 500px;
+	border-spacing:0px;
 }
 
 th {
@@ -18,7 +19,7 @@ th {
 }
 
 tr, td, th {
-	border: 1px solid #333;
+	border: 0.5px solid lightgrey;
 }
 </style>
 </head>
