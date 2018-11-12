@@ -21,6 +21,10 @@
         orderForm.submit();
       });
       
+      $(document).on("click", 'input[value=취소]', function(){
+        var orderNum = $(this).attr('name');
+        location.href="frontOrder?command=orderDelete&orderNum="+ orderNum;
+      });
       
     });
        
@@ -69,7 +73,7 @@
 	   <th width ="100px">배송비</th>
 	   <th width ="100px">배송조회</th>
 	   <th width ="180px">배송상태</th>
-	   <th>취소</th>
+	   <th>주문취소</th>
 	  </tr>
 	    <!-- 
 	    논리 연산자 주문이력이 있을 때 또는 배송상태가 배송완료가 아닐 때.  
@@ -79,7 +83,7 @@
 	    <!-- 배송조회는 히든으로 open할때 전해진다. -->
 		<c:choose>
 		<c:when test = "${not empty requestScope.orderList  }">
-			<c:forEach items="${requestScope.orderList }" var ="orderList">
+			<c:forEach items="${requestScope.orderList }" var ="orderList" varStatus="status">
 		        <tr>
 		            <td>${orderList.getOrderDate() }</td>
 		            <td>
@@ -135,6 +139,9 @@
                         </c:when>
                         <c:otherwise/>
 		              </c:choose>
+		            </td>
+		            <td>
+		              <input type = "button" value = "취소" name="${orderList.getOrderNum() }"/>
 		            </td>
 		        </tr>
 		    </c:forEach>

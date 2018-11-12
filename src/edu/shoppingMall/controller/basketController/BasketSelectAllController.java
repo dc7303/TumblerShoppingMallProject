@@ -26,7 +26,7 @@ public class BasketSelectAllController implements Controller {
     
     	    	BasketService service = BasketServiceImpl.getInstance();
     	    	ModelAndView  mv =new ModelAndView();
-    	    	 String url="basket/BasketSelectAll.jsp";
+    	    	 String url="basket/BasketSelectById.jsp";
     	    	 //System.out.println("출력됩니까");
     	    	try {
     		    	List<BasketDTO> list = service.basketSelectAll();

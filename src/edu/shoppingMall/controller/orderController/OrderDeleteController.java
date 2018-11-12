@@ -21,14 +21,14 @@ public class OrderDeleteController implements Controller {
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         OrderService service = OrderServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
+        
         int orderNum = Integer.parseInt(request.getParameter("orderNum"));
-        System.out.println(orderNum);
         
         String url = "/order/failView.jsp";
 
         try {
             service.orderDelete(orderNum);
-            url = "?command=orderSelectAll";
+            url = "frontOrder?command=orderByUserId&basongFlag=use";
             mv.setRedirect(true);
         } catch (SQLException e) {
             e.printStackTrace();

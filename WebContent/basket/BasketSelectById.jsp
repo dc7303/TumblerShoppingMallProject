@@ -10,6 +10,11 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="${applicationScope.conPath }/css/basket.css">
 <script src="${conPath}/lib/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/basic.css">
+  <link rel="stylesheet" href="css/main01.css">
+  <link rel="stylesheet" href="css/font-roboto.css">
+  <link rel="stylesheet" href="css/font-montserrat.css">
+  <link rel="stylesheet" href="css/font-montserrat-02.css">
 
 <script>
 $(function(){
@@ -87,7 +92,7 @@ $(function(){
   	 </table>
   	 <div class="total">
   	 </div>
-  	 			<a href = "#"><img src = "${applicationScope.conPath }/img/buyForm/btn_payment.png" class="payBtn" id="payBtn"/></a>
+  	 			<a href = "#"><img src = "${applicationScope.conPath }/img/buyForm/btn_payment.png" class="totalBuy" id="totalBuy"/></a>
   	   	 	  <button type="submit" class="totalBuy" id="totalBuy" >모두 구매</button>
     </div>
     </form>

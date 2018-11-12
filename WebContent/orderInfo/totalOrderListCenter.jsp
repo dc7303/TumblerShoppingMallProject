@@ -20,6 +20,13 @@
         window.open('', formTarget, 'width=550, height=500, resizable=no');
         orderForm.submit();
       });
+      
+      $(document).on("click", 'input[value=배송조회]', function(){
+        var formTarget = "basongSearch";
+        var basongForm = $(this).parent();//배송조회 폼이름
+        window.open('', formTarget, 'width=550, height=500, resizable=no');
+        basongForm.submit();
+      });
     });
        
   </script>
@@ -63,7 +70,8 @@
 	   <th width ="300px">주문상품정보</th>
 	   <th width ="120px">상품 금액(수량)</th>
 	   <th width ="100px">배송비</th>
-	   <th width ="100px">배송상태</th>
+	   <th width ="100px">배송조회</th>
+	   <th>배송상태</th>
 	  </tr>
 	    <!-- 
 	    논리 연산자 주문이력이 있을 때 또는 배송상태가 배송완료가 아닐 때.  
@@ -94,6 +102,21 @@
                         <p class = "px11">(구매수량:${orderList.getDetailDTO().getOrderDetailQuantity() })</p>
 		            </td>
 		            <td>무료</td>
+		            <td>
+                      <c:set  value = "${orderList.getBasongDTO() }" var = "basongInfo"/>
+                      <form name = "basongForm" action="orderInfo/basongSearch.jsp" method = "post" target="basongSearch">
+                        <input type = "hidden" name = "proName" value ="${orderList.getProDTO().getProductName() }"/>
+                        <input type = "hidden" name = "orderNum" value ="${orderList.getOrderNum() }"/>
+                        <input type = "hidden" name = "basongNum" value ="${basongInfo.getBasongNum() }"/>
+                        <input type = "hidden" name = "company" value ="${basongInfo.getBasongCompany() }"/>
+                        <input type = "hidden" name = "invoiceNum" value ="${basongInfo.getBasongInvoiceNum() }"/>
+                        <input type = "hidden" name = "basongAddr" value ="${basongInfo.getBasongAddr() }"/>
+                        <input type = "hidden" name = "basongPhone" value ="${basongInfo.getBasongPhone() }"/>
+                        <input type = "hidden" name = "basongDate" value ="${basongInfo.getBasongDate() }"/>
+                        <input type = "hidden" name = "status" value ="${basongInfo.getBasongStatus() }"/>
+                        <input type ="button" value ="배송조회"/>
+                      </form> 
+                    </td>
                     <td>
                       <c:set value="${orderList.getBasongDTO().getBasongStatus() }" var ="basongStatus"/>
                       <c:choose>
