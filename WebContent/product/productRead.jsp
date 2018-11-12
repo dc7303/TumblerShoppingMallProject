@@ -31,7 +31,7 @@
             if($('input[name=userId]').val() == null || $('input[name=userId]').val() == ""){
               alert("로그인 후 사용해주세요.")
             }else{
-              $(this).parent().attr("action", "product/basketForm.jsp");
+              $(this).parent().attr("action", "frontBasket?command=basketSelectAll");
               $(this).parent().submit();
             }
           }
