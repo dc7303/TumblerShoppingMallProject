@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-roboto.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat-02.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/productRead.css">
   <script type="text/javascript" src="${applicationScope.conPath }/lib/jquery-3.3.1.min.js"></script>
   
     <script>
@@ -72,73 +73,6 @@
   .w3-sidebar a {font-family: "Roboto", sans-serif}
   body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
-  .main {
-    padding-top:135px;
-    padding-bottom:250px;
-    padding-left:300px;
-    padding-right:300px;
-  }
-  
-  .readTop {
-    padding-top:30px;
-  }
-  
-  .readBrand {
-    color:#AE905E;
-    font-size:25px;
-  }
-  
-  .readProName {
-    color:#333;
-    font-size:35px;
-    font-weight:bold ;
-  }
-  
-  .readInfo {
-    color:#a0a0a0;
-  }
-  
-  .readImg {
-    width:450px;
-    height:550px;
-    float:left;
-    padding-right: 100px;
-  }
-  
-  .freeDel {
-    font-size:10px;
-    border:1px solid #a0a0a0;
-  }
-  
-  .readListName {
-    color:#6e6e6e;
-  }
-  
-  .readPrice {
-    font-size:25px;
-    font-weight:bold;
-  }
-  
-  .readTop>hr {
-    border:solid 1.5px #6e6e6e;
-  }
-  
-  .readCenter hr {
-    margin-left:448px;
-  }
-  
-  .eventMessage {
-    color:#32B8FF;
-  }
-  
-  .goBasket {
-    float:left;
-    padding-left:140px;
-  }
-  
-  .goBuy {
-    float:right;
-  }
   </style>
 </head>
 

@@ -27,10 +27,12 @@ public class OrderInsertController implements Controller {
             throws ServletException, IOException {
         OrderService service = OrderServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
+        HttpSession session = request.getSession();
 
         // TB_Order Table
-        String userId = request.getParameter("userId");
-        String orther = request.getParameter("orther");
+        UserInfoDTO userDTO = (UserInfoDTO)session.getAttribute("userDTO");
+        String userId = userDTO.getUserId();            //유저아이디
+        String comment = request.getParameter("comment");//기타사항
 
         // TB_Detail Table
         int proNum= Integer.parseInt(request.getParameter("proNum"));
@@ -50,8 +52,8 @@ public class OrderInsertController implements Controller {
         String url = "/order/failView.jsp";
 
         try {
-            service.orderInsert(new OrderDTO(userId, orther, detailDTO, basongDTO));
-            url = "/order/orderInsertSuccess.jsp";
+            service.orderInsert(new OrderDTO(userId, comment, detailDTO, basongDTO));
+            url = "/orderInfo/orderInsertSuccess.jsp";
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMsg", e.getMessage());

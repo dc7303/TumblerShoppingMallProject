@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-roboto.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat-02.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/buyForm.css">
   <script type="text/javascript" src="${applicationScope.conPath }/lib/jquery-3.3.1.min.js"></script>
   
     <script>
@@ -52,120 +53,22 @@
       $('#backBtn').on('click', function(){
         history.back();
       });
+      
+      $('.backBtn').on('click', function(){
+        history.back();
+      });
+      
+      $('.payBtn').on('click', function(){
+        if($('input[name=flag]').val() == 'buyNow'){
+          $('form[name=orderInputT]').attr('action', '../frontOrder?command=orderInsert');
+          $('form[name=orderInputT]').submit();
+        }
+      });
     });
         </script>
   <style>
   .w3-sidebar a {font-family: "Roboto", sans-serif}
   body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-
-  .main {
-    padding-top:135px;
-    padding-bottom:250px;
-    padding-left:300px;
-    padding-right:300px;
-  }
-    
-  .buyTop>hr {
-    margin-top:20px;
-    border:solid 2px #6e6e6e;
-  }
-  
-  .buyTop>img {
-    padding-top:20px;
-  }
-  
-  .orderInfoTable {
-    border:2px solid #333;
-    width:100%;
-    text-align:center;
-  }
-  
-  .orderInfoTable th {
-    background-color:#333;
-    color:lightgrey;
-    border:1px solid #333;  
-  }
-  
-  
-  .tableName {
-    font-weight:bold;
-    font-size:17px;
-    padding-right:260px;
-  }
-  
-  .tableInImg{
-    float:left;
-    width:100px;
-    height:100px;
-    margin-right:30px;
-    margin-left:20px;
-  }
-  
-  .optionInfoT {
-    text-align:left;
-    padding-top:10px;
-  }
-  
-  .basongInfoTable {
-    width:100%;
-    border-bottom:1px solid #333;
-    border-top:3px solid #333;
-  }
-  
-  .basongInfoTable th {
-    background-color:#FAFAFA;
-    height:80px;
-    text-align:left;
-    padding-left:30px;
-  }
-  
-  .basongInfoTable td {
-    background-color:#FAFAFA;
-    height:80px;
-    padding-left:20px;
-  }
-  
-  .commentBottom {
-    color:#32B8FF;
-    font-size:12px;
-  }
-  
-  .totalPriceT {
-    margin-top:15px;
-    border:3px solid #333;
-    width:100%;
-    height:90px;
-  }
-  
-  .totalPriceT th {
-    background-color:#333;
-    color:lightgrey;
-    font-size:20px;
-    width:200px;
-    text-align:left;
-    padding-left:15px;
-  }
-  
-  .totalPriceT td {
-    background-color:#FAFAFA;
-    text-align:right;
-    padding-right:30px;
-  }
-  
-  .totalPrice {
-    color:blue;
-    font-size:30px;
-    font-weight:bolder;
-  }
-  
-  .payBtn {
-    float:right;
-    padding-right:10px;
-  }
-  .backBtn {
-    float:right;
-    padding-top:1px;
-  }
   </style>
 </head>
 
@@ -179,11 +82,10 @@
   </div>
   <div class = "buyProTable">
     <span class= tableName>주문상품 확인</span>
-    * 상품수량 및 옵션병경은 상품상세 또는 장바구니에서 가능합니다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="이전 페이지" id="backBtn"/>
+    * 상품수량 및 옵션병경은 상품상세 또는 장바구니에서 가능합니다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="이전 페이지" id="backBtn"/>
     <br/><br/>
-    <form action = "" method = "">
-    <c:choose>
-      <c:when test="${param.flag == 'buyNow' }">
+    <form action = "" method = "post" name = "orderInputT">
 	    <table class ="orderInfoTable">
 	      <tr>
 	        <th>상품/옵션정보</th>
@@ -192,6 +94,8 @@
 	        <th>할인금액</th>
 	        <th>배송비</th>
 	      </tr>
+	  <c:choose>
+        <c:when test="${param.flag == 'buyNow' }">
 	      <tr>
 	        <td class="optionInfoT">
 	          <img src = "${applicationScope.conPath }/img/1.jpg" class="tableInImg"/>
@@ -208,6 +112,9 @@
 	        <td>무료배송</td>
 	      </tr>
 	    </table>
+	       <input type = "hidden" name="proNum" value = "${param.proNum }"/>
+           <input type = "hidden" name="amount" value = "${param.amount }"/>
+           <input type = "hidden" name="option" value = "${param.option }"/>
 	  </c:when>
     </c:choose>
     <br/><br/><br/>
@@ -243,8 +150,10 @@
          </fmt:formatNumber>&nbsp;&nbsp;</span> 원</td>
         </tr>
       </table><br/>
-      <a href = ""><img src = "${applicationScope.conPath }/img/buyForm/btn_backpage.png" class="backBtn"/></a>
-      <a href = ""><img src = "${applicationScope.conPath }/img/buyForm/btn_payment.png" class="payBtn"/></a>
+      <!-- 단일주문인지, 장바구니 주문인지 파악하기 위한 flag 설정 -->
+      <input type = "hidden" name = "flag" value ="${param.flag }"/>
+      <a href = "#"><img src = "${applicationScope.conPath }/img/buyForm/btn_backpage.png" class="backBtn"/></a>
+      <a href = "#"><img src = "${applicationScope.conPath }/img/buyForm/btn_payment.png" class="payBtn"/></a>
     </form>
   </div>
 </div>
