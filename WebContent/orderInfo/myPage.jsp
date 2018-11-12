@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-roboto.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat-02.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/common.css">
   <script type="text/javascript" src="${applicationScope.conPath }/lib/jquery-3.3.1.min.js"></script>
   
  

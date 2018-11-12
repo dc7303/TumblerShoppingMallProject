@@ -144,7 +144,7 @@
 	    </c:when>
 	      <c:otherwise>
 	        <tr>
-	          <td colspan="5" class = "failList">
+	          <td colspan="6" class = "failList">
 	            구매내역이 존재하지 않습니다.
 	          </td>
 	        </tr>

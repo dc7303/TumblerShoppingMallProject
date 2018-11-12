@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <head>
@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat-02.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/buyForm.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/common.css"> 
   <script type="text/javascript" src="${applicationScope.conPath }/lib/jquery-3.3.1.min.js"></script>
   
     <script>

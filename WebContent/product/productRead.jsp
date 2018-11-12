@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat-02.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/productRead.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/common.css">
   <script type="text/javascript" src="${applicationScope.conPath }/lib/jquery-3.3.1.min.js"></script>
   
     <script>
@@ -66,7 +67,7 @@
     <span class = "readPrice"><fmt:formatNumber>${proDTO.getProductPrice() }</fmt:formatNumber>원</span>
     <br/><br/>
     <span class = "readListName">카드혜택안내</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href = "#">혜택 알아보기</a><br/>
+    <a href = "#" class="readListName">혜택 알아보기</a><br/>
     <hr/>
     <form action = "" method = "post">
 	    <span class = "readListName">옵션</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

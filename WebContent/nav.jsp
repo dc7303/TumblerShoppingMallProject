@@ -14,6 +14,14 @@
       $('a[name=noLogIn]').on("click", function(){
         alert('로그인 후 이용해주세요.');
       });
+      
+      function windowSignIn(){
+        window.open('user/signIn.jsp', 'signIn', 'width=550 height=500')
+    }
+    
+    function windowSignUp(){
+        window.open('user/signUp.jsp', 'signup', 'width=550 height=500')
+    }
     });
   </script>
 
@@ -30,14 +38,12 @@
 			   <c:choose>
 			     <c:when test ="${sessionScope.userDTO == null }">
 					<!-- login.jsp 연걸 -->
-					<a href="#" onclick="window.open('${applicationScope.conPath}/index.html', 'Login', 'width=550 height=500')">
+					<a href="#" onclick="window.open('user/signIn.jsp', 'Login', 'width=550 height=500')">
 					로그인&nbsp;
 					</a>
 	
-					<a>/</a>
-	
 					<!--singup.jsp 연걸 -->
-					<a href="#" onclick="window.open('${applicationScope.conPath}/index.html', 'signup', 'width=550 height=500')">
+					<a href="#" onclick="window.open('user/signUp.jsp', 'signup', 'width=550 height=500')">
 					&nbsp;회원가입
 					</a>
 				</c:when>
