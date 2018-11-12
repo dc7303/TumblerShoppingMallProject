@@ -82,17 +82,20 @@ public class BasketDAOImpl implements BasketDAO {
     	Connection con = DBUtil.getConnection();
 		PreparedStatement ps =null;
 		ResultSet rs =null;
-		BasketDTO dto = null;
 		List<BasketDTO> list = new ArrayList<>();
 		try{
-			 ps = con.prepareStatement( "select * from tb_basket where userid=?");
+			ps = con.prepareStatement("select  bno, p.pno as pno, userid,b_option,amount,b.price as baksetprice,pname,info,p.price as productprice,category,photo,brand,stock,regdt  "
+					+ "from tb_basket b "
+					+ "left outer join tb_product p on (b.pno = p.pno) where userid=?");
 			 ps.setString(1, userId);
 			 rs = ps.executeQuery();
-			 while(rs.next()){
-				 
-				 list.add(new BasketDTO(rs.getInt(1), rs.getInt(2),rs.getString(3),rs.getString(4),
-	    				  rs.getInt(5), rs.getInt(6)));
-				 }
+			 while(rs.next()) {
+	    		  BasketDTO basketDTO = new BasketDTO(rs.getInt("bno"), rs.getInt("pno"),rs.getString("userid"),rs.getString("b_option"),
+	    				  rs.getInt("amount"), rs.getInt("baksetprice"));
+	    		  ProductDTO productDTO= new ProductDTO(rs.getInt("pno"),rs.getString("pname"),rs.getString("info"),rs.getInt("productprice"),rs.getString("category"),rs.getString("photo"),rs.getString("brand"),rs.getInt("stock"),rs.getString("regdt"));
+	    		  basketDTO.setProductDto(productDTO);
+	    		  list.add(basketDTO);
+	    	  }
 			}finally{
 				DBUtil.dbClose(rs, ps, con);
 				}

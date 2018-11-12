@@ -38,6 +38,7 @@ public class OrderSelectByUserIdController implements Controller{
             List<OrderDTO> list = service.orderSelectByUserId(userId, basongFlag);//테스트용. 추후 세션값 받아와서 매개변수 전달해야함.
             url = "/orderInfo/myPage.jsp";
             request.setAttribute("orderList", list);
+            System.out.println(list);
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("errorMsg", e.getMessage());

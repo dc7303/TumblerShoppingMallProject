@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -10,14 +10,19 @@
     <title>Document</title>
    
     <style>
+        
+    <style>
         @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
         @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-        
+
+
+
         table {
             text-align: center;
             font-family: 'Noto Sans','Nanum Gothic';
             color: #222;
         }
+
         hr{
             border: 0.5px solid #333;
         }
@@ -26,10 +31,10 @@
              width: 300px;
             height: 100%;
         }
-        
+
         .imgDiv{
             float:left;
-            
+
         }
         .imgDiv img{
             width: 100px;
@@ -45,13 +50,13 @@
             width:100px;
             height:100%;
         }
-        
+
         .countDiv div{
             margin: 30px;
         }
         .countInput{
             width:40px;
-        }        
+        }
         /* 가격 */
         .priceDiv{
             width:100px;
@@ -70,6 +75,27 @@
             padding: 25px;
             margin-top: 10px;
         }
+
+        .updatebutton {height: 35px;
+    		width:50px;
+    		background-color: #fff;
+    		color: black;
+
+        }
+
+        .buybutton {height: 35px;
+    		width:50px;
+    		background-color: #444;
+    		color: white;
+
+        }
+
+        .deletebutton {height: 35px;
+    		width:50px;
+    		background-color: #444;
+    		color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -88,13 +114,12 @@
                 
                 <div class="imgDiv">
                     <img src="${conPath}/${basketdto.productDto.productPicture}">
-                    ${basketdto.productDto.productPicture}
                 </div>
                
                 <div class="nameDiv">
                     ${basketdto.productDto.productName}
                     <hr>
-                    ${basketdto.getBasketOption()}
+                    ${basketdto.basketOption}
                 </div>
             </div>          
         </td>   
@@ -113,9 +138,9 @@
         </td>
         <td class="orderDiv">
            <div>
-            <button type="button" class="">구매</button>
+              <button type="button" class="buybutton">구매</button>
             <p/>
-            <button type="button" class="">삭제</button>
+            <button type="button" class="deletebutton">삭제</button>
             </div>
         </td>
        </tr>
