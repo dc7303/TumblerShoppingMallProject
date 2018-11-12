@@ -16,58 +16,28 @@
   
     <script>
     $(function(){
-        $.ajax({
-            url:"signCheck",
-            type:"post",
-            dataType:"text",
-            success:function(result){
-                var str = "";
-                if(result == ""){
-                    str += "<a href='#' onclick='windowSignIn()'>로그인&nbsp</a><a>/</a>";
-                    str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
-                    $("#sign").html(str);
-                } else {
-                    str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
-                        str += "<a>/</a>"
-                        str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
-                        $("#sign").html(str);
-                }
-            },
-            error:function(err){
-                alert(err);
+        $('a[name=btn]').on('click', function(){
+          if($(this).attr('class')=='goBuy'){
+            if($('input[name=userId]').val() == null || $('input[name=userId]').val() == ""){
+              alert("로그인 후 사용해주세요.")
+            }else if ($('select[name=option]').val()=='0') {
+              alert('옵션을 선택핵주세요');
+            }else{
+              $(this).parent().attr("action", "orderInfo/buyForm.jsp");
+              $('input[name=flag]').attr("value", "buyNow");
+              $(this).parent().submit();
             }
-            
-            });
-        
-          $('a[name=btn]').on('click', function(){
-            if($(this).attr('class')=='goBuy'){
-              if($('input[name=userId]').val() == null || $('input[name=userId]').val() == ""){
-                alert("로그인 후 사용해주세요.")
-              }else if ($('select[name=option]').val()=='0') {
-                alert('옵션을 선택핵주세요');
-              }else{
-                $(this).parent().attr("action", "orderInfo/buyForm.jsp");
-                $('input[name=flag]').attr("value", "buyNow");
-                $(this).parent().submit();
-              }
-            }else if($(this).attr('class')=='goBasket'){
-              if($('input[name=userId]').val() == null || $('input[name=userId]').val() == ""){
-                alert("로그인 후 사용해주세요.")
-              }else{
-                $(this).parent().attr("action", "product/basketForm.jsp");
-                $(this).parent().submit();
-              }
+          }else if($(this).attr('class')=='goBasket'){
+            if($('input[name=userId]').val() == null || $('input[name=userId]').val() == ""){
+              alert("로그인 후 사용해주세요.")
+            }else{
+              $(this).parent().attr("action", "product/basketForm.jsp");
+              $(this).parent().submit();
             }
-          });
+          }
         });
+      });
         
-    function windowSignIn(){
-        window.open('user/signIn.jsp', 'signIn', 'width=550 height=500')
-    }
-    
-    function windowSignUp(){
-        window.open('user/signUp.jsp', 'signup', 'width=550 height=500')
-    }
         </script>
   <style>
   .w3-sidebar a {font-family: "Roboto", sans-serif}

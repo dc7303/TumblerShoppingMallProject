@@ -15,6 +15,8 @@
       }else if($(this).text() == '총 구매내역'){
         //no : 배송완료 상태 포함 전체 조회.
         location.href = "frontOrder?command=orderByUserId&basongFlag=no";
+      }else if($(this).text()=='장바구니 조회'){
+        location.href = "${applicationScope.conPath }/frontBasket?command=basketByUserID&flag=no";
       }
       
     });
@@ -33,7 +35,6 @@
     <hr color = "#333"/>
     <h5>나의 쇼핑내역</h5>
     <a href = "#" class = "leftList">주문/배송조회</a><br/>
-    <a href = "#" class = "leftList">주문취소 신청</a><br/>
     <a href = "#" class = "leftList">총 구매내역</a>
     
     <hr/>

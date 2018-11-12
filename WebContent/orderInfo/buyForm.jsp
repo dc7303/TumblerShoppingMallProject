@@ -15,40 +15,6 @@
   <script type="text/javascript" src="${applicationScope.conPath }/lib/jquery-3.3.1.min.js"></script>
   
     <script>
-    /*
-    $(function(){
-        $.ajax({
-            url:"signCheck",
-            type:"post",
-            dataType:"text",
-            success:function(result){
-                var str = "";
-                if(result == ""){
-                    str += "<a href='#' onclick='windowSignIn()'>로그인&nbsp</a><a>/</a>";
-                    str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
-                    $("#sign").html(str);
-                } else {
-                    str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
-                        str += "<a>/</a>"
-                        str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
-                        $("#sign").html(str);
-                }
-            },
-            error:function(err){
-                alert(err);
-            }
-            
-            });
-        });
-        
-    function windowSignIn(){
-        window.open('user/signIn.jsp', 'signIn', 'width=550 height=500')
-    }
-    
-    function windowSignUp(){
-        window.open('user/signUp.jsp', 'signup', 'width=550 height=500')
-    }
-    */
     $(function(){
       $('#backBtn').on('click', function(){
         history.back();

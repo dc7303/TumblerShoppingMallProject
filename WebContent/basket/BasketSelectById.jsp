@@ -20,6 +20,15 @@ $(function(){
 	});	
 });
 </script>
+
+<style>
+  .tableDiv {
+    padding-top:150px;
+    padding-bottom:200px;
+    padding-left:100px;
+    padding-right:100px;
+  }
+</style>
 </head>
 <body>
 <jsp:include page="../nav.jsp"/>

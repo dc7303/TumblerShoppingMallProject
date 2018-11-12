@@ -3,7 +3,6 @@
 	<title>텀블러 메인</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/basic.css">
 	
   <link rel="stylesheet" type="text/css" href="css/basic.css">
   <link rel="stylesheet" href="css/main01.css">
@@ -17,7 +16,6 @@
 </style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
 	<script>
 	$(function(){
 		$.ajax({
@@ -27,23 +25,15 @@
 			success:function(result){
 				var str = "";
 				if(result == ""){
+				    $('#myPageBnt').attr('href', '#');
 					str += "<a href='#' onclick='windowSignIn()'>로그인&nbsp</a><a>/</a>";
-					str += "<a href = 'product/productList.jsp'>상품리드테스트</a>";              //지워야함
 					str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
 					$("#sign").html(str);
 				} else {
-<<<<<<< HEAD
-					str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>";
-					    str += "<a href = 'product/productList.jsp'>상품리드테스트</a>;"          //지워야함
-						str += "<a>/</a>";
-						str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>";
-=======
-					str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
-						str += "<a>/</a>"
-						str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
-						str += "<a>/</a>"+"<a href='frontBasket?command=basketByUserID&flag=no'>&nbsp;장바구니</a>"
->>>>>>> origin/sorryisme
-						$("#sign").html(str);
+				    $('#myPageBnt').attr('href', 'frontOrder?command=orderByUserId&basongFlag=use');
+				    str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>";
+				    str += "<a>/</a>"+"<a href='frontBasket?command=basketByUserID&flag=no'>&nbsp;장바구니</a>";
+					$("#sign").html(str);
 				}
 			},
 			error:function(err){
@@ -51,7 +41,13 @@
 			}
 			
 			});
-		});
+		
+		$('#myPageBnt').on("click", function(){
+		    if($('#myPageBnt').attr('href') =='#'){
+		      alert('로그인 후 이용해주세요.');
+		    }
+         });
+	  });
 		
 	function windowSignIn(){
 		window.open('user/signIn.jsp', 'signIn', 'width=550 height=500')
@@ -80,25 +76,33 @@
 
     <br><br>
 
-      <span>
-        <!--notice.jsp 연걸 -->
-        <a href="frontNotice?command=noticeSelectAll">공지사항  </a>
-      </span>
+            <span>
+                <!--notice.jsp 연걸 -->
+                <a href="frontNotice?command=noticeSelectAll">
+                공지사항
+                </a>
+            </span>
 
-      <span>
-        <!--productlist.jsp 연걸 -->
-        <a href="frontProduct?command=productSelectAll">  PRODUCT  </a>
-      </span>
+            <span>
+                <!--productlist.jsp 연걸 -->
+                <a href="frontProduct?command=productSelectAll">
+                    PRODUCT
+                </a>
+            </span>
 
-      <span>
-          <!-- mypage.jsp 연걸 -->
-        <a href="#none">  마이페이지  </a>
-      </span>
+            <span>
+               <!-- mypage.jsp 연걸 -->
+               <a href="" id = "myPageBnt">
+               마이페이지
+               </a>
+            </span>
 
-      <span>
-        <a href="frontQna?command=qnaSelectAll">  QnA 게시판  </a>
-      </span>
-    </div>
+            <span>
+                <a href="${applicationScope.conPath }/frontQna?command=qnaSelectAll">
+                QnA 게시판
+                </a>
+            </span>
+        </div>
 
 
 <div class="main">

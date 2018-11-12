@@ -6,7 +6,7 @@
     <title>Product Infomation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/basic.css">
+    <link rel="stylesheet" type="text/css" href="${applicationScope.conPath }/css/basic.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/main01.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-roboto.css">
   <link rel="stylesheet" href="${applicationScope.conPath }/css/font-montserrat.css">
@@ -15,45 +15,15 @@
   
     <script>
     $(function(){
-        $.ajax({
-            url:"signCheck",
-            type:"post",
-            dataType:"text",
-            success:function(result){
-                var str = "";
-                if(result == ""){
-                    str += "<a href='#' onclick='windowSignIn()'>로그인&nbsp</a><a>/</a>";
-                    str += "<a href='#' onclick='windowSignUp()'>&nbsp;회원가입</a>";
-                    $("#sign").html(str);
-                } else {
-                    str += "<a href='frontOrder?command=orderByUserId&basongFlag=use'>마이페이지</a>"
-                        str += "<a>/</a>"
-                        str += "<a href='frontUserInfo?command=userSignOut'>&nbsp;로그아웃</a>"
-                        $("#sign").html(str);
-                }
-            },
-            error:function(err){
-                alert(err);
-            }
-            
-            });
+       $('input[type=button]').on("click", function(){
+         if($(this).attr('name') == 'goMyPageBtn'){
+           location.href = href='frontOrder?command=orderByUserId&basongFlag=use';
+         }else {
+           location.href = "index.html";
+         }
+       });
+      });
         
-         $('input[type=button]').on("click", function(){
-           if($(this).attr('name') == 'goMyPageBtn'){
-             location.href = href='frontOrder?command=orderByUserId&basongFlag=use';
-           }else {
-             location.href = "index.html";
-           }
-         });
-        });
-        
-    function windowSignIn(){
-        window.open('user/signIn.jsp', 'signIn', 'width=550 height=500')
-    }
-    
-    function windowSignUp(){
-        window.open('user/signUp.jsp', 'signup', 'width=550 height=500')
-    }
         </script>
   <style>
   .w3-sidebar a {font-family: "Roboto", sans-serif}
