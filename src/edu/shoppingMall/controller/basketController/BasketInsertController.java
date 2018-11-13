@@ -45,7 +45,7 @@ public class BasketInsertController implements Controller {
         	}catch(SQLException e){
         		e.getStackTrace();
         	}
-    		mv.setPath("frontBasket?command=basketSelect");
+    		mv.setPath("frontBasket?command=basketByUserID&flag=no");
     		mv.setRedirect(true);
     		return mv;
       
