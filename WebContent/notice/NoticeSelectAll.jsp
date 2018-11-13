@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="css/font-montserrat-02.css">
 <style>
   .table-container {
-  	width :600px;
-  	margin-left: 250px;
+    width :65%;
+    margin-left: 17%;
 	margin-top : 135px;
 	margin-bottom: 200px;
   }	

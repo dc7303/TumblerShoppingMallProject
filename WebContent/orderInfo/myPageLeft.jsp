@@ -43,10 +43,10 @@
     
     <hr/>
     <h5>회원 정보</h5> 
-    <a href = "#" class = "leftList">회원정보 수정</a><br/>
-    <a href = "#" class = "leftList">회원탈퇴</a><br/>
+    <a href = "${applicationScope.conPath }/frontUserInfo?command=userUpdateForm" class = "leftList">회원정보 수정</a><br/>
+    <a href = "${applicationScope.conPath }/user/userDelete.jsp" class = "leftList">회원탈퇴</a><br/>
     
-    
+    	
 
 
 </body>

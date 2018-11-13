@@ -26,28 +26,28 @@ public class BasketInsertController implements Controller {
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-    	BasketService basketService = BasketServiceImpl.getInstance();
-    	ModelAndView  mv =new ModelAndView();
-    	
-    	UserInfoDTO userDTO= (UserInfoDTO)request.getSession().getAttribute("userDTO");
-    	
-    	String userid = userDTO.getUserId();
-    	int proNum= Integer.parseInt(request.getParameter("proNum"));
-    	String option = request.getParameter("option");
-    	int amount = Integer.parseInt(request.getParameter("amount"));
-    	int totalPrice= Integer.parseInt(request.getParameter("proPrice")) * amount;
-    	
+        BasketService basketService = BasketServiceImpl.getInstance();
+        ModelAndView mv = new ModelAndView();
+
+        UserInfoDTO userDTO = (UserInfoDTO) request.getSession().getAttribute("userDTO");
+
+        String userid = userDTO.getUserId();
+        int proNum = Integer.parseInt(request.getParameter("proNum"));
+        String option = request.getParameter("option");
+        int amount = Integer.parseInt(request.getParameter("amount"));
+        int totalPrice = Integer.parseInt(request.getParameter("proPrice")) * amount;
+
         try {
-        	
-        	BasketDTO dto = new BasketDTO(0, proNum,userid, option, amount, totalPrice);
-        	basketService.basketInsert(dto);
-        	
-        	}catch(SQLException e){
-        		e.getStackTrace();
-        	}
-    		mv.setPath("frontBasket?command=basketSelect");
-    		mv.setRedirect(true);
-    		return mv;
-      
+
+            BasketDTO dto = new BasketDTO(0, proNum, userid, option, amount, totalPrice);
+            basketService.basketInsert(dto);
+
+        } catch (SQLException e) {
+            e.getStackTrace();
+        }
+        mv.setPath("frontBasket?command=basketByUserID&flag=no");
+        mv.setRedirect(true);
+        return mv;
+
     }
-    	}
+}

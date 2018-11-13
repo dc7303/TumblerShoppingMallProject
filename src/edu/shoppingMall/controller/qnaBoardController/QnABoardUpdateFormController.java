@@ -21,7 +21,7 @@ public class QnABoardUpdateFormController implements Controller {
 		QnABoardService service = QnABoardServiceImpl.getInstance();
 
 		ModelAndView mv = new ModelAndView();
-		 String url="qna/qnaUpdate.jsp";
+		 String url="errorview/error.jsp";
 		 int qno= Integer.parseInt(request.getParameter("qnaBoardQno"));
 
 		 try {

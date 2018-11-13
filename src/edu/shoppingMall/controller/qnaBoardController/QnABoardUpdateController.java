@@ -24,7 +24,7 @@ public class QnABoardUpdateController implements Controller {
 
 		QnABoardService service = QnABoardServiceImpl.getInstance();
 		ModelAndView mv = new ModelAndView();
-		String url = "qna/update.jsp";
+		String url = "errorview/error.jsp";
 		String qnaBoardQno = request.getParameter("qnaBoardQno");
 		String qnaBoardSubject = request.getParameter("qnaBoardSubject");
 		String qnaBoardContent = request.getParameter("qnaBoardContent");

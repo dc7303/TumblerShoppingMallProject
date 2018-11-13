@@ -26,7 +26,7 @@ public class OrderSelectByOrderNumController implements Controller {
         ModelAndView mv = new ModelAndView();
         HttpSession session = request.getSession();
         
-        String url = "/orderInfo/failView.jsp";
+        String url = "errorview/error.jsp";
         
         int orderNum = Integer.parseInt(request.getParameter("orderNum"));          //주문번호 파라미터
         

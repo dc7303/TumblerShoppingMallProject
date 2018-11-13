@@ -15,23 +15,80 @@
   <link rel="stylesheet" href="css/font-roboto.css">
   <link rel="stylesheet" href="css/font-montserrat.css">
   <link rel="stylesheet" href="css/font-montserrat-02.css">
+  <link rel="stylesheet" href="${applicationScope.conPath }/css/common.css">
 
 <script>
 $(function(){
 	$('#totalBuy').on('click', function(){
-		location.href="frontBasket?command=basketByUserId&flag=pay"
+		location.href="frontBasket?command=basketByUserID&flag=pay"
         /* $('form[name=basket]').attr('action', 'orderInfo/buyForm.jsp');
         $('form[name=basket]').submit(); */
 	});	
+	
+	$('#deleteBtn').on('click', function(){
+	    var basketNum = $(this).parent().children().eq(0).val();
+	    location.href="frontBasket?command=basketDeleteByNum&basketNum=" + basketNum;
+	});
 });
 </script>
 
 <style>
+  
+  
   .tableDiv {
     padding-top:150px;
     padding-bottom:200px;
-    padding-left:100px;
-    padding-right:100px;
+    padding-left:50px;
+    padding-right:50px;
+  }
+  
+  .proName {
+    font-size:15px;
+    font-weight:bold;
+  }
+  
+  .proOption {
+    font-size:12px;
+    color:grey;
+  }
+  
+  
+  .totalPriceT {
+    margin-top:15px;
+    border:3px solid #333;
+    width:100%;
+    height:90px;
+  }
+  
+  .nameDiv>hr{
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  
+  .totalPriceT th {
+    background-color:#333;
+    color:lightgrey;
+    font-size:20px;
+    width:200px;
+    text-align:left;
+    padding-left:15px;
+  }
+  
+  .totalPriceT td {
+    background-color:#FAFAFA;
+    text-align:right;
+    padding-right:30px;
+  }
+  
+  .totalPrice {
+    color:blue;
+    font-size:30px;
+    font-weight:bolder;
+  }
+  
+  .totalBuy {
+    float:right;
+    padding-top:1px;
   }
 </style>
 </head>
@@ -41,17 +98,18 @@ $(function(){
 <div class="tableDiv">
    <table class="tableForm">
 	       <tr>
-	        <th>상품</th>           
-	        <th>수량</th>
+	        <th>상품정보</th>           
+	        <th>상품수량</th>
 	        <th>금액</th>
-	        <th>배송</th>
-	        <th>주문</th>
+	        <th>배송비</th>
+	        <th>삭제</th>
 	    	</tr>
+	    <c:set var = "i" value = "0"/>
        	<c:forEach items="${requestScope.list}" var="basketdto">
        	<input type = "hidden" name="proNum" value = "${basketdto.productDto.productNum}"/>
        	<input type = "hidden" name="proName" value = "${basketdto.productDto.productName}"/>
        	<input type = "hidden" name="proPhoto" value = "${basketdto.productDto.productPicture}"/>
-       	<input type = "hidden" name="proPrice" value = "${param.productPrice }"/>
+       	<input type = "hidden" name="basketPrice" value = "${basketdto.getBasketPrice()}"/>
  		<input type = "hidden" name="amount" value = "${basketdto.getBasketQuantity()}"/>
        	<input type = "hidden" name="option" value = "${basketdto.basketOption}"/>
        <tr>
@@ -61,9 +119,9 @@ $(function(){
                     <img src="${conPath}/img/${basketdto.productDto.productPicture}">
                 </div>
                 <div class="nameDiv" style="padding:15px;">
-                    <span>${basketdto.productDto.productName}</span>
-                    <hr>
-                    <span>${basketdto.basketOption}</span>
+                    <span class="proName">${basketdto.productDto.productName}</span>
+                    <hr/>
+                    <span class="proOption">${basketdto.basketOption}</span>
                 </div>
             </div>          
         </td>   
@@ -78,22 +136,31 @@ $(function(){
  			${basketdto.getBasketPrice()}
          </td>
         <td class="deliveryDiv">
-            배송비 무료
+            무료
         </td>
         <td class="orderDiv">
            <div>
-              <button type="submit" id="buyBtn" class="buybutton">구매</button>
-				<br>
+               <input type = "hidden" name = "basketNum" value = "${basketdto.getBasketNum() }"/>
 	           <button type="button" id="deleteBtn"  class="deletebutton">삭제</button>
             </div>
         </td>
        </tr>
+       
+    
+       <c:set var = "i" value ="${i + basketdto.getBasketPrice()  }"/>
  	</c:forEach>
   	 </table>
-  	 <div class="total">
-  	 </div>
-  	 			<a href = "#"><img src = "${applicationScope.conPath }/img/buyForm/btn_payment.png" class="totalBuy" id="totalBuy"/></a>
-  	   	 	  <button type="submit" class="totalBuy" id="totalBuy" >모두 구매</button>
+  	 <table class="totalPriceT">
+        <tr>
+         <th>총 합계</th>
+         <td><span class = "totalPrice">
+         <fmt:formatNumber>
+            ${i }
+         </fmt:formatNumber>&nbsp;&nbsp;</span> 원</td>
+        </tr>
+      </table><br/>
+
+  	 	<a href = "#"><img src = "${applicationScope.conPath }/img/buyForm/btn_payment.png" class="totalBuy" id="totalBuy"/></a>
     </div>
     </form>
     

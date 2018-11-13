@@ -24,7 +24,7 @@ public class OrderSelectAllController implements Controller {
         OrderService service = OrderServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
 
-        String url = "/orderInfo/failView.jsp";
+        String url = "errorview/error.jsp";
         try {
             List<OrderDTO> list = service.orderSelectAll();
             url = "/orderInfo/userOrder.jsp";

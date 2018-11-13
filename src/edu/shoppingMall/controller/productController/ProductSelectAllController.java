@@ -26,7 +26,7 @@ public class ProductSelectAllController implements Controller {
         ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
 
-        String url = "product/productSelectAllResult.jsp";
+        String url = "errorview/error.jsp";
         
         // view path РќДо
         ServletContext application = request.getServletContext();
@@ -35,7 +35,7 @@ public class ProductSelectAllController implements Controller {
 		try {
 			List<ProductDTO> list = service.productSelectAll();
 			request.setAttribute("list", list);
-			
+			url = "product/productSelectAllResult.jsp";
 		}catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());

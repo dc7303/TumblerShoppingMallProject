@@ -48,4 +48,12 @@ public interface BasketService {
      * @throws SQLException
      */
     int baksetDelete(String userId) throws SQLException;
+    
+    /**
+     * 장바구니 단일삭제
+     * @param basketNum
+     * @return
+     * @throws SQLException
+     */
+    int basketDeleteByBasketNum(int basketNum) throws SQLException;
 }

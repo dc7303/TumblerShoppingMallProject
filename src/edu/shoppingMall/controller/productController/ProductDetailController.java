@@ -20,7 +20,7 @@ public class ProductDetailController implements Controller {
 		ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
         
-        String url="product/productRead.jsp";
+        String url="errorview/error.jsp";
 		String pno = request.getParameter("pno");
 		try {
 			ProductDTO dto = service.productSelectByProductNum(Integer.parseInt(pno));
@@ -28,7 +28,7 @@ public class ProductDetailController implements Controller {
 			String path = request.getServletContext().getRealPath("product/save");
 			
 			request.setAttribute("photoPath",path);
-
+			url = "product/productRead.jsp";
 			
 		}catch (SQLException e) {
 			e.printStackTrace();

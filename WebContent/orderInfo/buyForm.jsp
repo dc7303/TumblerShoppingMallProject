@@ -65,7 +65,7 @@
         <c:when test="${param.flag == 'buyNow' }">
          <tr>
            <td class="optionInfoT">
-             <img src = "${applicationScope.conPath }/img/1.jpg" class="tableInImg"/>
+             <img src = "${applicationScope.conPath }/img/${param.proPicture }" class="tableInImg"/>
              <strong class = "optionProName">${param.proName }</strong><br/><br/>
              ${param.option }
            </td>
@@ -123,6 +123,11 @@
           <th>휴대전화</th>
           <td><input type = "text" name = "basongPhone"value = "${userDTO.getUserPhone() }"/></td>
         </tr>
+        <tr>
+          <th>택배회사</th>
+          <td><input type = "text" name = "company"value = "경동택배"/></td>
+        </tr>
+        <tr>
         <tr>
           <th>배송시요구사항</th>
           <td>

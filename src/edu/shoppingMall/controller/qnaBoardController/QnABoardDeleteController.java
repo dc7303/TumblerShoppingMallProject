@@ -22,10 +22,11 @@ public class QnABoardDeleteController implements Controller {
 			throws ServletException, IOException {
 		
 		QnABoardService service = QnABoardServiceImpl.getInstance();
-		String url = "frontQna?command=qnaSelectAll";
+		String url = "errorview/error.jsp";
 		int qno = Integer.parseInt(request.getParameter("qnaBoardQno"));
 		try {
 			service.qnaBoardDelete(qno);
+			url = "frontQna?command=qnaSelectAll";
 		} catch (SQLException e) {
 
 			e.printStackTrace();

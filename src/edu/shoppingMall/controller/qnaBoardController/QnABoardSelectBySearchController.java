@@ -24,7 +24,7 @@ public class QnABoardSelectBySearchController implements Controller {
 
 		QnABoardService service = QnABoardServiceImpl.getInstance();
     	ModelAndView mv = new ModelAndView();
-    	String url = "qna/list.jsp";
+    	String url = "errorview/error.jsp";
     	String keyType = request.getParameter("keyType");
     	String keyWord = request.getParameter("keyWord");
     	
@@ -34,7 +34,7 @@ public class QnABoardSelectBySearchController implements Controller {
 			
 			List<QnABoardDTO> list = service.qnaBoardSelectBySearch(keyType, keyWord);
 			request.setAttribute("list", list);
-			
+			url = "qna/list.jsp";
 		}catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());

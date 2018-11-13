@@ -26,7 +26,7 @@ public class ProductInsertController implements Controller {
         ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
         
-        String url = "product/productSelectAllResult.jsp";
+        String url = "errorview/error.jsp";
 		
 		String path = request.getServletContext().getRealPath("product/save");
 		int maxSize=1024*1024*100;

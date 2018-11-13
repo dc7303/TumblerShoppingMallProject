@@ -42,14 +42,14 @@ public class OrderInsertController implements Controller {
         // TB_Delivery
         String company = request.getParameter("company");
         String shipNum = request.getParameter("shipNum");
-        String addr = request.getParameter("addr");
-        String phone = request.getParameter("phone");
+        String addr = request.getParameter("basongAddr");
+        String phone = request.getParameter("basongPhone");
 
         OrderDetailDTO detailDTO = new OrderDetailDTO(proNum, amount, option);
         BasongDTO basongDTO = new BasongDTO(company, shipNum, addr, phone);
         
         
-        String url = "/order/failView.jsp";
+        String url = "errorview/error.jsp";
 
         try {
             service.orderInsert(new OrderDTO(userId, comment, detailDTO, basongDTO));

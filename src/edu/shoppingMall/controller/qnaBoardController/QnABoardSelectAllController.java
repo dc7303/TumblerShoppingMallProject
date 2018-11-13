@@ -32,7 +32,7 @@ public class QnABoardSelectAllController implements Controller {
 				request.setAttribute("list", list);
 		}catch (Exception e) {
 			e.printStackTrace(); //콘솔에 출력
-			url = "qna/error.jsp";
+			url = "errorview/error.jsp";
 		}
 			ModelAndView mv = new ModelAndView();
 			mv.setPath(url);  //성공해도 실패해도 forward방식

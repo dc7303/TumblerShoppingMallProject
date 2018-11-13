@@ -77,5 +77,17 @@ public class BasketServiceImpl implements BasketService {
     	if(result==0)throw new SQLException("검색된 물품이 없습니다.");
     	return result;
     }
+    
+    /**
+     * 장바구니 단일삭제
+     * @param basketNum
+     * @return
+     * @throws SQLException
+     */
+    public int basketDeleteByBasketNum(int basketNum) throws SQLException{
+        int result = basketDAO.basketDeleteByBasketNum(basketNum);
+        if(result==0)throw new SQLException("삭제 실패했습니다.");
+        return result;
+    }
 
 }

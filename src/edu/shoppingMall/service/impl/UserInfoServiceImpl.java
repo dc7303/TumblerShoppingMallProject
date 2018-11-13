@@ -79,8 +79,11 @@ public class UserInfoServiceImpl implements UserInfoService {
      */
     @Override
     public int userDelete(UserInfoDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+    	   int result = daoImple.userDelete(dto);
+           if(result == 0) {
+               throw new SQLException("회원 정보를 탈퇴할 수 없습니다.");
+           }
+           return result;
     }
 
 }

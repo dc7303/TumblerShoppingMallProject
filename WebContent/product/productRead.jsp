@@ -32,7 +32,7 @@
             if($('input[name=userId]').val() == null || $('input[name=userId]').val() == ""){
               alert("로그인 후 사용해주세요.")
             }else{
-              $(this).parent().attr("action", "frontBasket?command=basketSelectAll");
+              $(this).parent().attr("action", "frontBasket?command=basketInsert");
               $(this).parent().submit();
             }
           }
@@ -60,7 +60,7 @@
     <hr/><br/>
   </div>
   <div class = "readCenter">
-    <img src = "${applicationScope.conPath }/img/1.jpg" class= "readImg"/>
+    <img src = "${applicationScope.conPath }/img/${proDTO.getProductPicture() }" class= "readImg"/>
     <span class = "freeDel">무료배송</span><br/><br/><br/>
     <span class = "readListName">판매가</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -9,39 +9,36 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
+import edu.shoppingMall.dto.QnABoardDTO;
 import edu.shoppingMall.dto.UserInfoDTO;
 import edu.shoppingMall.service.QnABoardService;
 import edu.shoppingMall.service.UserInfoService;
 import edu.shoppingMall.service.impl.QnABoardServiceImpl;
 import edu.shoppingMall.service.impl.UserInfoServiceImpl;
 
-public class UserDeleteController implements Controller {
+public class UserUpdateFormController implements Controller {
     
     /**
-     * 유저 회원탈퇴 controller
+     * 유저 회원정보 수정 controller
      */
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	UserInfoDTO userDTO = (UserInfoDTO)request.getSession().getAttribute("userDTO");
-    	UserInfoService service = UserInfoServiceImpl.getInstance();
-    	String url = "user/userDeleteResult.jsp";
-    	String password= request.getParameter("password");
-    	System.out.println(password);
-    	System.out.println(userDTO);
-    	userDTO.setUserPwd(password);
-		
-		try {
-			service.userDelete(userDTO);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			url="errorview/error.jsp";
-		}
-
 		ModelAndView mv = new ModelAndView();
+		 String url="errorview/error.jsp";
+		 UserInfoDTO dto = (UserInfoDTO)request.getSession().getAttribute("userDTO");
+
+		 try {
+			 request.setAttribute("dto", dto);
+			 url="user/userUpdate.jsp";
+		
+		 }catch (Exception e) {
+			 e.printStackTrace();
+			request.setAttribute("errorMsg", e.getMessage());
+		}
+	
 		mv.setPath(url);
-		mv.setRedirect(true);
-    	request.getSession().invalidate();
-    	return mv;
+	 	
+		return mv;
     }
 
 }

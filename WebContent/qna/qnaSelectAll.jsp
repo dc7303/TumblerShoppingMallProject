@@ -16,8 +16,8 @@
 <link rel="stylesheet" type="text/css" href="${conPath}/lib/SemanticUI/semantic.min.css">
 <style>
   .table-container {
-  	width :600px;
-  	margin-left: 250px;
+  	width :65%;
+  	margin-left: 17%;
 	margin-top : 135px;
 	margin-bottom: 200px;
   }	

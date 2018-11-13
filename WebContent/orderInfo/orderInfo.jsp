@@ -57,7 +57,7 @@
       <td>${param.detailOption }</td>
     </tr>
     <tr>
-      <td colspan="2"><img src ="${applicationScope.conPath }/img/1.jpg" class = "proImg"/></td>
+      <td colspan="2"><img src ="${applicationScope.conPath }/img/${param.picture }" class = "proImg"/></td>
     </tr>
   </table>
 </body>
