@@ -14,7 +14,7 @@ import edu.shoppingMall.dto.UserInfoDTO;
 import edu.shoppingMall.service.BasketService;
 import edu.shoppingMall.service.impl.BasketServiceImpl;
 
-public class BasketDeleteController implements Controller {
+public class BasketDeleteByBasketNumController implements Controller {
 
     /**
      * 장바구니 삭제 컨트롤러

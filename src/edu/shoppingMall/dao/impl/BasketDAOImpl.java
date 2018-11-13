@@ -190,5 +190,33 @@ public class BasketDAOImpl implements BasketDAO {
 		return result;
 	
     }
+    
+    /**
+     * 장바구니 단일삭제
+     * @param basketNum
+     * @return
+     * @throws SQLException
+     */
+    public int basketDeleteByBasketNum(int basketNum) throws SQLException {
+        Connection con=null;
+        PreparedStatement ps =null;
+        int result=0;
+        try {
+            //로드 연결 실행 닫기
+            con=DBUtil.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement("delete from tb_basket where bno=?");
+            ps.setInt(1, basketNum);
+            result = ps.executeUpdate();
+        }finally {
+            if(result > 0) {
+                con.commit();
+            }else {
+                con.rollback();
+            }
+            DBUtil.dbClose( ps, con);
+        }
+        return result;
+    }
 
 }

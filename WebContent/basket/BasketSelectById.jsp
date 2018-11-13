@@ -24,6 +24,11 @@ $(function(){
         /* $('form[name=basket]').attr('action', 'orderInfo/buyForm.jsp');
         $('form[name=basket]').submit(); */
 	});	
+	
+	$('#deleteBtn').on('click', function(){
+	    var basketNum = $(this).parent().children().eq(0).val();
+	    location.href="frontBasket?command=basketDeleteByNum&basketNum=" + basketNum;
+	});
 });
 </script>
 
@@ -135,6 +140,7 @@ $(function(){
         </td>
         <td class="orderDiv">
            <div>
+               <input type = "hidden" name = "basketNum" value = "${basketdto.getBasketNum() }"/>
 	           <button type="button" id="deleteBtn"  class="deletebutton">삭제</button>
             </div>
         </td>

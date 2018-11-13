@@ -48,4 +48,12 @@ public interface BasketDAO {
      * @throws SQLException
      */
     int basketDelete(String userId) throws SQLException;
+    
+    /**
+     * 장바구니 단일삭제
+     * @param basketNum
+     * @return
+     * @throws SQLException
+     */
+    int basketDeleteByBasketNum(int basketNum) throws SQLException;
 }
