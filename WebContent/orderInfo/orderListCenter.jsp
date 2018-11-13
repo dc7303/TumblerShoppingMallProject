@@ -57,11 +57,15 @@
   .px11{
     font-size:11px;
   }
+  .tableTopName{
+    padding-top:20px;
+    padding-bottom:10px;
+  }
   </style>
 <title>Insert title here</title>
 </head>
 <body>
-<h3>주문내역</h3>
+<h3 class= "tableTopName">주문내역</h3>
 <p style="color:grey">고객님께서 주문하신 상품 리스트입니다.<br/>
 주문 정보를 자세히 보시려면 '주문상품정보'에서 상품명을 클릭해주세요.<br/><br/></p>
   <div>
