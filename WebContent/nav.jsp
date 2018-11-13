@@ -20,7 +20,7 @@
     }
     
     function windowSignUp(){
-        window.open('user/signUp.jsp', 'signup', 'width=550 height=500')
+      window.open('user/signUp.jsp', 'signup', 'width=480 height=700');
     }
     });
   </script>
@@ -30,7 +30,7 @@
 		<div class="header_menu_bar">
 
 			<span id="logo">
-				<a href="index.html" >
+				<a href="${applicationScope.conPath }/index.html" >
 					 Tumbler
 				</a>
 			</span>
@@ -38,12 +38,12 @@
 			   <c:choose>
 			     <c:when test ="${sessionScope.userDTO == null }">
 					<!-- login.jsp 연걸 -->
-					<a href="#" onclick="window.open('user/signIn.jsp', 'Login', 'width=550 height=500')">
+					<a href="#" onclick="window.open('${applicationScope.conPath }/user/signIn.jsp', 'Login', 'width=550 height=500')">
 					로그인&nbsp;
 					</a>
 	
 					<!--singup.jsp 연걸 -->
-					<a href="#" onclick="window.open('user/signUp.jsp', 'signup', 'width=550 height=500')">
+					<a href="#" onclick="window.open('${applicationScope.conPath }/user/signUp.jsp', 'signup', 'width=550 height=500')">
 					&nbsp;회원가입
 					</a>
 				</c:when>

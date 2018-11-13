@@ -60,7 +60,7 @@
     <hr/><br/>
   </div>
   <div class = "readCenter">
-    <img src = "${applicationScope.conPath }/img/1.jpg" class= "readImg"/>
+    <img src = "${applicationScope.conPath }/img/${proDTO.getProductPicture() }" class= "readImg"/>
     <span class = "freeDel">무료배송</span><br/><br/><br/>
     <span class = "readListName">판매가</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

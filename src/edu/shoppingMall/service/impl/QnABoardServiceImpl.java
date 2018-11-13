@@ -33,11 +33,17 @@ public class QnABoardServiceImpl implements QnABoardService {
 	@Override
 	public int qnaBoardInsert(QnABoardDTO dto) throws SQLException {
 	  int result = dao.qnaBoardInsert(dto);
+	  if(result == 0) {
+	      throw new SQLException("게시물 등록에 실패했습니다.");
+	  }
 		return result;
 	}
 
 	public int qnaBoardUpdate(QnABoardDTO dto) throws SQLException {
 		int result = dao.qnaBoardUpdate(dto);
+		if(result == 0) {
+	          throw new SQLException("게시물 수정에 실패했습니다.");
+	      }
 		return result;
 	}
 
@@ -45,6 +51,9 @@ public class QnABoardServiceImpl implements QnABoardService {
 	public int qnaBoardDelete(int qno) throws SQLException {
 	
 		int result = dao.qnaBoardDelete(qno);
+		if(result == 0) {
+	          throw new SQLException("게시물 삭제에 실패했습니다.");
+	      }
 		return result;
 	}
 

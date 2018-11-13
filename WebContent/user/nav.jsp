@@ -62,8 +62,9 @@
 
 			<li class="login">
 				<ul class="uesrinfo">
-					<li><a href="signIn.jsp" src=""> 로그인 </a></li>
-					<li><a href="user/signUp.jsp"> 회원가입 </a></li>
+					<li><a href="${applicationScope.conPath }/signIn.jsp"> 로그인 </a></li>
+					<a>/</a>
+					<li><a href="${applicationScope.conPath }/user/signUp.jsp"> 회원가입 </a></li>
 				</ul>
 			</li>
 		</nav>

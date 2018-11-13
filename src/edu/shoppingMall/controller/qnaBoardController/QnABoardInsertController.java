@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -13,6 +14,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
 import edu.shoppingMall.dto.QnABoardDTO;
+import edu.shoppingMall.dto.UserInfoDTO;
 import edu.shoppingMall.service.QnABoardService;
 import edu.shoppingMall.service.impl.QnABoardServiceImpl;
 
@@ -29,8 +31,8 @@ public class QnABoardInsertController implements Controller{
 
 		QnABoardService service = QnABoardServiceImpl.getInstance();
 		ModelAndView mv = new ModelAndView();
-		String url = "frontQna";
-		
+		String url = "error/errorView.jsp";
+		HttpSession session = request.getSession();
 		
 		String path = request.getServletContext().getRealPath("qna/save");
 		int maxSize=1024*1024*100;
@@ -44,17 +46,20 @@ public class QnABoardInsertController implements Controller{
 		String content = m.getParameter("qnaBoardContent");
 		String pwd = m.getParameter("qnaBoardPwd");
 		String photo = m.getFilesystemName("qnaBoardPhoto");
-		String id = "test2";
+		UserInfoDTO userDTO = (UserInfoDTO)session.getAttribute("userDTO");
+		String userId = userDTO.getUserId();
 				//m.getParameter("qnaBoardUserId");
 		
-		QnABoardDTO dto = new QnABoardDTO(title,content,pwd,id,photo);
+		QnABoardDTO dto = new QnABoardDTO(title,content,pwd,userId,photo);
 		
 
 		try {
 			service.qnaBoardInsert(dto);
+			url = "frontQna";
 			mv.setRedirect(true);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		}
 		
 		mv.setPath(url);

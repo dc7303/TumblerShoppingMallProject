@@ -50,7 +50,7 @@ public class BasongDAOImpl implements BasongDAO {
     public int basongInsert(BasongDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into tb_delivery values (delivery_seq.nextval, ?, ?, ?, ?, sysdate, ?, 0)";
+        String sql = "insert into tb_delivery values (delivery_seq.nextval, ?, delivery_seq.nextval+3234, ?, ?, sysdate, ?, 0)";
         int result = 0;
         
         try {
@@ -58,10 +58,9 @@ public class BasongDAOImpl implements BasongDAO {
             con.setAutoCommit(false);
             ps = con.prepareStatement(sql);
             ps.setString(1, dto.getBasongCompany());
-            ps.setString(2, dto.getBasongInvoiceNum());
-            ps.setString(3, dto.getBasongAddr());
-            ps.setString(4, dto.getBasongPhone());
-            ps.setInt(5, dto.getOrderNum());
+            ps.setString(2, dto.getBasongAddr());
+            ps.setString(3, dto.getBasongPhone());
+            ps.setInt(4, dto.getOrderNum());
             
             result = ps.executeUpdate();
         }finally {
