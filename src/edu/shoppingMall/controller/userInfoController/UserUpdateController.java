@@ -23,18 +23,20 @@ public class UserUpdateController implements Controller {
         UserInfoService service = UserInfoServiceImpl.getInstance();
 
         int result = 0;
-        String userId = request.getParameter("userId");
+        UserInfoDTO dto = (UserInfoDTO)request.getSession().getAttribute("userDTO");
+        String userId = dto.getUserId();
         String userPwd = request.getParameter("userPwd");
         String userName = request.getParameter("userName");
         String userBirth = request.getParameter("userBirth");
+        String userPhone = request.getParameter("userPhone");
         String userAddr = request.getParameter("userAddr");
-        String userEmail = request.getParameter("userEmail1") + "@" + request.getParameter("userEmail2");
+        String userEmail = request.getParameter("userEmail");
         
         ModelAndView mv = new ModelAndView();
         String url = "/failView/failMessage.jsp";
         try {
-            service.userUpdate(new UserInfoDTO()); 
-            url = "/successView/updateSuccess.jsp";
+            service.userUpdate(new UserInfoDTO(userId,userName,userPwd,userBirth,userPhone,userPhone,userEmail,0,0,null)); 
+            url = "index.html";
             mv.setRedirect(true);
         }catch (SQLException e) {
             e.printStackTrace();

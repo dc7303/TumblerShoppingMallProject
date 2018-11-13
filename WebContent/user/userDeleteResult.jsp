@@ -4,17 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	.errorDiv{
-			width: 300px;
-	}
-
-</style>
 </head>
 <body>
-  <h3>${requsetScope.errorMsg }</h3>
-  <div class="errorDiv">
-  <img src="${conPath}/img/error.png">
-  </div>
+<script>
+
+alert("탈퇴 완료되었습니다");
+location.href="../index.html"
+
+</script>
 </body>
 </html>
