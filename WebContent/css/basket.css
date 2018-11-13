@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+        @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+        .tableForm {
+            text-align: center;
+            font-family: 'Noto Sans','Nanum Gothic';
+            color: #222;
+            border: 1px solid #333;
+        }
+        
+        .tableForm th{
+			background-color: #333;
+			color: white;
+			border: 1px solid black;
+        }
+
+        hr{
+            border: 0.5px solid #D1D1D1;
+        }
+        /* 상품박스 */
+        
+        .productDiv{
+             width: 300px;
+            height: 100%;
+        }
+
+		.productDiv span{
+				margin:5px;
+		}
+        
+
+        .imgDiv{
+            float:left;
+
+        }
+        .imgDiv img{
+            width: 100px;
+            height: 100px;
+        }
+        .nameDiv{
+            text-align: center;
+            padding-top: 10px;
+            height: 100px;
+        }
+        /* 수량 */
+        .countDiv{
+            width:100px;
+            height:100%;
+        }
+
+        .countDiv div{
+            margin: 30px;
+        }
+        .countInput{
+            width:40px;
+        }
+        /* 가격 */
+        .priceDiv{
+            width:100px;
+        }
+        
+        /* 배달 */
+        .deliveryDiv{
+            width:100px;
+        }
+        /* 주문 */
+        .orderDiv{
+            width:100px;
+            height:100%;
+        }
+        .orderDiv div{
+            width:50px;
+            padding: 25px;
+            margin-top: 10px;
+        }
+
+        .updatebutton {height: 35px;
+    		width:50px;
+    		background-color: #fff;
+    		color: black;
+
+        }
+
+        .buybutton {
+        	height: 35px;
+    		width:50px;
+    		background-color: #444;
+    		color: white;
+
+        }
+
+        .deletebutton {
+        	height: 35px;
+    		width:50px;
+    		background-color: #444;
+    		color: white;
+        }
+        
+        .tableDiv{
+        	margin-top:200px;
+        	width:800px;
+        	margin:auto;
+        }
+        .tableForm{
+        	width :100%;
+        }
+        .total{
+        	margin-top:10px;
+        	text-align:right;
+        	background-color:#F2F2F2;
+        	height:100px;
+        	width: 100%;
+        	color: #333;
+        }
+        
+       

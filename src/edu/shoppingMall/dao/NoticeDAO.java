@@ -14,15 +14,14 @@ import edu.shoppingMall.dto.NoticeBoardDTO;
 public interface NoticeDAO {
 
     /**
-     * 게시글 전체검색
-     */
-    List<NoticeBoardDTO> noticeBoardSelectAll() throws SQLException;
-
+    * 공지사항 전체검색 페이징처리
+    */
+   List<NoticeBoardDTO> noticeBoardSelectAll(int startIndex,int endIndex) throws SQLException;
+    
     /**
-     * 게시글 부분검색
+     * 게시글 부분검색--> 삭제
      */
-    List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;
-
+/*    List<NoticeBoardDTO> noticeBoardSelectBySearch(String keyType, String keyWord) throws SQLException;*/
     /**
      * 게시글 추가
      */
@@ -36,6 +35,17 @@ public interface NoticeDAO {
     /**
      * 게시글 삭제
      */
-    int noticeBoardDelete(String NoticeBoardNum) throws SQLException;
+    int noticeBoardDelete(int NoticeBoardNum) throws SQLException;
 
+    /**
+     * 공지번호로 부분검색
+     * 
+     */
+    NoticeBoardDTO selectByNoticeNum(int NoticeBoardNum) throws SQLException;
+    
+    /**
+     * 페이징 처리를 위한 Counting
+     * select count(*) as totalcount from tb_notice;
+     */
+    int selectCount() throws SQLException;
 }

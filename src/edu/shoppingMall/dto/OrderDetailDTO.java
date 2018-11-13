@@ -6,10 +6,37 @@ public class OrderDetailDTO {
     private int productNum;                 //상품번호
     private int orderDetailPrice;           //주문가격
     private int orderDetailQuantity;        //수량
-    private int orderDetailOption;          //옵션
+    private String orderDetailOption;       //옵션
     private String orderDetailDate;         //주문일자
+    
+    
+    public OrderDetailDTO() {}
+    
+    
+    
+    public OrderDetailDTO(int productNum, int orderDetailQuantity, String orderDetailOption) {
+        super();
+        this.productNum = productNum;
+        this.orderDetailQuantity = orderDetailQuantity;
+        this.orderDetailOption = orderDetailOption;
+    }
+
+    
+
+    public OrderDetailDTO(int orderNum, int productNum, int orderDetailPrice, int orderDetailQuantity,
+            String orderDetailOption) {
+        super();
+        this.orderNum = orderNum;
+        this.productNum = productNum;
+        this.orderDetailPrice = orderDetailPrice;
+        this.orderDetailQuantity = orderDetailQuantity;
+        this.orderDetailOption = orderDetailOption;
+    }
+
+
+
     public OrderDetailDTO(int orderDetailNum, int orderNum, int productNum, int orderDetailPrice,
-            int orderDetailQuantity, int orderDetailOption, String orderDetailDate) {
+            int orderDetailQuantity, String orderDetailOption, String orderDetailDate) {
         super();
         this.orderDetailNum = orderDetailNum;
         this.orderNum = orderNum;
@@ -19,6 +46,8 @@ public class OrderDetailDTO {
         this.orderDetailOption = orderDetailOption;
         this.orderDetailDate = orderDetailDate;
     }
+    
+    
     public int getOrderDetailNum() {
         return orderDetailNum;
     }
@@ -34,7 +63,7 @@ public class OrderDetailDTO {
     public int getOrderDetailQuantity() {
         return orderDetailQuantity;
     }
-    public int getOrderDetailOption() {
+    public String getOrderDetailOption() {
         return orderDetailOption;
     }
     public String getOrderDetailDate() {
@@ -55,7 +84,7 @@ public class OrderDetailDTO {
     public void setOrderDetailQuantity(int orderDetailQuantity) {
         this.orderDetailQuantity = orderDetailQuantity;
     }
-    public void setOrderDetailOption(int orderDetailOption) {
+    public void setOrderDetailOption(String orderDetailOption) {
         this.orderDetailOption = orderDetailOption;
     }
     public void setOrderDetailDate(String orderDetailDate) {

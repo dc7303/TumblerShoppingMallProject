@@ -47,5 +47,5 @@ public interface BasketService {
      * @return
      * @throws SQLException
      */
-    int baksetDelete(int basketNum) throws SQLException;
+    int baksetDelete(String userId) throws SQLException;
 }

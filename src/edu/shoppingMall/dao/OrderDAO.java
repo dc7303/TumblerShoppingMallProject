@@ -22,12 +22,18 @@ public interface OrderDAO {
     /**
      * 주문 키워드 검색 (ID 조회)
      */
-    List<OrderDTO> orderSelectByUserId(String userId) throws SQLException;
+    List<OrderDTO> orderSelectByUserId(String userId, String basongFlag) throws SQLException;
     
     /**
      * 주문 키워드 검색 (주문번호 조회)
      */
     OrderDTO orderSelectByOrderNum(int orderNum) throws SQLException;
+    
+    
+    /**
+     * 시퀀스값 가져오기
+     */
+    public int orderSeqSearch() throws SQLException;
     
     /**
      * 주문 추가
@@ -37,7 +43,7 @@ public interface OrderDAO {
     /**
      * 주문 수정
      */
-    int orderUpdate(OrderDTO dto) throws SQLException;
+    int orderUpdate(int orderNum, int price) throws SQLException;
     
     /**
      * 주문 취소

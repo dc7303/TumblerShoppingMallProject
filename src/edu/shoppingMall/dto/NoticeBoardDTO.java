@@ -12,8 +12,16 @@ public class NoticeBoardDTO {
     private String noticeBoardSubject;  //제목
     private String noticeBoardContent;  //내용
     private String date;                //등록일
-    
     public NoticeBoardDTO() {}
+
+    public NoticeBoardDTO(int noticeBoardNum, String noticeBoardSubject, String noticeBoardContent) {
+		super();
+		this.noticeBoardNum = noticeBoardNum;
+		this.noticeBoardSubject = noticeBoardSubject;
+		this.noticeBoardContent = noticeBoardContent;
+	}
+
+    
 
     public NoticeBoardDTO(int noticeBoardNum, String noticeBoardSubject, String noticeBoardContent, String date) {
         super();

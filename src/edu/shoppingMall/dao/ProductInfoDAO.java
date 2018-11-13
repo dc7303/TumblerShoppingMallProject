@@ -23,6 +23,11 @@ public interface ProductInfoDAO {
      * 상품부분검색
      */
     List<ProductDTO> productSelectBySearch(String keyType, String keyWord) throws SQLException;
+     
+    /**
+     * 상품 번호로 검색(Order 프로세서 작동시 상품정보(가격)를 가져오기 위한 것)
+     */
+    ProductDTO productSelectByProductNum(int pno) throws SQLException;
     
     /**
      * 상품추가
@@ -33,6 +38,12 @@ public interface ProductInfoDAO {
      * 상품수정
      */
     int productUpdate(ProductDTO dto) throws SQLException;
+    
+    /**
+     * 상품 수량 수정
+     * 주문 프로세서에서 상품 수량 감소
+     */
+    int productUpdateForQuantity(int productNum, int quantity) throws SQLException;
     
     /**
      * 상품삭제

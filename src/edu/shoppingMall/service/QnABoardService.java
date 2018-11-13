@@ -36,7 +36,10 @@ public interface QnABoardService {
     /**
      * 게시글 삭제
      */
-    int qnaBoardDelete(String qnaBoardNum) throws SQLException;
+    int qnaBoardDelete(int qno) throws SQLException;
     
-    
+    /**
+     * 게시글 조회
+     */
+    QnABoardDTO qnaBoardSelectByNo(int no) throws SQLException;
 }

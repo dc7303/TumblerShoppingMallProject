@@ -18,10 +18,10 @@ public class ProductDTO {
     private String date;                //등록일자
     
     public ProductDTO() {}
-
+    
     public ProductDTO(int productNum, String productName, String productInfo, int productPrice, String productCategory,
-            String productPicture, String productBrand, int productQuantity, String date) {
-        super();
+            String productPicture, String productBrand, int productQuantity) {
+    	super();
         this.productNum = productNum;
         this.productName = productName;
         this.productInfo = productInfo;
@@ -30,6 +30,11 @@ public class ProductDTO {
         this.productPicture = productPicture;
         this.productBrand = productBrand;
         this.productQuantity = productQuantity;
+    }
+
+    public ProductDTO(int productNum, String productName, String productInfo, int productPrice, String productCategory,
+            String productPicture, String productBrand, int productQuantity, String date) {
+        this(productNum,productName,productInfo,productPrice,productCategory,productPicture,productBrand,productQuantity);
         this.date = date;
     }
 
