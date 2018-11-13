@@ -89,7 +89,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select * from tb_user where userid = ? and pwd = ?";
+        String sql = "select * from tb_user where userid = ? and pwd = ? and flag = 0";
         UserInfoDTO dto = null;
         try {
             con = DBUtil.getConnection();
@@ -140,8 +140,25 @@ public class UserInfoDAOImpl implements UserInfoDAO {
      */
     @Override
     public int userDelete(UserInfoDTO dto) throws SQLException {
-        // TODO Auto-generated method stub
-        return 0;
+    	Connection con = null;
+        PreparedStatement ps = null;
+        //String sql = "delete tb_user where userid = ? and pwd =?";
+        String sql = "update tb_user set flag=? where userid = ? and pwd =?";
+        int result = 0;
+        
+        try {
+            con = DBUtil.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, 1);
+            ps.setString(2, dto.getUserId());
+            ps.setString(3	, dto.getUserPwd());
+            
+            result = ps.executeUpdate();
+        }finally {
+            DBUtil.dbClose(ps, con);
+        }
+        
+        return result;
     }
 
 }
