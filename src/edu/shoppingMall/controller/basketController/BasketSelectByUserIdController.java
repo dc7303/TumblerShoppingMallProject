@@ -29,6 +29,7 @@ public class BasketSelectByUserIdController implements Controller {
     	 String url="basket/BasketSelectById.jsp";
     	 UserInfoDTO userDTO =(UserInfoDTO)request.getSession().getAttribute("userDTO");
     	 String flag = request.getParameter("flag");
+    	 request.setAttribute("flag", "basket");
     	 if(flag.equals("pay")) {
     		 url="orderInfo/buyForm.jsp";
     	 }

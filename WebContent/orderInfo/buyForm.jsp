@@ -29,6 +29,9 @@
         if($('input[name=flag]').val() == 'buyNow'){
           $('form[name=orderInputT]').attr('action', '../frontOrder?command=orderInsert');
           $('form[name=orderInputT]').submit();
+        }else {
+          $('form[name=orderInputT]').attr('action', 'frontOrder?command=orderInsertByBasket');
+          $('form[name=orderInputT]').submit();
         }
       });
     });
