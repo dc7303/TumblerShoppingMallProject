@@ -35,7 +35,7 @@ public class OrderUpdateController implements Controller {
         String coment = request.getParameter("coment");
         String payment = request.getParameter("payment");
         
-        String url = "/failView/failMessage.jsp";
+        String url = "errorview/error.jsp";
         try {
             service.orderUpdate(new OrderDTO());
             url = "/order/orderSuccess.jsp";

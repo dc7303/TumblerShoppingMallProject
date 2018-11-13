@@ -14,27 +14,28 @@ import edu.shoppingMall.service.impl.ProductInfoServiceImpl;
 
 public class ProductUpdateFormController implements Controller {
 
-	@Override
-	public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductInfoService service = ProductInfoServiceImpl.getInstance();
+    @Override
+    public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
-        
-String url = "product/productSelectAllResult.jsp";
-		
-		String pno = request.getParameter("pno");
-		
-		try {
-			ProductDTO dto = service.productSelectByProductNum(Integer.parseInt(pno));
-			request.setAttribute("dto", dto);
-			url="product/productUpdateResult.jsp";
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getMessage());
-		}
-		
-		mv.setPath(url);
-		return mv;
-	}
+
+        String url = "errorview/error.jsp";
+
+        String pno = request.getParameter("pno");
+
+        try {
+            ProductDTO dto = service.productSelectByProductNum(Integer.parseInt(pno));
+            request.setAttribute("dto", dto);
+            url = "product/productUpdateResult.jsp";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMsg", e.getMessage());
+        }
+
+        mv.setPath(url);
+        return mv;
+    }
 
 }

@@ -25,17 +25,14 @@ public class ProductSelectBySearchController implements Controller {
     	ProductInfoService service = ProductInfoServiceImpl.getInstance();
     	ModelAndView mv = new ModelAndView();
         
-    	String url = "product/productSelectAllResult.jsp";
+    	String url = "errorview/error.jsp";
 		String keyType = request.getParameter("keyType");
 		String keyWord = request.getParameter("keyWord");
 		
 		try {
-			System.out.println(keyType);
-			System.out.println(keyWord);
-			
 			List<ProductDTO> list = service.productSelectBySearch(keyType, keyWord);
 			request.setAttribute("list", list);
-			
+			url = "product/productSelectAllResult.jsp";
 		}catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMsg", e.getMessage());

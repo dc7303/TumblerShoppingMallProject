@@ -30,7 +30,7 @@ public class SignInController implements Controller {
         
         ModelAndView mv = new ModelAndView();
         
-        String url = "orderInfo/failView.jsp";
+        String url = "errorview/error.jsp";
         try {
             UserInfoDTO dto = service.signIn(id, pwd);
             session.setAttribute("userDTO", dto);

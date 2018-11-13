@@ -32,7 +32,7 @@ public class SignUpController implements Controller {
         
         
         ModelAndView mv = new ModelAndView();
-        String url = "/failView/failMessage.jsp";
+        String url = "errorview/error.jsp";
 
         /**
          * userAdminFlag 0: 일반회원(기본값) , 1: 관리자

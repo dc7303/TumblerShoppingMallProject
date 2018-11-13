@@ -24,7 +24,7 @@ public class OrderDeleteController implements Controller {
         
         int orderNum = Integer.parseInt(request.getParameter("orderNum"));
         
-        String url = "/order/failView.jsp";
+        String url = "errorview/error.jsp";
 
         try {
             service.orderDelete(orderNum);

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.shoppingMall.controller.Controller;
 import edu.shoppingMall.controller.modelAndView.ModelAndView;
@@ -21,7 +22,7 @@ public class UserUpdateController implements Controller {
     @Override
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserInfoService service = UserInfoServiceImpl.getInstance();
-
+        HttpSession session = request.getSession();
         int result = 0;
         UserInfoDTO dto = (UserInfoDTO)request.getSession().getAttribute("userDTO");
         String userId = dto.getUserId();
@@ -33,9 +34,11 @@ public class UserUpdateController implements Controller {
         String userEmail = request.getParameter("userEmail");
         
         ModelAndView mv = new ModelAndView();
-        String url = "/failView/failMessage.jsp";
+        String url = "errorview/error.jsp";
         try {
-            service.userUpdate(new UserInfoDTO(userId,userName,userPwd,userBirth,userPhone,userPhone,userEmail,0,0,null)); 
+            UserInfoDTO userDTO = new UserInfoDTO(userId,userName,userPwd,userBirth,userPhone,userAddr,userEmail,0,0,null);
+            service.userUpdate(userDTO); 
+            session.setAttribute("userDTO", userDTO);
             url = "index.html";
             mv.setRedirect(true);
         }catch (SQLException e) {

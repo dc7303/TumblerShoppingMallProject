@@ -24,7 +24,7 @@ public class UserSelectAllController implements Controller{
         UserInfoService service = UserInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
         
-        String url = "/failView/failMessage.jsp";
+        String url = "\"errorview/error.jsp\";
         try {
             List<UserInfoDTO> list =  service.userSelectAll();
             url = "/successView/signUpSuccess.jsp";

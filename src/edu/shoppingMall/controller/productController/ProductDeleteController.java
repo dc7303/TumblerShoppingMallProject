@@ -22,7 +22,7 @@ public class ProductDeleteController implements Controller {
     public ModelAndView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductInfoService service = ProductInfoServiceImpl.getInstance();
         ModelAndView mv = new ModelAndView();
-        String url="product/productDetailResult.jsp";
+        String url="errorview/error.jsp";
         
         String pno = request.getParameter("pno");
         

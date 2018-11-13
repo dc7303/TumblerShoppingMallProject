@@ -34,7 +34,7 @@ public class UserDeleteController implements Controller {
 			service.userDelete(userDTO);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			url="errorMsg.jsp";
+			url="errorview/error.jsp";
 		}
 
 		ModelAndView mv = new ModelAndView();

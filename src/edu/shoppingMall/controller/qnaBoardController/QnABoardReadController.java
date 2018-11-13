@@ -13,33 +13,29 @@ import edu.shoppingMall.dto.QnABoardDTO;
 import edu.shoppingMall.service.QnABoardService;
 import edu.shoppingMall.service.impl.QnABoardServiceImpl;
 
+public class QnABoardReadController implements Controller {
 
-public class QnABoardReadController implements Controller{
+    @Override
+    public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	@Override
-	public ModelAndView service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		QnABoardService service = QnABoardServiceImpl.getInstance();
-		ModelAndView mv = new ModelAndView();
-		String url="qna/qnaRead.jsp";
-		int qnaBoardQno = Integer.parseInt(request.getParameter("qnaBoardQno"));
-		
-	 
-	    try {
-	    
-	    	   QnABoardDTO dto = service.qnaBoardSelectByNo(qnaBoardQno);
-			request.setAttribute("dto", dto);
-	
-		}catch (SQLException e) {
-			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getMessage());
-		}
-		
-		mv.setPath(url);
-		return mv;
+        QnABoardService service = QnABoardServiceImpl.getInstance();
+        ModelAndView mv = new ModelAndView();
+        String url = "errorview/error.jsp";
+        int qnaBoardQno = Integer.parseInt(request.getParameter("qnaBoardQno"));
 
+        try {
 
-	
-	}
+            QnABoardDTO dto = service.qnaBoardSelectByNo(qnaBoardQno);
+            request.setAttribute("dto", dto);
+            url = "qna/qnaRead.jsp";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("errorMsg", e.getMessage());
+        }
+
+        mv.setPath(url);
+        return mv;
+
+    }
 }

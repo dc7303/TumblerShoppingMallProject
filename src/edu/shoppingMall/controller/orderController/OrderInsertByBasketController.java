@@ -34,7 +34,7 @@ public class OrderInsertByBasketController implements Controller {
         String phone = request.getParameter("phone");
         BasongDTO basongDTO = new BasongDTO(company, shipNum, addr, phone);
         
-        String url = "/order/failView.jsp";
+        String url = "errorview/error.jsp";
 
         try {
             service.orderInsertByBasket(userId, comment, basongDTO);

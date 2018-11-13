@@ -114,7 +114,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
     public int userUpdate(UserInfoDTO dto) throws SQLException {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "update tb_user set pwd = ?, name = ?, birth = ?, addr = ?, email = ? where userid = ?";
+        String sql = "update tb_user set pwd = ?, name = ?, birth = ?,phone = ? , addr = ?, email = ? where userid = ?";
         int result = 0;
         
         try {
@@ -123,9 +123,10 @@ public class UserInfoDAOImpl implements UserInfoDAO {
             ps.setString(1, dto.getUserPwd());
             ps.setString(2, dto.getUserName());
             ps.setString(3, dto.getUserBirth());
-            ps.setString(4, dto.getUserAddr());
-            ps.setString(5, dto.getUserEmail());
-            ps.setString(6, dto.getUserId());
+            ps.setString(4, dto.getUserPhone());
+            ps.setString(5, dto.getUserAddr());
+            ps.setString(6, dto.getUserEmail());
+            ps.setString(7, dto.getUserId());
             
             result = ps.executeUpdate();
         }finally {

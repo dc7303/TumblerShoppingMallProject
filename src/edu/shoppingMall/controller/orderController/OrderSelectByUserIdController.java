@@ -28,7 +28,7 @@ public class OrderSelectByUserIdController implements Controller{
         ModelAndView mv = new ModelAndView();
         HttpSession session = request.getSession();
         
-        String url = "/orderInfo/failView.jsp";
+        String url = "errorview/error.jsp";
         
         UserInfoDTO userDTO = (UserInfoDTO)session.getAttribute("userDTO");    //세션에 가져오기
         String userId = userDTO.getUserId();                    //유저아이디
