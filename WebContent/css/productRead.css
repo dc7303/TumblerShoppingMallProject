@@ -28,8 +28,8 @@
   }
   
   .readImg {
-    width:450px;
-    height:550px;
+    width:500px;
+    height:400px;
     float:left;
     padding-right: 100px;
   }
@@ -61,9 +61,13 @@
     color:#32B8FF;
   }
   
+  .goImag {
+   
+  }
+  
   .goBasket {
-    float:left;
-    padding-left:140px;
+    float: right;
+    padding-left:14px;
   }
   
   .goBuy {

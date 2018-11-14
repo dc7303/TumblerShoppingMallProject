@@ -43,7 +43,7 @@
 						<strong class="price"><span class="number">${list[status.index].productPrice}</span>
 						<span class="currency">원</span></strong>
 					</div>
-				</a> <a href="frontBasket?command=basketInsert&pno=${list[status.index].productNum}">장바구니에 담기</a></td>
+				</a></td>
 				</c:forEach>
 			</tr>
 		</table>

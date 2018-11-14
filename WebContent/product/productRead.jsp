@@ -99,8 +99,10 @@
         <input type = "hidden" name = "proQuantity" value="${proDTO.getProductQuantity() }"/>
 	    <input type = "hidden" name = "userId" value="${userDTO.getUserId() }"/>
 	    <input type = "hidden" name = "flag" value = ""/>
-        <a href = "#" name = "btn" class = "goBasket"><img src = "${applicationScope.conPath }/img/proReadBtn/btn_basket.png"/></a>
-	    <a href = "#" name = "btn" class = "goBuy"><img src = "${applicationScope.conPath }/img/proReadBtn/btn_buy_now.png"/></a>
+       
+          <a href = "#" name = "btn" class = "goBasket"><img src = "${applicationScope.conPath }/img/proReadBtn/btn_basket.png"/></a>
+	      <a href = "#" name = "btn" class = "goBuy"><img src = "${applicationScope.conPath }/img/proReadBtn/btn_buy_now.png"/></a>
+        
     </form>
   </div>
 </div>
