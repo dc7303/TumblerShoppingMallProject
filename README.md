@@ -1,25 +1,15 @@
-#�ʿ���̺귯��
-## 1) JSTL(jstl.jar, standard.jar)
-## 2) ojdbc6
-## 3) JQuery
+# #333팀 텀블러 쇼핑몰 웹 프로젝트
 
-# ���� �۾�
-1) META-INF�� context.xml(DB property ����)
-2) lib�� �ʿ� ���̺귯�� ����
-3) Listener�� property(������ ��ü����) �ε�
-4) Dbutil.java �߰�
+### 주제 및 개요
 
+#### 텀블러 쇼핑몰
 
-# �۾�����
-1) table ���� �� ���̺� �� ���ڵ� �����׽�Ʈ
-2) insert - select -  (selectBySearch) - Delete ������ jsp ������ ����
-3) servlet ����
-4) ����� ��Ʈ�ѷ� properties�� �߰�
-5) ��Ʈ�ѷ� ����(���� �� try { } catch ó��)
-6) ���� ���� (service)
-7) DAO ����
+모든 조원이 쇼핑몰을 이용해 본 경험을 토대로 CRUD등 다양한 기능을 구현하기에 적합한 웹프로젝트 주제로써 쇼핑몰 선택
 
 
 
+### 기대 효과
 
+수업에서 배웠던 다양한 기능(MVC모델, JSP 등)들을 총체적으로 사용할 수 있어 현재까지 배운 것을 복습하는 효과 
 
+실제 쇼핑몰을 제작함으로써 JSP를 이용하여 동적인 웹 페이지를 구현
